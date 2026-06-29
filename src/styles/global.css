@@ -461,6 +461,18 @@ body {
 .nav-link.active { color: #00d4ff; }
 .nav-link.active::after { width: 100%; }
 
+/* Puente invisible para mantener el hover del menú desplegable */
+.dropdown-bridge::before {
+  content: '';
+  position: absolute;
+  top: -16px; /* Cubre el mt-3 (12px) de margen y se superpone un poco */
+  left: 0;
+  width: 100%;
+  height: 16px;
+  background: transparent;
+  pointer-events: auto; /* Asegura recibir eventos de mouse */
+}
+
 /* ═══════════════════════════════
    COUNTER (animated numbers)
 ═══════════════════════════════ */
