@@ -1,0 +1,171 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<Layout
+  title="Custom Software & Systems — Benthic OPS"
+  description="Desarrollo de software a medida, Micro-SaaS, infraestructuras web de alta conversión e integración en la nube. Arquitectura tecnológica que escala tu operación."
+  currentPage="/software"
+>
+
+  <!-- Hero -->
+  <section class="relative pt-36 pb-20 px-6 overflow-hidden">
+    <div class="section-bg section-bg-bio" style="opacity:0.28;"></div>
+    <div class="section-overlay" style="background:rgba(0,7,45,0.8);"></div>
+    <div class="max-w-4xl mx-auto text-center relative" style="z-index:2;">
+      <span class="section-label mb-6 inline-flex">💻 Custom Software & Systems</span>
+      <div class="text-7xl mb-6">💻</div>
+      <h1 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(2rem,5vw,3rem); line-height:1.15; color:#e8f4ff; margin:0 0 1.25rem;">
+        Arquitectura tecnológica
+        <span style="color:#00d4ff; display:block;">que escala contigo</span>
+      </h1>
+      <p class="text-lg leading-relaxed max-w-2xl mx-auto" style="color:#7aa3cc;">
+        Construimos software robusto a la medida e infraestructuras web ultra-rápidas diseñadas para automatizar tus procesos internos y captar clientes de manera autónoma.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center mt-8">
+        <a href="#servicios" class="btn-primary">Ver capacidades →</a>
+        <a href="#contacto" class="btn-outline">Cotizar proyecto</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sub-servicios -->
+  <section id="servicios" class="relative py-20 px-6 overflow-hidden">
+    <div class="section-bg section-bg-hero" style="opacity:0.25;"></div>
+    <div class="section-overlay" style="background:rgba(0,5,25,0.85);"></div>
+    <div class="relative" style="z-index:2;">
+      <div class="max-w-5xl mx-auto space-y-8">
+        <div class="text-center mb-14 reveal">
+          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.8rem; color:#e8f4ff; margin:0 0 0.75rem;">
+            Lo que construimos
+          </h2>
+          <p style="color:#7aa3cc;">Desde portales internos hasta sistemas complejos de orquestación en la nube.</p>
+        </div>
+
+        <!-- Módulo 1: Micro-SaaS -->
+        <div class="glass-card reveal p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div>
+            <span class="section-label mb-4 inline-flex">🚀 Módulo 1</span>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.3rem; color:#e8f4ff; margin:0.5rem 0;">
+              Desarrollo de Aplicaciones (Micro-SaaS)
+            </h3>
+            <p class="text-sm leading-relaxed mb-4" style="color:#7aa3cc;">
+              Creamos portales cloud y sistemas internos que se adaptan al flujo real de tu negocio en cuestión de días, no de meses. Sin plataformas genéricas que no encajan.
+            </p>
+            <ul class="space-y-2">
+              {[
+                'Gestión de inventarios con alertas automáticas',
+                'Portales de proveedores con acceso controlado',
+                'Control de asistencia y recursos humanos',
+                'Sistemas de facturación integrados con SII',
+                'Dashboards ejecutivos personalizados',
+              ].map(f => (
+                <li class="flex items-start gap-2 text-sm" style="color:#a8c4e0;">
+                  <span style="color:#00d4ff; flex-shrink:0;">▸</span>{f}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="flex justify-center">
+            <div class="glass-card p-6 text-center" style="max-width:220px; border-color: rgba(0,212,255,0.3);">
+              <div class="text-5xl mb-3">⚡</div>
+              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; color:#00d4ff;">Días, no meses</div>
+              <div class="text-sm mt-1" style="color:#7aa3cc;">Metodología ágil + IA</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Módulo 2: Webs -->
+        <div class="glass-card reveal p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div class="order-2 md:order-1 flex justify-center">
+            <div class="glass-card p-6 text-center" style="max-width:220px; border-color: rgba(0,212,255,0.3);">
+              <div class="text-5xl mb-3">🤖</div>
+              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; color:#00d4ff;">Agente IA 24/7</div>
+              <div class="text-sm mt-1" style="color:#7aa3cc;">Califica clientes mientras duermes</div>
+            </div>
+          </div>
+          <div class="order-1 md:order-2">
+            <span class="section-label mb-4 inline-flex">🌐 Módulo 2</span>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.3rem; color:#e8f4ff; margin:0.5rem 0;">
+              Infraestructuras Web de Alta Conversión
+            </h3>
+            <p class="text-sm leading-relaxed mb-4" style="color:#7aa3cc;">
+              Sitios web corporativos optimizados para SEO local integrados con agentes de IA autónomos que atienden, responden dudas técnicas y califican clientes potenciales 24/7.
+            </p>
+            <ul class="space-y-2">
+              {[
+                'SEO técnico optimizado para búsquedas locales en Chile',
+                'Agente IA conversacional integrado en la web',
+                'Calificación automática de leads entrantes',
+                'Velocidad de carga < 1.5 segundos',
+                'Integración con CRM y WhatsApp Business',
+              ].map(f => (
+                <li class="flex items-start gap-2 text-sm" style="color:#a8c4e0;">
+                  <span style="color:#00d4ff; flex-shrink:0;">▸</span>{f}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <!-- Módulo 3: Sistemas complejos -->
+        <div class="glass-card reveal p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div>
+            <span class="section-label mb-4 inline-flex">☁️ Módulo 3</span>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.3rem; color:#e8f4ff; margin:0.5rem 0;">
+              Sistemas Complejos en la Nube
+            </h3>
+            <p class="text-sm leading-relaxed mb-4" style="color:#7aa3cc;">
+              Orquestación, migración e integración avanzada de flujos de datos en la nube donde las herramientas genéricas y rígidas del mercado fallan.
+            </p>
+            <ul class="space-y-2">
+              {[
+                'Arquitectura Supabase + PostgreSQL escalable',
+                'Migración desde sistemas legacy sin downtime',
+                'Pipelines de datos automatizados',
+                'APIs REST y webhooks a medida',
+                'Integración con ERPs y sistemas existentes',
+              ].map(f => (
+                <li class="flex items-start gap-2 text-sm" style="color:#a8c4e0;">
+                  <span style="color:#00d4ff; flex-shrink:0;">▸</span>{f}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="flex justify-center">
+            <div class="glass-card p-6 text-center" style="max-width:220px; border-color: rgba(0,212,255,0.3);">
+              <div class="text-5xl mb-3">🏗️</div>
+              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; color:#00d4ff;">Supabase Cloud</div>
+              <div class="text-sm mt-1" style="color:#7aa3cc;">Escalable desde día uno</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stack tecnológico -->
+  <section class="relative py-16 px-6 overflow-hidden">
+    <div class="section-bg section-bg-abyss" style="opacity:0.25;"></div>
+    <div class="section-overlay" style="background:rgba(0,7,45,0.85);"></div>
+    <div class="max-w-4xl mx-auto reveal relative" style="z-index:2;">
+      <h3 class="text-center mb-10" style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.4rem; color:#e8f4ff;">
+        Tecnologías que dominamos
+      </h3>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        {[
+          '⚡ Astro', '⚛️ React', '🟢 Node.js', '🐘 PostgreSQL',
+          '🔥 Supabase', '☁️ Cloudflare', '🤖 OpenAI API', '📱 WhatsApp API',
+          '🔷 TypeScript', '🐳 Docker', '🔐 Auth0', '📊 Metabase',
+        ].map(tech => (
+          <div class="glass-card px-4 py-3 text-sm text-center" style="color:#a8c4e0;">
+            {tech}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <ContactForm page="software" />
+</Layout>

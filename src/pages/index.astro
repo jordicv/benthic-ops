@@ -1,0 +1,265 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import ContactForm from '../components/ContactForm.astro';
+import NeuralNetwork from '../components/NeuralNetwork.astro';
+---
+
+<Layout title="Benthic OPS — Inteligencia Operativa y Tecnología a la Medida" currentPage="/">
+
+  <!-- ═══════════════════════════════════════
+       HERO — Fondo de video de orca
+  ═══════════════════════════════════════ -->
+  <section class="relative min-h-screen flex items-center overflow-hidden">
+    <!-- Video de fondo de orca nadando -->
+    <div class="section-bg overflow-hidden">
+      <video 
+        autoplay 
+        muted 
+        loop 
+        playsinline 
+        id="hero-bg-video"
+        class="w-full h-full object-cover"
+        style="filter: brightness(0.9) contrast(1.05); opacity: 0.48; transition: opacity 1.2s ease-in-out;"
+      >
+        <source src="/videos/orca.webm" type="video/webm" />
+        <source src="/videos/orca.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <!-- Overlay degradado -->
+    <div class="section-overlay" style="background: linear-gradient(to bottom, rgba(0,7,45,0.45) 0%, rgba(0,7,45,0.2) 50%, rgba(0,7,45,0.75) 100%);"></div>
+
+    <div class="depth-ray" style="z-index:2;"></div>
+
+    <div class="max-w-6xl mx-auto px-6 w-full relative" style="z-index:3;">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-28 pb-20">
+
+        <!-- Texto -->
+        <div class="lg:col-span-8">
+          <div class="section-label mb-6 inline-flex load-fade-in">🐋 Benthic OPS — Chile</div>
+          <h1 class="load-fade-in delay-100" style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(2.4rem,5.5vw,3.8rem); line-height:1.1; color:#e8f4ff; margin:0 0 1.5rem;">
+            Inteligencia <span class="text-shimmer">Operativa</span> a la Medida
+          </h1>
+          <p class="text-lg leading-relaxed mb-8 load-fade-in delay-200" style="color:#a8c4e0; max-width:620px;">
+            Transformamos la complejidad de tu operation en claridad estratégica. 
+            IA avanzada, software personalizado y ciberseguridad robusta — 
+            integrados sin fricción a lo que ya tienes.
+          </p>
+
+          <div class="flex flex-wrap gap-4 mb-12 load-fade-in delay-300">
+            <a href="#servicios" class="btn-primary">Conoce nuestros servicios →</a>
+            <a href="/contacto" class="btn-outline">Agendar diagnóstico</a>
+          </div>
+
+          <!-- Stats -->
+          <div class="flex gap-8 pt-8 max-w-[560px] load-fade-in delay-400" style="border-top: 1px solid rgba(0,212,255,0.15);">
+            <div class="stat-card flex-1">
+              <div class="stat-val">3</div>
+              <div class="stat-label">Áreas de servicio</div>
+            </div>
+            <div class="stat-card flex-1">
+              <div class="stat-val">24/7</div>
+              <div class="stat-label">Monitoreo</div>
+            </div>
+            <div class="stat-card flex-1">
+              <div class="stat-val">&lt;48h</div>
+              <div class="stat-label">Respuesta</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SECCIÓN — Red Neuronal + Propuesta
+  ═══════════════════════════════════════ -->
+  <section class="relative py-24 px-6 overflow-hidden">
+    <div class="section-bg section-bg-abyss" style="opacity:0.62;"></div>
+    <div class="section-overlay" style="background:rgba(0,5,20,0.65);"></div>
+
+    <div class="max-w-6xl mx-auto relative" style="z-index:2;">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+        <!-- Red neuronal -->
+        <div class="reveal">
+          <NeuralNetwork />
+        </div>
+
+        <!-- Texto propuesta -->
+        <div class="reveal" style="transition-delay:120ms;">
+          <div class="section-label mb-5 inline-flex">🤖 Inteligencia Aplicada</div>
+          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(1.8rem,4vw,2.6rem); color:#e8f4ff; margin:0.5rem 0 1.25rem; line-height:1.2;">
+            Masticamos los datos.<br/>
+            <span style="color:#00d4ff;">Tú tomas las decisiones.</span>
+          </h2>
+          <p class="text-base leading-relaxed mb-6" style="color:#7aa3cc;">
+            No te llenamos de gráficos complejos ni plataformas que nadie entiende. 
+            Nuestros modelos de IA procesan tu información y te entregan reportes 
+            ejecutivos simples, predicciones accionables y automatizaciones que 
+            liberan horas de trabajo manual.
+          </p>
+          <ul class="space-y-3 mb-8">
+            {['Modelos predictivos entrenados con tus datos reales','Integración nativa con tus sistemas existentes','Reportes ejecutivos automáticos y personalizados','Alertas inteligentes antes de que ocurran problemas'].map(f => (
+              <li class="flex items-start gap-3 text-sm" style="color:#a8c4e0;">
+                <span style="color:#00d4ff; font-size:1rem; flex-shrink:0;">▸</span>{f}
+              </li>
+            ))}
+          </ul>
+          <a href="/analytics" class="btn-primary">Ver Analytics & IA →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SERVICIOS — Fondo bioluminiscente
+  ═══════════════════════════════════════ -->
+  <section id="servicios" class="relative py-24 px-6 overflow-hidden">
+    <div class="section-bg section-bg-bio" style="opacity:0.52;"></div>
+    <div class="section-overlay" style="background: linear-gradient(to bottom, rgba(0,7,45,0.72), rgba(5,22,80,0.72));"></div>
+
+    <div class="max-w-6xl mx-auto relative" style="z-index:2;">
+      <div class="text-center mb-16 reveal">
+        <div class="section-label mb-5 inline-flex">⚡ Servicios</div>
+        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(1.8rem,4vw,2.6rem); color:#e8f4ff; margin:0.5rem 0 1rem;">
+          Tres ejes. Un solo objetivo.
+        </h2>
+        <p style="color:#7aa3cc; max-width:540px; margin:0 auto;">
+          Cada servicio puede funcionar de forma independiente o combinado. Comenzamos donde más duele.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <ServiceCard
+          href="/analytics"
+          icon="📊"
+          title="Analytics & Predictive AI"
+          description="Transformamos datos dispersos y procesos manuales en reportes ejecutivos simples y predicciones estratégicas mediante IA avanzada."
+          features={['Dashboards ejecutivos en tiempo real','Modelos de predicción de demanda','Automatización financiera con IA','Integración con SII']}
+          delay={0}
+        />
+        <ServiceCard
+          href="/software"
+          icon="💻"
+          title="Custom Software & Systems"
+          description="Desarrollamos el software exacto que necesitas: desde CRMs y ERPs personalizados hasta bots de WhatsApp y APIs robustas."
+          features={['CRM & ERP a la medida','APIs e integraciones oficiales','Bots de WhatsApp Business','Portales y plataformas web']}
+          delay={150}
+        />
+        <ServiceCard
+          href="/consulting"
+          icon="🛡️"
+          title="Consulting & Cyber Security"
+          description="Diagnóstico operativo express, auditoría de vulnerabilidades y blindaje de ciberseguridad para proteger tu empresa antes de que sea tarde."
+          features={['Diagnóstico operativo en 48h','Auditoría de vulnerabilidades','Plan de respaldos cifrados','Zero Trust y 2FA corporativo']}
+          delay={300}
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       POR QUÉ BENTHIC — Fondo abismal
+  ═══════════════════════════════════════ -->
+  <section class="relative py-24 px-6 overflow-hidden">
+    <div class="section-bg section-bg-abyss" style="opacity:0.62;"></div>
+    <div class="section-overlay" style="background:rgba(0,5,25,0.65);"></div>
+
+    <div class="max-w-5xl mx-auto relative" style="z-index:2;">
+      <div class="text-center mb-16 reveal">
+        <div class="section-label mb-5 inline-flex">🎯 Diferenciadores</div>
+        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(1.8rem,4vw,2.6rem); color:#e8f4ff; margin:0.5rem 0;">
+          El caballo de Troya de tu empresa
+        </h2>
+        <p style="color:#7aa3cc; max-width:560px; margin:1rem auto 0;">
+          Entramos implementando algo concreto y útil. Y desde ahí, transformamos toda tu operación.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {[
+          { icon: '⚡', title: 'Resultados en días', desc: 'No en meses. Primeras automatizaciones funcionando en 48-72 horas.' },
+          { icon: '🔗', title: 'Nos adaptamos a ti', desc: 'Nos integramos a lo que ya tienes, sin obligarte a cambiar de plataforma.' },
+          { icon: '🧠', title: 'IA que entiende tu negocio', desc: 'Modelos entrenados con tu historial real, no soluciones genéricas.' },
+          { icon: '🔒', title: 'Seguridad desde el día 1', desc: 'Todo lo que construimos incluye capas de seguridad y respaldos.' },
+          { icon: '📱', title: 'Comunicación directa', desc: 'Sin cuentas de cliente ni tickets. Hablas con quien resuelve.' },
+          { icon: '📊', title: 'Métricas que importan', desc: 'Tiempo ahorrado, dinero recuperado, decisiones mejoradas.' },
+        ].map(({ icon, title, desc }, i) => (
+          <div class="glass-card reveal p-6 text-center" style={`transition-delay:${i * 80}ms;`}>
+            <div class="text-4xl mb-4 float-y" style={`animation-delay:${i * 0.3}s;`}>{icon}</div>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1rem; color:#e8f4ff; margin:0 0 0.6rem;">{title}</h3>
+            <p class="text-sm leading-relaxed" style="color:#7aa3cc;">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       CTA FINAL — Fondo hero
+  ═══════════════════════════════════════ -->
+  <section class="relative py-24 px-6 overflow-hidden">
+    <div class="section-bg section-bg-hero" style="opacity:0.48;"></div>
+    <div class="section-overlay" style="background:rgba(0,7,45,0.65);"></div>
+
+    <div class="max-w-3xl mx-auto text-center relative reveal" style="z-index:2;">
+      <div class="section-label mb-6 inline-flex">🚀 ¿Listo para el cambio?</div>
+      <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(1.8rem,4vw,2.6rem); color:#e8f4ff; margin:0.5rem 0 1.25rem;">
+        Contáctanos y recibe tu diagnóstico gratuito
+      </h2>
+      <p class="text-lg mb-10" style="color:#7aa3cc;">
+        Sin compromisos. Te mostramos exactamente qué podemos hacer y en cuánto tiempo. 
+        Respondemos en menos de 24 horas.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="/contacto" class="btn-primary text-lg py-4 px-8">Agendar diagnóstico →</a>
+        <a href="/nosotros" class="btn-outline text-lg py-4 px-8">Conocer el equipo</a>
+      </div>
+    </div>
+  </section>
+
+  <ContactForm page="home" />
+
+</Layout>
+
+<script>
+  // Transición suave de opacidad al finalizar el video para evitar cortes abruptos de loop
+  (function() {
+    const video = document.getElementById('hero-bg-video') as HTMLVideoElement;
+    if (!video) return;
+
+    // Ralentizar la reproducción para hacerlo más largo y majestuoso
+    video.playbackRate = 0.55;
+
+    let fadingOut = false;
+
+    video.addEventListener('timeupdate', () => {
+      const duration = video.duration;
+      const currentTime = video.currentTime;
+
+      if (!duration) return;
+
+      // 1.3 segundos antes del final, comenzamos el fade out
+      if (currentTime > duration - 1.3 && !fadingOut) {
+        fadingOut = true;
+        video.style.opacity = '0.02';
+      }
+      
+      // Al reiniciar el video, volvemos a la opacidad normal de forma inmediata
+      if (currentTime < 0.8 && fadingOut) {
+        fadingOut = false;
+        video.style.opacity = '0.48';
+      }
+    });
+
+    // Asegurar que si hay un evento de seek manual o loop directo se limpie el estado
+    video.addEventListener('seeked', () => {
+      if (video.currentTime < 1) {
+        fadingOut = false;
+        video.style.opacity = '0.48';
+      }
+    });
+  })();
+</script>

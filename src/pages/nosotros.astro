@@ -1,0 +1,245 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<Layout
+  title="Nosotros — Benthic OPS"
+  description="Conoce al equipo detrás de Benthic OPS. Somos especialistas en IA, software a medida y ciberseguridad para empresas en crecimiento en Chile."
+  currentPage="/nosotros"
+>
+
+  <!-- ═══════════════════════════════════════
+       HERO NOSOTROS
+  ═══════════════════════════════════════ -->
+  <section class="relative pt-36 pb-20 px-6 overflow-hidden">
+    <div class="section-bg section-bg-hero" style="opacity:0.28;"></div>
+    <div class="section-overlay" style="background:rgba(0,7,45,0.8);"></div>
+    <div class="max-w-4xl mx-auto text-center relative" style="z-index:2;">
+      <span class="section-label mb-6 inline-flex">🐋 Quiénes somos</span>
+      <h1 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(2rem,5vw,3rem); line-height:1.15; color:#e8f4ff; margin:0 0 1.25rem;">
+        Navegamos la profundidad
+        <span style="color:#00d4ff; display:block;">de tu operación</span>
+      </h1>
+      <p class="text-lg leading-relaxed max-w-2xl mx-auto" style="color:#7aa3cc;">
+        Somos un equipo de ingenieros, analistas y expertos en ciberseguridad con una misión clara: 
+        hacer que la tecnología trabaje para ti, no al revés.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       NUESTRA HISTORIA
+  ═══════════════════════════════════════ -->
+  <section class="relative py-20 px-6 overflow-hidden">
+    <div class="section-bg section-bg-bio" style="opacity:0.18;"></div>
+    <div class="section-overlay" style="background:rgba(0,5,25,0.85);"></div>
+    <div class="relative" style="z-index:2;">
+      <div class="max-w-5xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div class="reveal">
+            <span class="section-label mb-5 inline-flex">📍 Origen</span>
+            <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.8rem; color:#e8f4ff; margin:0.5rem 0 1rem;">
+              Nacimos en Chile para resolver problemas reales
+            </h2>
+            <p class="text-base leading-relaxed mb-4" style="color:#7aa3cc;">
+              Benthic OPS nació de una frustración concreta: ver cómo empresas con potencial real eran frenadas por datos desordenados, herramientas genéricas que no encajaban y procesos manuales que consumían horas valiosas.
+            </p>
+            <p class="text-base leading-relaxed mb-4" style="color:#7aa3cc;">
+              El nombre viene de la <strong style="color:#e8f4ff;">zona béntica</strong> — la parte más profunda del océano, donde existe vida compleja y organizada lejos de la superficie. Así trabajamos nosotros: en las capas más profundas de tu operación, donde está el verdadero potencial de mejora.
+            </p>
+            <p class="text-base leading-relaxed" style="color:#7aa3cc;">
+              Comenzamos operando en Chile con un enfoque claro en empresas que manejan volúmenes significativos de datos y procesos, y que necesitan pasar al siguiente nivel sin depender de soluciones masivas y costosas.
+            </p>
+          </div>
+
+          <!-- Visual de profundidad -->
+          <div class="reveal flex flex-col gap-4" style="transition-delay:150ms;">
+            {[
+              { depth: '0m', label: 'Superficie', desc: 'Reunión inicial y diagnóstico de tu operación' },
+              { depth: '200m', label: 'Mesopelágico', desc: 'Análisis profundo y diseño de soluciones' },
+              { depth: '1000m', label: 'Batipelágico', desc: 'Implementación y automatización' },
+              { depth: '4000m', label: 'Béntico', desc: 'Control total y optimización continua' },
+            ].map(({ depth, label, desc }, i) => (
+              <div
+                class="glass-card p-4 flex items-center gap-5"
+                style={`transition-delay:${i * 100 + 150}ms; border-left: 3px solid rgba(0,212,255,${0.3 + i * 0.15});`}
+              >
+                <div class="flex-shrink-0 text-center" style="min-width:60px;">
+                  <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:0.85rem; color:#00d4ff;">
+                    {depth}
+                  </div>
+                  <div class="text-xs" style="color:#7aa3cc;">{label}</div>
+                </div>
+                <div>
+                  <p class="text-sm" style="color:#a8c4e0;">{desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       MISIÓN / VISIÓN / VALORES
+  ═══════════════════════════════════════ -->
+  <section class="relative py-20 px-6 overflow-hidden">
+    <div class="section-bg section-bg-abyss" style="opacity:0.3;"></div>
+    <div class="section-overlay" style="background:rgba(0,5,25,0.8);"></div>
+    <div class="relative" style="z-index:2;">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-14 reveal">
+          <span class="section-label mb-4 inline-flex">💡 Propósito</span>
+          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(1.6rem,4vw,2.2rem); color:#e8f4ff; margin:0.5rem 0;">
+            Lo que nos mueve
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[
+            {
+              icon: '🎯',
+              title: 'Misión',
+              text: 'Transformar la complejidad operativa de empresas en crecimiento en ventajas competitivas reales, usando tecnología avanzada y soluciones 100% a la medida de cada cliente.',
+              delay: 0,
+            },
+            {
+              icon: '🔭',
+              title: 'Visión',
+              text: 'Ser el referente en inteligencia operativa para medianas empresas latinoamericanas, expandiendo desde Chile hacia el resto de la región con presencia local en cada mercado.',
+              delay: 120,
+            },
+            {
+              icon: '⚓',
+              title: 'Valores',
+              text: 'Claridad sobre complejidad. Velocidad sin descuido. Integración sin fricción. Resultados medibles. Y sobre todo: respeto por el tiempo y los recursos de cada cliente.',
+              delay: 240,
+            },
+          ].map(({ icon, title, text, delay }) => (
+            <div class="glass-card reveal p-8 text-center" style={`transition-delay:${delay}ms;`}>
+              <div class="text-5xl mb-5">{icon}</div>
+              <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; color:#e8f4ff; margin:0 0 0.75rem;">{title}</h3>
+              <p class="text-sm leading-relaxed" style="color:#7aa3cc;">{text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       POR QUÉ ELEGIRNOS
+  ═══════════════════════════════════════ -->
+  <section class="relative py-20 px-6 overflow-hidden">
+    <div class="section-bg section-bg-bio" style="opacity:0.25;"></div>
+    <div class="section-overlay" style="background:rgba(0,5,25,0.85);"></div>
+    <div class="relative" style="z-index:2;">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-14 reveal">
+          <span class="section-label mb-4 inline-flex">⚡ Diferencias</span>
+          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(1.6rem,4vw,2.2rem); color:#e8f4ff; margin:0.5rem 0;">
+            Por qué Benthic OPS y no una consultora tradicional
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {[
+            {
+              trad: '⏳ Proyectos de 6-12 meses antes de ver resultados',
+              benthic: '⚡ Primeros resultados en días, no meses',
+            },
+            {
+              trad: '📊 Decenas de slides y reportes que nadie lee',
+              benthic: '📱 3 párrafos directo a tu WhatsApp cada semana',
+            },
+            {
+              trad: '🔧 Herramientas genéricas que "casi" encajan',
+              benthic: '🎯 Soluciones construidas para tu flujo exacto',
+            },
+            {
+              trad: '💸 Equipos grandes con costos fijos elevados',
+              benthic: '✅ Modelo flexible: pagas por lo que necesitas',
+            },
+            {
+              trad: '🤷 "No podemos integrarnos con tu sistema actual"',
+              benthic: '🔗 Nos adaptamos a lo que ya tienes instalado',
+            },
+            {
+              trad: '📈 Métricas de vanidad sin impacto real',
+              benthic: '💡 Métricas de operación: tiempo, dinero, decisiones',
+            },
+          ].map(({ trad, benthic }, i) => (
+            <div class="glass-card reveal p-5 grid grid-cols-2 gap-3" style={`transition-delay:${i * 60}ms;`}>
+              <div class="text-sm p-3 rounded-lg" style="background:rgba(255,60,60,0.06); color:#ff9090; border:1px solid rgba(255,60,60,0.15);">
+                {trad}
+              </div>
+              <div class="text-sm p-3 rounded-lg" style="background:rgba(0,212,255,0.06); color:#a8c4e0; border:1px solid rgba(0,212,255,0.18);">
+                {benthic}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       ÁREAS QUE CUBRIMOS
+  ═══════════════════════════════════════ -->
+  <section class="relative py-20 px-6 overflow-hidden">
+    <div class="section-bg section-bg-abyss" style="opacity:0.35;"></div>
+    <div class="section-overlay" style="background:rgba(0,7,45,0.82);"></div>
+    <div class="relative" style="z-index:2;">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-14 reveal">
+          <span class="section-label mb-4 inline-flex">🧠 Expertise</span>
+          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(1.6rem,4vw,2.2rem); color:#e8f4ff; margin:0.5rem 0;">
+            Nuestras capacidades técnicas
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          {[
+            '🤖 Inteligencia Artificial',
+            '📊 Business Intelligence',
+            '☁️ Cloud Architecture',
+            '🔐 Ciberseguridad',
+            '⚙️ Automatización RPA',
+            '📡 APIs & Integraciones',
+            '🗄️ Bases de Datos',
+            '📱 WhatsApp Business',
+            '🌐 Desarrollo Web',
+            '📋 Mercado Público',
+            '🧾 Integración SII',
+            '🔍 Auditoría Digital',
+          ].map((cap, i) => (
+            <div class="glass-card reveal px-4 py-4 text-sm text-center" style={`color:#a8c4e0; transition-delay:${i * 40}ms;`}>
+              {cap}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Final -->
+  <section class="relative py-16 px-6 text-center overflow-hidden">
+    <div class="section-bg section-bg-hero" style="opacity:0.22;"></div>
+    <div class="section-overlay" style="background:rgba(0,7,45,0.85);"></div>
+    <div class="max-w-2xl mx-auto reveal relative" style="z-index:2;">
+      <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.8rem; color:#e8f4ff; margin:0 0 1rem;">
+        ¿Listos para trabajar juntos?
+      </h2>
+      <p class="text-base mb-8" style="color:#7aa3cc;">
+        Cuéntanos tu desafío y te mostramos en concreto cómo podemos resolverlo.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="/contacto" class="btn-primary">Ir a Contacto →</a>
+        <a href="/#servicios" class="btn-outline">Ver servicios</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

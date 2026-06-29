@@ -1,0 +1,190 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<Layout
+  title="Consulting & Cyber Security — Benthic OPS"
+  description="Consultoría operativa express, auditoría de vulnerabilidades y ciberseguridad para empresas en Chile. Protegemos y desbloqueamos tu operación digital."
+  currentPage="/consulting"
+>
+
+  <!-- Hero -->
+  <section class="relative pt-36 pb-20 px-6 overflow-hidden">
+    <div class="section-bg section-bg-abyss" style="opacity:0.28;"></div>
+    <div class="section-overlay" style="background:rgba(0,7,45,0.8);"></div>
+    <div class="max-w-4xl mx-auto text-center relative" style="z-index:2;">
+      <span class="section-label mb-6 inline-flex">🛡️ Consulting & Cyber Security</span>
+      <div class="text-7xl mb-6">🛡️</div>
+      <h1 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(2rem,5vw,3rem); line-height:1.15; color:#e8f4ff; margin:0 0 1.25rem;">
+        Protección y destrabe
+        <span style="color:#00d4ff; display:block;">de tu operación digital</span>
+      </h1>
+      <p class="text-lg leading-relaxed max-w-2xl mx-auto" style="color:#7aa3cc;">
+        Diagnóstico acelerado de tus procesos digitales y un blindaje integral para garantizar la continuidad operativa y la paz mental de tu empresa.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center mt-8">
+        <a href="#servicios" class="btn-primary">Ver servicios →</a>
+        <a href="#contacto" class="btn-outline">Agendar auditoría</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Alerta de contexto -->
+  <section class="relative px-6 pb-4 overflow-hidden">
+    <div class="max-w-4xl mx-auto relative" style="z-index:2;">
+      <div class="reveal glass-card p-5 flex items-start gap-4" style="border-color: rgba(255,180,0,0.25); background: rgba(255,150,0,0.06);">
+        <span class="text-2xl flex-shrink-0">⚠️</span>
+        <div>
+          <p class="text-sm leading-relaxed" style="color:#a8c4e0;">
+            <strong style="color:#ffd700;">El 73% de las PYMEs en Chile</strong> no tiene un plan de respaldo activo ni políticas básicas de acceso. Un ataque de ransomware puede detener tu operación por semanas — o para siempre.
+            Nosotros lo prevenimos antes de que ocurra.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sub-servicios -->
+  <section id="servicios" class="relative py-20 px-6 overflow-hidden">
+    <div class="section-bg section-bg-bio" style="opacity:0.2;"></div>
+    <div class="section-overlay" style="background:rgba(0,5,30,0.85);"></div>
+    <div class="relative" style="z-index:2;">
+      <div class="max-w-5xl mx-auto space-y-8">
+        <div class="text-center mb-14 reveal">
+          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.8rem; color:#e8f4ff; margin:0 0 0.75rem;">
+            Nuestros módulos de protección
+          </h2>
+          <p style="color:#7aa3cc;">Desde el diagnóstico hasta el blindaje total de tu empresa.</p>
+        </div>
+
+        <!-- Módulo 1: Consultoría Express -->
+        <div class="glass-card reveal p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div>
+            <span class="section-label mb-4 inline-flex">🔍 Módulo 1</span>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.3rem; color:#e8f4ff; margin:0.5rem 0;">
+              Consultoría Operativa Express
+            </h3>
+            <p class="text-sm leading-relaxed mb-4" style="color:#7aa3cc;">
+              Auditoría rápida de tu desorden digital y reparación inmediata de flujos de datos o planillas rotas en una fraction del tiempo tradicional gracias a metodologías asistidas por IA.
+            </p>
+            <ul class="space-y-2">
+              {[
+                'Mapa completo de tus flujos digitales actuales',
+                'Identificación de cuellos de botella y desperdicios',
+                'Planillas y automatizaciones rotas reparadas en el acto',
+                'Roadmap de mejoras prioritizado por impacto',
+                'Entrega en 48-72 horas hábiles',
+              ].map(f => (
+                <li class="flex items-start gap-2 text-sm" style="color:#a8c4e0;">
+                  <span style="color:#00d4ff; flex-shrink:0;">▸</span>{f}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="flex justify-center">
+            <div class="glass-card p-6 text-center" style="max-width:220px; border-color: rgba(0,212,255,0.3);">
+              <div class="text-5xl mb-3">⏱️</div>
+              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; color:#00d4ff;">48-72 horas</div>
+              <div class="text-sm mt-1" style="color:#7aa3cc;">Diagnóstico completo entregado</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Módulo 2: Auditoría de vulnerabilidades -->
+        <div class="glass-card reveal p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div class="order-2 md:order-1 flex justify-center">
+            <div class="glass-card p-6 text-center" style="max-width:220px; border-color: rgba(0,212,255,0.3);">
+              <div class="text-5xl mb-3">🔬</div>
+              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; color:#00d4ff;">Escaneo profundo</div>
+              <div class="text-sm mt-1" style="color:#7aa3cc;">Redes, web y endpoints</div>
+            </div>
+          </div>
+          <div class="order-1 md:order-2">
+            <span class="section-label mb-4 inline-flex">🔐 Módulo 2</span>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.3rem; color:#e8f4ff; margin:0.5rem 0;">
+              Auditoría de Vulnerabilidades
+            </h3>
+            <p class="text-sm leading-relaxed mb-4" style="color:#7aa3cc;">
+              Escaneo profundo y automatizado de tus redes y plataformas web para detectar brechas de seguridad antes de que se conviertan en un problema real.
+            </p>
+            <ul class="space-y-2">
+              {[
+                'Escaneo de puertos y servicios expuestos',
+                'Análisis de vulnerabilidades en aplicaciones web',
+                'Detección de contraseñas débiles y accesos sin 2FA',
+                'Reporte ejecutivo con criticidad y recomendaciones',
+                'Plan de remediación priorizado',
+              ].map(f => (
+                <li class="flex items-start gap-2 text-sm" style="color:#a8c4e0;">
+                  <span style="color:#00d4ff; flex-shrink:0;">▸</span>{f}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <!-- Módulo 3: Blindaje -->
+        <div class="glass-card reveal p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div>
+            <span class="section-label mb-4 inline-flex">🔒 Módulo 3</span>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.3rem; color:#e8f4ff; margin:0.5rem 0;">
+              Ciberseguridad y Blindaje
+            </h3>
+            <p class="text-sm leading-relaxed mb-4" style="color:#7aa3cc;">
+              Configuración estricta de políticas de identidad y diseño de un plan de respaldos cifrados e inmunes en la nube para recuperar toda tu información en horas ante cualquier ataque.
+            </p>
+            <ul class="space-y-2">
+              {[
+                '2FA obligatorio en todas las cuentas críticas',
+                'Gestores de contraseñas corporativos configurados',
+                'Plan de respaldos cifrados con RTO < 4 horas',
+                'Políticas de acceso por roles (Zero Trust)',
+                'Simulacro de recuperación ante ransomware',
+              ].map(f => (
+                <li class="flex items-start gap-2 text-sm" style="color:#a8c4e0;">
+                  <span style="color:#00d4ff; flex-shrink:0;">▸</span>{f}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="flex justify-center">
+            <div class="glass-card p-6 text-center" style="max-width:220px; border-color: rgba(0,212,255,0.3);">
+              <div class="text-5xl mb-3">🛡️</div>
+              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; color:#00d4ff;">RTO &lt; 4 horas</div>
+              <div class="text-sm mt-1" style="color:#7aa3cc;">Recuperación garantizada</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Por qué actuar ahora -->
+  <section class="relative py-16 px-6 overflow-hidden">
+    <div class="section-bg section-bg-abyss" style="opacity:0.25;"></div>
+    <div class="section-overlay" style="background:rgba(0,7,45,0.85);"></div>
+    <div class="max-w-4xl mx-auto relative" style="z-index:2;">
+      <div class="glass-card reveal p-10" style="border-color: rgba(0,212,255,0.2);">
+        <h3 class="text-center mb-10" style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.4rem; color:#e8f4ff;">
+          El costo de no actuar
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
+          {[
+            { val: '$4.5M', label: 'Costo promedio de una brecha de datos en una PYME (USD)', icon: '💸' },
+            { val: '22 días', label: 'Tiempo promedio de inactividad tras un ataque de ransomware', icon: '🔴' },
+            { val: '60%', label: 'De PYMEs que sufren un ciberataque cierran en 6 meses', icon: '📉' },
+          ].map(({ val, label, icon }) => (
+            <div>
+              <div class="text-3xl mb-2">{icon}</div>
+              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:2rem; color:#00d4ff;">{val}</div>
+              <div class="text-xs mt-2 leading-relaxed" style="color:#7aa3cc;">{label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ContactForm page="consulting" />
+</Layout>

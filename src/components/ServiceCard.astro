@@ -1,0 +1,56 @@
+---
+interface Props {
+  icon: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  href: string;
+  depth: string;
+  features: string[];
+  delay?: number;
+}
+
+const { icon, title, subtitle, description, href, depth, features, delay = 0 } = Astro.props;
+---
+
+<article
+  class="glass-card reveal p-8 flex flex-col gap-6 h-full"
+  style={`transition-delay: ${delay}ms;`}
+>
+  <!-- Header -->
+  <div class="flex items-start gap-4">
+    <div
+      class="text-4xl flex-shrink-0 w-16 h-16 flex items-center justify-center rounded-xl"
+      style="background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2);"
+    >
+      {icon}
+    </div>
+    <div>
+      <span class="depth-badge mb-2 inline-flex">
+        <span>⬇</span> {depth}
+      </span>
+      <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.1rem; color: #e8f4ff; margin: 0;">
+        {title}
+      </h3>
+      <p class="text-xs mt-1" style="color:#00d4ff;">{subtitle}</p>
+    </div>
+  </div>
+
+  <!-- Description -->
+  <p class="text-sm leading-relaxed flex-grow" style="color:#7aa3cc;">{description}</p>
+
+  <!-- Features -->
+  <ul class="space-y-2">
+    {features.map(feat => (
+      <li class="flex items-start gap-2 text-sm" style="color:#a8c4e0;">
+        <span style="color:#00d4ff; flex-shrink:0; margin-top:2px;">▸</span>
+        <span>{feat}</span>
+      </li>
+    ))}
+  </ul>
+
+  <!-- CTA -->
+  <a href={href} class="btn-primary text-sm justify-center mt-auto">
+    Explorar servicio →
+  </a>
+</article>

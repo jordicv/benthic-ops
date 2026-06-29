@@ -1,0 +1,200 @@
+---
+interface Props {
+  page?: string;
+}
+const { page = '' } = Astro.props;
+---
+
+<section id="contacto" class="py-24 px-6 relative overflow-hidden">
+  <!-- Video de fondo de medusas bioluminiscentes -->
+  <div class="section-bg overflow-hidden" style="opacity:0.68;">
+    <video 
+      autoplay 
+      muted 
+      loop 
+      playsinline 
+      class="w-full h-full object-cover medusas-video"
+      style="filter: brightness(0.92) contrast(1.05); transition: opacity 2.0s cubic-bezier(0.16, 1, 0.3, 1);"
+    >
+      <source src="/videos/medusas.webm" type="video/webm" />
+      <source src="/videos/medusas.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <!-- Overlay degradado oscuro -->
+  <div class="section-overlay" style="background: linear-gradient(to bottom, rgba(0,5,25,0.62) 0%, rgba(5,18,70,0.68) 100%);"></div>
+
+  <div class="max-w-2xl mx-auto relative" style="z-index:2;">
+    <div class="reveal text-center mb-12">
+      <span class="section-label mb-4 inline-flex">📡 Zona de Contacto</span>
+      <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:2rem; color:#e8f4ff; margin: 0.5rem 0;">
+        Hablemos de tu operación
+      </h2>
+      <p class="text-base mt-3" style="color:#7aa3cc;">
+        Cuéntanos dónde está tu cuello de botella. Te respondemos en menos de 24 horas.
+      </p>
+    </div>
+
+    <form
+      class="glass-card p-8 space-y-5 reveal"
+      id={`contact-form-${page}`}
+      novalidate
+      onsubmit="handleSubmit(event)"
+    >
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label for={`name-${page}`} class="block text-xs font-semibold mb-2 uppercase tracking-widest" style="color:#00d4ff;">
+            Nombre *
+          </label>
+          <input
+            type="text"
+            id={`name-${page}`}
+            name="name"
+            required
+            placeholder="Tu nombre"
+            class="form-input"
+          />
+        </div>
+        <div>
+          <label for={`company-${page}`} class="block text-xs font-semibold mb-2 uppercase tracking-widest" style="color:#00d4ff;">
+            Empresa *
+          </label>
+          <input
+            type="text"
+            id={`company-${page}`}
+            name="company"
+            required
+            placeholder="Nombre de tu empresa"
+            class="form-input"
+          />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label for={`email-${page}`} class="block text-xs font-semibold mb-2 uppercase tracking-widest" style="color:#00d4ff;">
+            Email *
+          </label>
+          <input
+            type="email"
+            id={`email-${page}`}
+            name="email"
+            required
+            placeholder="tu@empresa.cl"
+            class="form-input"
+          />
+        </div>
+        <div>
+          <label for={`phone-${page}`} class="block text-xs font-semibold mb-2 uppercase tracking-widest" style="color:#00d4ff;">
+            Teléfono
+          </label>
+          <input
+            type="tel"
+            id={`phone-${page}`}
+            name="phone"
+            placeholder="+56 9 XXXX XXXX"
+            class="form-input"
+          />
+        </div>
+      </div>
+
+      <div>
+        <label for={`service-${page}`} class="block text-xs font-semibold mb-2 uppercase tracking-widest" style="color:#00d4ff;">
+          Servicio de interés
+        </label>
+        <select id={`service-${page}`} name="service" class="form-input" style="cursor:pointer;">
+          <option value="" style="background:#051650;">Selecciona un servicio</option>
+          <option value="analytics" style="background:#051650;">Analytics & Predictive AI</option>
+          <option value="software" style="background:#051650;">Custom Software & Systems</option>
+          <option value="consulting" style="background:#051650;">Consulting & Cyber Security</option>
+          <option value="all" style="background:#051650;">Todos los servicios</option>
+        </select>
+      </div>
+
+      <div>
+        <label for={`message-${page}`} class="block text-xs font-semibold mb-2 uppercase tracking-widest" style="color:#00d4ff;">
+          Mensaje *
+        </label>
+        <textarea
+          id={`message-${page}`}
+          name="message"
+          required
+          rows="4"
+          placeholder="Cuéntanos tu desafío operativo, el tamaño de tu empresa y qué esperas lograr..."
+          class="form-input resize-none"
+        ></textarea>
+      </div>
+
+      <div id={`form-success-${page}`} class="hidden items-center gap-3 p-4 rounded-lg text-sm font-medium"
+        style="background:rgba(0,212,255,0.1); border:1px solid rgba(0,212,255,0.3); color:#00d4ff;">
+        ✅ ¡Mensaje enviado! Te contactaremos en menos de 24 horas.
+      </div>
+
+      <button type="submit" class="btn-primary w-full justify-center text-base py-3">
+        Enviar mensaje 🚀
+      </button>
+
+      <p class="text-xs text-center" style="color:#7aa3cc;">
+        Tu información es confidencial. Sin spam, sin terceros.
+      </p>
+    </form>
+  </div>
+</section>
+
+<script>
+  function handleSubmit(e: Event) {
+    e.preventDefault();
+    const form = e.target as HTMLFormElement;
+    const formId = form.id;
+    const page = formId.replace('contact-form-', '');
+    const successEl = document.getElementById(`form-success-${page}`);
+    const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+
+    // Simulate async (UI demo — no backend yet)
+    setTimeout(() => {
+      successEl?.classList.remove('hidden');
+      successEl?.classList.add('flex');
+      form.reset();
+      btn.textContent = '¡Enviado! ✓';
+      btn.style.background = 'rgba(0,212,255,0.15)';
+    }, 1200);
+  }
+
+  (window as any).handleSubmit = handleSubmit;
+
+  // Lógica de loop y ralentización para el video de medusas
+  (function() {
+    const videos = document.querySelectorAll('.medusas-video') as NodeListOf<HTMLVideoElement>;
+    videos.forEach(video => {
+      // Ralentizar la reproducción para que sea súper lento e inmersivo (como una pintura viva)
+      video.playbackRate = 0.30;
+
+      let fadingOut = false;
+      video.addEventListener('timeupdate', () => {
+        const duration = video.duration;
+        const currentTime = video.currentTime;
+        if (!duration) return;
+
+        // A velocidad 0.30, 0.7 segundos virtuales antes del final equivalen a ~2.3 segundos reales
+        if (currentTime > duration - 0.7 && !fadingOut) {
+          fadingOut = true;
+          video.style.opacity = '0.02';
+        }
+        // Al reiniciar, restaurar opacidad a 1.0 (el contenedor padre limita la opacidad general a 0.68)
+        if (currentTime < 0.6 && fadingOut) {
+          fadingOut = false;
+          video.style.opacity = '1.0';
+        }
+      });
+
+      video.addEventListener('seeked', () => {
+        if (video.currentTime < 1) {
+          fadingOut = false;
+          video.style.opacity = '1.0';
+        }
+      });
+    });
+  })();
+</script>

@@ -1,0 +1,282 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Contacto — Benthic OPS"
+  description="Contáctanos para agendar un diagnóstico gratuito de tu operación. Respondemos en menos de 24 horas. Santiago, Chile."
+  currentPage="/contacto"
+>
+
+  <!-- ═══════════════════════════════════════
+       HERO CONTACTO
+  ═══════════════════════════════════════ -->
+  <section class="relative pt-36 pb-16 px-6 overflow-hidden">
+    <div class="section-bg section-bg-bio" style="opacity:0.28;"></div>
+    <div class="section-overlay" style="background:rgba(0,7,45,0.8);"></div>
+    <div class="max-w-3xl mx-auto text-center relative" style="z-index:2;">
+      <span class="section-label mb-6 inline-flex">📡 Zona de Contacto</span>
+      <h1 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(2rem,5vw,3rem); line-height:1.15; color:#e8f4ff; margin:0 0 1.25rem;">
+        Cuéntanos tu
+        <span style="color:#00d4ff; display:block;">desafío operativo</span>
+      </h1>
+      <p class="text-lg leading-relaxed" style="color:#7aa3cc;">
+        Sin compromisos. Analizamos tu situación y te decimos en concreto qué podemos hacer por ti.
+        Respondemos en <strong style="color:#e8f4ff;">menos de 24 horas</strong>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       CONTENIDO PRINCIPAL
+  ═══════════════════════════════════════ -->
+  <section class="relative pb-24 px-6 overflow-hidden">
+    <div class="section-bg section-bg-hero" style="opacity:0.22;"></div>
+    <div class="section-overlay" style="background:rgba(0,7,45,0.85);"></div>
+    <div class="max-w-5xl mx-auto relative" style="z-index:2;">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-10">
+
+        <!-- Info lateral -->
+        <div class="lg:col-span-2 flex flex-col gap-6">
+
+          <!-- Proceso de contacto -->
+          <div class="glass-card reveal p-6">
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1rem; color:#e8f4ff; margin:0 0 1rem;">
+              ¿Qué pasa después?
+            </h3>
+            <div class="space-y-5">
+              {[
+                { step: '01', icon: '📬', title: 'Recibes respuesta', desc: 'En menos de 24 horas hábiles nos ponemos en contacto contigo.' },
+                { step: '02', icon: '🔍', title: 'Diagnóstico inicial', desc: 'Una conversación de 30 min para entender tu operación y tus dolores.' },
+                { step: '03', icon: '📋', title: 'Propuesta concreta', desc: 'Te entregamos un plan de acción claro con alcance, tiempo y costo estimado.' },
+              ].map(({ step, icon, title, desc }) => (
+                <div class="flex gap-4 items-start">
+                  <div
+                    class="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center text-lg"
+                    style="background:rgba(0,212,255,0.08); border:1px solid rgba(0,212,255,0.2);"
+                  >
+                    {icon}
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold mb-0.5" style="color:#00d4ff; letter-spacing:0.08em;">PASO {step}</div>
+                    <div class="text-sm font-semibold mb-1" style="color:#e8f4ff;">{title}</div>
+                    <div class="text-xs leading-relaxed" style="color:#7aa3cc;">{desc}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Datos de contacto directo -->
+          <div class="glass-card reveal p-6" style="transition-delay:100ms;">
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1rem; color:#e8f4ff; margin:0 0 1rem;">
+              Contacto directo
+            </h3>
+            <div class="space-y-4">
+              {[
+                { icon: '✉️', label: 'Email', value: 'contacto@benthicops.cl', href: 'mailto:contacto@benthicops.cl' },
+                { icon: '📱', label: 'WhatsApp', value: '+56 9 XXXX XXXX', href: 'https://wa.me/56900000000' },
+                { icon: '📍', label: 'Ubicación', value: 'Santiago, Chile', href: null },
+                { icon: '🕐', label: 'Horario', value: 'Lun–Vie 9:00–18:00', href: null },
+              ].map(({ icon, label, value, href }) => (
+                <div class="flex items-center gap-3">
+                  <span class="text-xl flex-shrink-0">{icon}</span>
+                  <div>
+                    <div class="text-xs uppercase tracking-wider mb-0.5" style="color:#00d4ff; font-weight:600;">{label}</div>
+                    {href ? (
+                      <a href={href} class="text-sm hover:text-cyan-300 transition-colors" style="color:#a8c4e0;">{value}</a>
+                    ) : (
+                      <span class="text-sm" style="color:#a8c4e0;">{value}</span>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Para empresas -->
+          <div class="glass-card reveal p-6" style="transition-delay:200ms; border-color: rgba(0,212,255,0.25);">
+            <div class="flex items-start gap-3">
+              <span class="text-2xl flex-shrink-0">🏢</span>
+              <div>
+                <h4 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:0.95rem; color:#e8f4ff; margin:0 0 0.4rem;">
+                  Ideal para empresas que…
+                </h4>
+                <ul class="space-y-1.5">
+                  {[
+                    'Tienen procesos manuales que consumen demasiado tiempo',
+                    'Manejan grandes volúmenes de datos sin un sistema claro',
+                    'Quieren participar en licitaciones públicas con más éxito',
+                    'Necesitan automatizar sin reemplazar todo lo que ya funciona',
+                    'Han tenido problemas de seguridad o quieren prevenirlos',
+                  ].map(item => (
+                    <li class="flex items-start gap-2 text-xs" style="color:#7aa3cc;">
+                      <span style="color:#00d4ff; flex-shrink:0; margin-top:1px;">▸</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulario principal -->
+        <div class="lg:col-span-3">
+          <form
+            class="glass-card reveal p-8 space-y-5"
+            id="contact-form-main"
+            novalidate
+            onsubmit="handleMainSubmit(event)"
+          >
+            <div>
+              <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.2rem; color:#e8f4ff; margin:0 0 0.25rem;">
+                Envíanos un mensaje
+              </h3>
+              <p class="text-sm" style="color:#7aa3cc;">Todos los campos marcados con * son obligatorios.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="name-main" class="block text-xs font-semibold mb-2 uppercase tracking-widest" style="color:#00d4ff;">Nombre *</label>
+                <input type="text" id="name-main" name="name" required placeholder="Tu nombre completo" class="form-input" />
+              </div>
+              <div>
+                <label for="company-main" class="block text-xs font-semibold mb-2 uppercase tracking-widest" style="color:#00d4ff;">Empresa *</label>
+                <input type="text" id="company-main" name="company" required placeholder="Nombre de tu empresa" class="form-input" />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="email-main" class="block text-xs font-semibold mb-2 uppercase tracking-widest" style="color:#00d4ff;">Email *</label>
+                <input type="email" id="email-main" name="email" required placeholder="tu@empresa.cl" class="form-input" />
+              </div>
+              <div>
+                <label for="phone-main" class="block text-xs font-semibold mb-2 uppercase tracking-widest" style="color:#00d4ff;">Teléfono</label>
+                <input type="tel" id="phone-main" name="phone" placeholder="+56 9 XXXX XXXX" class="form-input" />
+              </div>
+            </div>
+
+            <div>
+              <label for="employees-main" class="block text-xs font-semibold mb-2 uppercase tracking-widest" style="color:#00d4ff;">Tamaño de empresa</label>
+              <select id="employees-main" name="employees" class="form-input" style="cursor:pointer;">
+                <option value="" style="background:#051650;">Selecciona una opción</option>
+                <option value="5-20" style="background:#051650;">5 – 20 personas</option>
+                <option value="20-50" style="background:#051650;">20 – 50 personas</option>
+                <option value="50-200" style="background:#051650;">50 – 200 personas</option>
+                <option value="200+" style="background:#051650;">Más de 200 personas</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="service-main" class="block text-xs font-semibold mb-2 uppercase tracking-widest" style="color:#00d4ff;">¿En qué podemos ayudarte? *</label>
+              <select id="service-main" name="service" required class="form-input" style="cursor:pointer;">
+                <option value="" style="background:#051650;">Selecciona un servicio</option>
+                <option value="analytics" style="background:#051650;">Analytics & Predictive AI</option>
+                <option value="software" style="background:#051650;">Custom Software & Systems</option>
+                <option value="consulting" style="background:#051650;">Consulting & Cyber Security</option>
+                <option value="all" style="background:#051650;">Varios / No estoy seguro</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="message-main" class="block text-xs font-semibold mb-2 uppercase tracking-widest" style="color:#00d4ff;">Tu desafío *</label>
+              <textarea
+                id="message-main"
+                name="message"
+                required
+                rows="5"
+                placeholder="Cuéntanos cuál es el cuello de botella que frena tu operación, qué procesos son manuales y repetitivos, o qué información necesitas pero no tienes acceso fácil…"
+                class="form-input resize-none"
+              ></textarea>
+            </div>
+
+            <div id="form-success-main" class="hidden items-center gap-3 p-4 rounded-lg text-sm font-medium"
+              style="background:rgba(0,212,255,0.1); border:1px solid rgba(0,212,255,0.3); color:#00d4ff;">
+              ✅ ¡Mensaje recibido! Te contactaremos en menos de 24 horas hábiles.
+            </div>
+
+            <button type="submit" class="btn-primary w-full justify-center text-base py-3.5">
+              Enviar mensaje 🚀
+            </button>
+
+            <p class="text-xs text-center" style="color:#7aa3cc;">
+              Tu información es 100% confidencial. Sin spam, sin terceros. Prometido.
+            </p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ rápido -->
+  <section class="relative pb-24 px-6 overflow-hidden">
+    <div class="section-bg section-bg-abyss" style="opacity:0.3;"></div>
+    <div class="section-overlay" style="background:rgba(0,5,25,0.85);"></div>
+    <div class="max-w-3xl mx-auto py-16 relative" style="z-index:2;">
+      <div class="text-center mb-12 reveal">
+        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.6rem; color:#e8f4ff; margin:0 0 0.5rem;">
+          Preguntas frecuentes
+        </h2>
+      </div>
+      <div class="space-y-4">
+        {[
+          {
+            q: '¿Cuánto tiempo toma un proyecto típico?',
+            a: 'Depende del alcance. Un diagnóstico operativo puede entregarse en 48-72 horas. Una automatización básica, en 1-2 semanas. Sistemas complejos, de 4 a 8 semanas. Siempre te damos un plazo claro antes de comenzar.',
+          },
+          {
+            q: '¿Trabajan con empresas de cualquier rubro?',
+            a: 'Sí, aunque tenemos experiencia particular en empresas de servicios, construcción, salud, retail y proveedores del Estado que participan en Mercado Público.',
+          },
+          {
+            q: '¿Necesito cambiar mis sistemas actuales?',
+            a: 'No necesariamente. Nos integramos a lo que ya tienes. Si algo necesita cambiarse, te lo explicamos con claridad y solo procedemos si estás de acuerdo.',
+          },
+          {
+            q: '¿Ofrecen soporte después de la implementación?',
+            a: 'Sí. Ofrecemos planes de mantención y soporte mensual para todo lo que implementamos. No te dejamos solo con la solución.',
+          },
+        ].map(({ q, a }, i) => (
+          <details
+            class="glass-card reveal p-5 group"
+            style={`transition-delay:${i * 80}ms;`}
+          >
+            <summary
+              class="flex items-center justify-between cursor-pointer list-none"
+              style="color:#e8f4ff; font-weight:600; font-size:0.95rem;"
+            >
+              <span>{q}</span>
+              <span class="text-cyan-400 flex-shrink-0 ml-4 text-lg transition-transform duration-200 group-open:rotate-45">+</span>
+            </summary>
+            <p class="mt-4 text-sm leading-relaxed" style="color:#7aa3cc;">{a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  function handleMainSubmit(e: Event) {
+    e.preventDefault();
+    const btn = (e.target as HTMLFormElement).querySelector('button[type="submit"]') as HTMLButtonElement;
+    const successEl = document.getElementById('form-success-main');
+
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+
+    setTimeout(() => {
+      successEl?.classList.remove('hidden');
+      successEl?.classList.add('flex');
+      (e.target as HTMLFormElement).reset();
+      btn.textContent = '¡Enviado! ✓';
+      btn.style.background = 'rgba(0,212,255,0.15)';
+    }, 1200);
+  }
+
+  (window as any).handleMainSubmit = handleMainSubmit;
+</script>

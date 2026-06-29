@@ -1,0 +1,173 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<Layout
+  title="Analytics & Predictive AI — Benthic OPS"
+  description="Automatización de datos, radar de licitaciones 24/7 e integración con SII. El cerebro predictivo y financiero de tu empresa."
+  currentPage="/analytics"
+>
+
+  <!-- Hero de servicio -->
+  <section class="relative pt-36 pb-20 px-6 overflow-hidden">
+    <div class="section-bg section-bg-hero" style="opacity:0.3;"></div>
+    <div class="section-overlay" style="background:rgba(0,7,45,0.78);"></div>
+    <div class="max-w-4xl mx-auto text-center relative" style="z-index:2;">
+      <span class="section-label mb-6 inline-flex">📊 Analytics & Predictive AI</span>
+      <div class="text-7xl mb-6">📊</div>
+      <h1 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(2rem,5vw,3rem); line-height:1.15; color:#e8f4ff; margin:0 0 1.25rem;">
+        El cerebro predictivo
+        <span style="color:#00d4ff; display:block;">de tu empresa</span>
+      </h1>
+      <p class="text-lg leading-relaxed max-w-2xl mx-auto" style="color:#7aa3cc;">
+        Transformamos datos dispersos y procesos manuales en reportes ejecutivos simples y predicciones estratégicas mediante Inteligencia Artificial de vanguardia.
+      </p>
+
+      <div class="flex flex-wrap gap-4 justify-center mt-8">
+        <a href="#servicios" class="btn-primary">Ver qué hacemos →</a>
+        <a href="#contacto" class="btn-outline">Solicitar diagnóstico</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sub-servicios -->
+  <section id="servicios" class="relative py-20 px-6 overflow-hidden">
+    <div class="section-bg section-bg-bio" style="opacity:0.2;"></div>
+    <div class="section-overlay" style="background:rgba(0,5,30,0.85);"></div>
+    <div class="relative" style="z-index:2;">
+      <div class="max-w-5xl mx-auto space-y-8">
+        <div class="text-center mb-14 reveal">
+          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.8rem; color:#e8f4ff; margin:0 0 0.75rem;">
+            Qué incluye este servicio
+          </h2>
+          <p style="color:#7aa3cc;">Tres módulos que operan solos o integrados según tu necesidad.</p>
+        </div>
+
+        <!-- Módulo 1 -->
+        <div class="glass-card reveal p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div>
+            <span class="section-label mb-4 inline-flex">🔗 Módulo 1</span>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.3rem; color:#e8f4ff; margin:0.5rem 0;">
+              Automatización de Datos
+            </h3>
+            <p class="text-sm leading-relaxed mb-4" style="color:#7aa3cc;">
+              Conexión automatizada en tiempo real con el SII para la extracción del Registro de Compras y Ventas. Procesamiento documental inteligente donde arrastras tus archivos y la IA los concilia de inmediato.
+            </p>
+            <ul class="space-y-2">
+              {[
+                'Integración directa con SII (APIs y scraping propio)',
+                'Conciliación automática desde Google Drive / OneDrive',
+                'Detección de errores y discrepancias en tiempo real',
+                'Dashboard de IVA acumulado con alertas automáticas',
+              ].map(f => (
+                <li class="flex items-start gap-2 text-sm" style="color:#a8c4e0;">
+                  <span style="color:#00d4ff; flex-shrink:0;">▸</span>{f}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="flex justify-center">
+            <div class="glass-card p-6 text-center" style="max-width:220px; border-color: rgba(0,212,255,0.3);">
+              <div class="text-5xl mb-3">🔄</div>
+              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; color:#00d4ff;">En tiempo real</div>
+              <div class="text-sm mt-1" style="color:#7aa3cc;">Sin exportaciones manuales</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Módulo 2 -->
+        <div class="glass-card reveal p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div class="order-2 md:order-1 flex justify-center">
+            <div class="glass-card p-6 text-center" style="max-width:220px; border-color: rgba(0,212,255,0.3);">
+              <div class="text-5xl mb-3">🎯</div>
+              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; color:#00d4ff;">+40 páginas</div>
+              <div class="text-sm mt-1" style="color:#7aa3cc;">de bases analizadas en segundos</div>
+            </div>
+          </div>
+          <div class="order-1 md:order-2">
+            <span class="section-label mb-4 inline-flex">📡 Módulo 2</span>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.3rem; color:#e8f4ff; margin:0.5rem 0;">
+              Radar de Licitaciones
+            </h3>
+            <p class="text-sm leading-relaxed mb-4" style="color:#7aa3cc;">
+              Monitoreo 24/7 de Mercado Público. Nuestra IA analiza bases de licitación complejas de más de 40 páginas, filtra los requisitos y te notifica solo las oportunidades reales de ganar.
+            </p>
+            <ul class="space-y-2">
+              {[
+                'API oficial de ChileCompra + Mercado Público',
+                'Filtro inteligente por rubro, monto y probabilidad',
+                'Notificaciones solo de oportunidades reales',
+                'Resumen ejecutivo de la base en 3 minutos',
+              ].map(f => (
+                <li class="flex items-start gap-2 text-sm" style="color:#a8c4e0;">
+                  <span style="color:#00d4ff; flex-shrink:0;">▸</span>{f}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <!-- Módulo 3 -->
+        <div class="glass-card reveal p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div>
+            <span class="section-label mb-4 inline-flex">📱 Módulo 3</span>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.3rem; color:#e8f4ff; margin:0.5rem 0;">
+              Reportabilidad Simple
+            </h3>
+            <p class="text-sm leading-relaxed mb-4" style="color:#7aa3cc;">
+              Olvídate de los paneles enredados. Recibe un resumen ejecutivo de tres párrafos en texto simple directo en tu WhatsApp cada lunes para saber exactamente cuánto IVA acumulas y qué decisiones tomar.
+            </p>
+            <ul class="space-y-2">
+              {[
+                'Reporte semanal vía WhatsApp Business API oficial',
+                '3 párrafos: estado actual, alertas y acción recomendada',
+                'Sin dashboards complejos que nadie lee',
+                'Histórico consultable en cualquier momento',
+              ].map(f => (
+                <li class="flex items-start gap-2 text-sm" style="color:#a8c4e0;">
+                  <span style="color:#00d4ff; flex-shrink:0;">▸</span>{f}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="flex justify-center">
+            <div class="glass-card p-6 text-center" style="max-width:220px; border-color: rgba(0,212,255,0.3);">
+              <div class="text-5xl mb-3">📲</div>
+              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; color:#00d4ff;">Cada lunes</div>
+              <div class="text-sm mt-1" style="color:#7aa3cc;">Directo a tu WhatsApp</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Métricas de impacto -->
+  <section class="relative py-16 px-6 overflow-hidden">
+    <div class="section-bg section-bg-abyss" style="opacity:0.25;"></div>
+    <div class="section-overlay" style="background:rgba(0,7,45,0.85);"></div>
+    <div class="max-w-4xl mx-auto relative" style="z-index:2;">
+      <div class="glass-card reveal p-10">
+        <h3 class="text-center mb-10" style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.4rem; color:#e8f4ff;">
+          Lo que automatizamos en tu empresa
+        </h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          {[
+            { val: '80%', label: 'Reducción en tiempo de reportes' },
+            { val: '24/7', label: 'Monitoreo de licitaciones' },
+            { val: '< 3min', label: 'Análisis de base licitación' },
+            { val: '100%', label: 'Integración SII automatizada' },
+          ].map(({ val, label }) => (
+            <div>
+              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:2rem; color:#00d4ff;">{val}</div>
+              <div class="text-xs mt-1" style="color:#7aa3cc;">{label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ContactForm page="analytics" />
+</Layout>
