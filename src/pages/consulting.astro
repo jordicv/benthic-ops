@@ -5,7 +5,7 @@ import ContactForm from '../components/ContactForm.astro';
 
 <Layout
   title="Consulting & Cyber Security — Benthic OPS"
-  description="Consultoría operativa express, auditoría de vulnerabilidades y ciberseguridad para empresas en Chile. Protegemos y desbloqueamos tu operación digital."
+  description="Consultoría operativa express, auditoría de vulnerabilidades y ciberseguridad para empresas en Chile y Alemania. Protegemos y desbloqueamos tu operación digital."
   currentPage="/consulting"
 >
 
@@ -14,32 +14,30 @@ import ContactForm from '../components/ContactForm.astro';
     <div class="section-bg section-bg-abyss" style="opacity:0.28;"></div>
     <div class="section-overlay" style="background:rgba(0,7,45,0.8);"></div>
     <div class="max-w-4xl mx-auto text-center relative" style="z-index:2;">
-      <span class="section-label mb-6 inline-flex">🛡️ Consulting & Cyber Security</span>
-      <div class="text-7xl mb-6">🛡️</div>
-      <h1 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(2rem,5vw,3rem); line-height:1.15; color:#e8f4ff; margin:0 0 1.25rem;">
+      <span class="section-label mb-6 inline-flex load-fade-in">🛡️ Consulting & Cyber Security</span>
+      <div class="text-7xl mb-6 load-fade-in">🛡️</div>
+      <h1 class="load-fade-in delay-100" style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(2rem,5vw,3rem); line-height:1.15; color:#e8f4ff; margin:0 0 1.25rem;">
         Protección y destrabe
         <span style="color:#00d4ff; display:block;">de tu operación digital</span>
       </h1>
-      <p class="text-lg leading-relaxed max-w-2xl mx-auto" style="color:#7aa3cc;">
+      <p class="text-lg leading-relaxed max-w-2xl mx-auto load-fade-in delay-200" style="color:#7aa3cc;">
         Diagnóstico acelerado de tus procesos digitales y un blindaje integral para garantizar la continuidad operativa y la paz mental de tu empresa.
       </p>
-      <div class="flex flex-wrap gap-4 justify-center mt-8">
+      <div class="flex flex-wrap gap-4 justify-center mt-8 load-fade-in delay-300">
         <a href="#servicios" class="btn-primary">Ver servicios →</a>
         <a href="#contacto" class="btn-outline">Agendar auditoría</a>
       </div>
-    </div>
-  </section>
 
-  <!-- Alerta de contexto -->
-  <section class="relative px-6 pb-4 overflow-hidden">
-    <div class="max-w-4xl mx-auto relative" style="z-index:2;">
-      <div class="reveal glass-card p-5 flex items-start gap-4" style="border-color: rgba(255,180,0,0.25); background: rgba(255,150,0,0.06);">
-        <span class="text-2xl flex-shrink-0">⚠️</span>
-        <div>
-          <p class="text-sm leading-relaxed" style="color:#a8c4e0;">
-            <strong style="color:#ffd700;">El 73% de las PYMEs en Chile</strong> no tiene un plan de respaldo activo ni políticas básicas de acceso. Un ataque de ransomware puede detener tu operación por semanas — o para siempre.
-            Nosotros lo prevenimos antes de que ocurra.
-          </p>
+      <!-- Alerta de contexto unificada dentro del Hero -->
+      <div class="max-w-3xl mx-auto mt-14 load-fade-in delay-400">
+        <div class="glass-card p-5 flex items-start gap-4 text-left" style="border-color: rgba(255,180,0,0.25); background: rgba(255,150,0,0.04);">
+          <span class="text-2xl flex-shrink-0">⚠️</span>
+          <div>
+            <p class="text-sm leading-relaxed" style="color:#a8c4e0;">
+              <strong style="color:#ffd700;">El 73% de las PYMEs en Chile</strong> no tiene un plan de respaldo activo ni políticas básicas de acceso. Un ataque de ransomware puede detener tu operación por semanas — o para siempre.
+              Nosotros lo prevenimos antes de que ocurra.
+            </p>
+          </div>
         </div>
       </div>
     </div>

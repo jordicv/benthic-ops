@@ -9,7 +9,7 @@ interface Props {
 
 const {
   title,
-  description = 'Benthic OPS — Inteligencia Operativa y Arquitectura Tecnológica a la Medida. IA, Software a medida y Ciberseguridad para empresas en Chile.',
+  description = 'Benthic OPS — Inteligencia Operativa y Arquitectura Tecnológica a la Medida. IA, Software a medida y Ciberseguridad para empresas en Chile y Alemania.',
   currentPage = '/'
 } = Astro.props;
 ---
@@ -179,9 +179,11 @@ const {
           <div>
             <h3 class="text-sm font-semibold mb-4 uppercase tracking-widest" style="color: #00d4ff;">Contacto</h3>
             <ul class="space-y-2 text-sm" style="color:#7aa3cc;">
-              <li>📍 Santiago, Chile</li>
+              <li>📍 Concepción, Chile</li>
+              <li>📍 Leipzig, Alemania</li>
               <li>✉️ contacto@benthicops.cl</li>
-              <li>📱 +56 9 XXXX XXXX</li>
+              <li>📱 +56 9 9932 8420</li>
+              <li>📱 +49 1709020413</li>
             </ul>
           </div>
         </div>
@@ -190,7 +192,7 @@ const {
           <p class="text-xs" style="color:#7aa3cc;">© 2025 Benthic OPS SpA. Todos los derechos reservados.</p>
           <div class="flex items-center gap-1 text-xs" style="color:#7aa3cc;">
             <span>Operando desde las profundidades de</span>
-            <span style="color:#00d4ff;">Chile 🌊</span>
+            <span style="color:#00d4ff;">Chile y Alemania 🌊</span>
           </div>
         </div>
       </div>
@@ -224,6 +226,22 @@ const {
         transition: opacity 0.1s ease;
       }
     </style>
+
+    <!-- Botón Flotante de WhatsApp con CTA Dinámico -->
+    <div class="whatsapp-container">
+      <div id="whatsapp-cta" class="whatsapp-cta">
+        ¡Hablemos de tu operación! 💬
+      </div>
+      <a 
+        href="https://wa.me/56999328420" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="whatsapp-float"
+        aria-label="Contactar por WhatsApp"
+      >
+        <img src="/WhatsApp.svg" alt="WhatsApp Logo" width="34" height="34" />
+      </a>
+    </div>
 
   </body>
 </html>
@@ -346,4 +364,30 @@ const {
     { threshold: 0.10 } // Trigger early
   );
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── WhatsApp CTA dynamic visibility loop (3s active, 3s inactive) ──
+  (function() {
+    const cta = document.getElementById('whatsapp-cta');
+    if (!cta) return;
+
+    // Función para activar visibilidad
+    function showCta() {
+      cta.classList.add('visible');
+    }
+
+    // Función para desactivar visibilidad
+    function hideCta() {
+      cta.classList.remove('visible');
+    }
+
+    // Flujo inicial al cargar
+    setTimeout(showCta, 1000); // Mostrar al segundo de cargar
+    setTimeout(hideCta, 4000); // Ocultar a los 4s (estuvo activo 3s)
+
+    // Bucle continuo de 6 segundos en total (3s activo, 3s inactivo)
+    setInterval(() => {
+      showCta();
+      setTimeout(hideCta, 3000);
+    }, 6000);
+  })();
 </script>

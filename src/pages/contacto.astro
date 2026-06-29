@@ -4,7 +4,7 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout
   title="Contacto — Benthic OPS"
-  description="Contáctanos para agendar un diagnóstico gratuito de tu operación. Respondemos en menos de 24 horas. Santiago, Chile."
+  description="Contáctanos para agendar un diagnóstico gratuito de tu operación. Respondemos en menos de 24 horas. Operaciones en Chile y Alemania."
   currentPage="/contacto"
 >
 
@@ -15,12 +15,12 @@ import Layout from '../layouts/Layout.astro';
     <div class="section-bg section-bg-bio" style="opacity:0.28;"></div>
     <div class="section-overlay" style="background:rgba(0,7,45,0.8);"></div>
     <div class="max-w-3xl mx-auto text-center relative" style="z-index:2;">
-      <span class="section-label mb-6 inline-flex">📡 Zona de Contacto</span>
-      <h1 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(2rem,5vw,3rem); line-height:1.15; color:#e8f4ff; margin:0 0 1.25rem;">
+      <span class="section-label mb-6 inline-flex load-fade-in">📡 Zona de Contacto</span>
+      <h1 class="load-fade-in delay-100" style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(2rem,5vw,3rem); line-height:1.15; color:#e8f4ff; margin:0 0 1.25rem;">
         Cuéntanos tu
         <span style="color:#00d4ff; display:block;">desafío operativo</span>
       </h1>
-      <p class="text-lg leading-relaxed" style="color:#7aa3cc;">
+      <p class="text-lg leading-relaxed load-fade-in delay-200" style="color:#7aa3cc;">
         Sin compromisos. Analizamos tu situación y te decimos en concreto qué podemos hacer por ti.
         Respondemos en <strong style="color:#e8f4ff;">menos de 24 horas</strong>.
       </p>
@@ -75,8 +75,8 @@ import Layout from '../layouts/Layout.astro';
             <div class="space-y-4">
               {[
                 { icon: '✉️', label: 'Email', value: 'contacto@benthicops.cl', href: 'mailto:contacto@benthicops.cl' },
-                { icon: '📱', label: 'WhatsApp', value: '+56 9 XXXX XXXX', href: 'https://wa.me/56900000000' },
-                { icon: '📍', label: 'Ubicación', value: 'Santiago, Chile', href: null },
+                { icon: '📱', label: 'WhatsApp / Teléfono', value: '+56 9 9932 8420 / +49 1709020413', href: 'https://wa.me/56999328420' },
+                { icon: '📍', label: 'Ubicación', value: 'Concepción (Chile) y Leipzig (Alemania)', href: null },
                 { icon: '🕐', label: 'Horario', value: 'Lun–Vie 9:00–18:00', href: null },
               ].map(({ icon, label, value, href }) => (
                 <div class="flex items-center gap-3">
