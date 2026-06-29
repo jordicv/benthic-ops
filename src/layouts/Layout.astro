@@ -94,14 +94,26 @@ const {
               class="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-56 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 dropdown-bridge"
               style="background:rgba(5,22,80,0.97); backdrop-filter:blur(20px); border:1px solid rgba(0,212,255,0.18); border-radius:0.75rem; padding:0.5rem;"
             >
-              <a href="/analytics" class="flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm transition-colors hover:bg-cyan-900/20" style="color:#a8c4e0;">
-                <span>📊</span> Analytics & IA
+              <a href="/analytics" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm transition-colors hover:bg-cyan-900/20" style="color:#a8c4e0;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0" style="filter: drop-shadow(0 0 4px rgba(0,212,255,0.45));">
+                  <line x1="18" y1="20" x2="18" y2="10"></line>
+                  <line x1="12" y1="20" x2="12" y2="4"></line>
+                  <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+                Analytics & IA
               </a>
-              <a href="/software" class="flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm transition-colors hover:bg-cyan-900/20" style="color:#a8c4e0;">
-                <span>💻</span> Custom Software
+              <a href="/software" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm transition-colors hover:bg-cyan-900/20" style="color:#a8c4e0;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0" style="filter: drop-shadow(0 0 4px rgba(0,212,255,0.45));">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+                Custom Software
               </a>
-              <a href="/consulting" class="flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm transition-colors hover:bg-cyan-900/20" style="color:#a8c4e0;">
-                <span>🛡️</span> Consultoría & Seguridad
+              <a href="/consulting" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm transition-colors hover:bg-cyan-900/20" style="color:#a8c4e0;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0" style="filter: drop-shadow(0 0 4px rgba(0,212,255,0.45));">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+                Consultoría & Seguridad
               </a>
             </div>
           </div>
@@ -135,9 +147,27 @@ const {
         <a href="/nosotros" class="nav-link text-base py-3 px-2 border-b border-white/10 block">Nosotros</a>
         <div class="py-2 px-2 border-b border-white/10">
           <div class="text-xs uppercase tracking-widest mb-2" style="color:#00d4ff;">Servicios</div>
-          <a href="/analytics" class="nav-link text-sm py-1.5 block pl-2">📊 Analytics & IA</a>
-          <a href="/software" class="nav-link text-sm py-1.5 block pl-2">💻 Custom Software</a>
-          <a href="/consulting" class="nav-link text-sm py-1.5 block pl-2">🛡️ Consultoría</a>
+          <a href="/analytics" class="nav-link text-sm py-2 pl-2 flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+            Analytics & IA
+          </a>
+          <a href="/software" class="nav-link text-sm py-2 pl-2 flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+            Custom Software
+          </a>
+          <a href="/consulting" class="nav-link text-sm py-2 pl-2 flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            Consultoría
+          </a>
         </div>
         <a href="/contacto" class="btn-primary text-sm justify-center mt-3">Contacto</a>
       </div>
