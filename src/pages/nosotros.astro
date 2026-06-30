@@ -100,26 +100,28 @@ import ContactForm from '../components/ContactForm.astro';
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             {
-              icon: '🎯',
+              svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>`,
               title: 'Misión',
               text: 'Transformar la complejidad operativa de empresas en crecimiento en ventajas competitivas reales, usando tecnología avanzada y soluciones 100% a la medida de cada cliente.',
               delay: 0,
             },
             {
-              icon: '🔭',
+              svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>`,
               title: 'Visión',
               text: 'Ser el referente en inteligencia operativa para medianas empresas latinoamericanas, expandiendo desde Chile hacia el resto de la región con presencia local en cada mercado.',
               delay: 120,
             },
             {
-              icon: '⚓',
+              svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V8M5 12H2a10 10 0 0 0 20 0h-3"></path><circle cx="12" cy="5" r="3"></circle></svg>`,
               title: 'Valores',
               text: 'Claridad sobre complejidad. Velocidad sin descuido. Integración sin fricción. Resultados medibles. Y sobre todo: respeto por el tiempo y los recursos de cada cliente.',
               delay: 240,
             },
-          ].map(({ icon, title, text, delay }) => (
-            <div class="glass-card reveal p-8 text-center" style={`transition-delay:${delay}ms;`}>
-              <div class="text-5xl mb-5">{icon}</div>
+          ].map(({ svg, title, text, delay }) => (
+            <div class="glass-card reveal p-8 text-center flex flex-col items-center" style={`transition-delay:${delay}ms;`}>
+              <div class="p-3 rounded-xl border border-cyan/20 bg-cyan-950/5 mb-5 flex items-center justify-center" style="filter: drop-shadow(0 0 5px rgba(0,212,255,0.45));">
+                <Fragment set:html={svg} />
+              </div>
               <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; color:#e8f4ff; margin:0 0 0.75rem;">{title}</h3>
               <p class="text-sm leading-relaxed" style="color:#7aa3cc;">{text}</p>
             </div>
@@ -147,35 +149,37 @@ import ContactForm from '../components/ContactForm.astro';
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
           {[
             {
-              trad: '⏳ Proyectos de 6-12 meses antes de ver resultados',
-              benthic: '⚡ Primeros resultados en días, no meses',
+              trad: 'Proyectos de 6-12 meses antes de ver resultados',
+              benthic: 'Primeros resultados en días, no meses',
             },
             {
-              trad: '📊 Decenas de slides y reportes que nadie lee',
-              benthic: '📱 3 párrafos directo a tu WhatsApp cada semana',
+              trad: 'Decenas de slides y reportes que nadie lee',
+              benthic: 'Tres párrafos directo a tu WhatsApp cada semana',
             },
             {
-              trad: '🔧 Herramientas genéricas que "casi" encajan',
-              benthic: '🎯 Soluciones construidas para tu flujo exacto',
+              trad: 'Herramientas genéricas que "casi" encajan',
+              benthic: 'Soluciones construidas para tu flujo exacto',
             },
             {
-              trad: '💸 Equipos grandes con costos fijos elevados',
-              benthic: '✅ Modelo flexible: pagas por lo que necesitas',
+              trad: 'Equipos grandes con costos fijos elevados',
+              benthic: 'Modelo flexible: pagas por lo que necesitas',
             },
             {
-              trad: '🤷 "No podemos integrarnos con tu sistema actual"',
-              benthic: '🔗 Nos adaptamos a lo que ya tienes instalado',
+              trad: '"No podemos integrarnos con tu sistema actual"',
+              benthic: 'Nos adaptamos a lo que ya tienes instalado',
             },
             {
-              trad: '📈 Métricas de vanidad sin impacto real',
-              benthic: '💡 Métricas de operación: tiempo, dinero, decisiones',
+              trad: 'Métricas de vanidad sin impacto real',
+              benthic: 'Métricas de operación: tiempo, dinero, decisiones',
             },
           ].map(({ trad, benthic }, i) => (
             <div class="glass-card reveal p-5 grid grid-cols-2 gap-3" style={`transition-delay:${i * 60}ms;`}>
               <div class="text-sm p-3 rounded-lg" style="background:rgba(255,60,60,0.06); color:#ff9090; border:1px solid rgba(255,60,60,0.15);">
+                <span class="text-red-500 font-bold block mb-1 text-xs">TRADICIONAL:</span>
                 {trad}
               </div>
               <div class="text-sm p-3 rounded-lg" style="background:rgba(0,212,255,0.06); color:#a8c4e0; border:1px solid rgba(0,212,255,0.18);">
+                <span class="text-cyan font-bold block mb-1 text-xs">BENTHIC:</span>
                 {benthic}
               </div>
             </div>
@@ -202,18 +206,18 @@ import ContactForm from '../components/ContactForm.astro';
 
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
           {[
-            '🤖 Inteligencia Artificial',
-            '📊 Business Intelligence',
-            '☁️ Cloud Architecture',
-            '🔐 Ciberseguridad',
-            '⚙️ Automatización RPA',
-            '📡 APIs & Integraciones',
-            '🗄️ Bases de Datos',
-            '📱 WhatsApp Business',
-            '🌐 Desarrollo Web',
-            '📋 Mercado Público',
-            '🧾 Integración SII',
-            '🔍 Auditoría Digital',
+            'Inteligencia Artificial',
+            'Business Intelligence',
+            'Cloud Architecture',
+            'Ciberseguridad',
+            'Automatización RPA',
+            'APIs & Integraciones',
+            'Bases de Datos',
+            'WhatsApp Business',
+            'Desarrollo Web',
+            'Mercado Público',
+            'Integración SII',
+            'Auditoría Digital',
           ].map((cap, i) => (
             <div class="glass-card reveal px-4 py-4 text-sm text-center" style={`color:#a8c4e0; transition-delay:${i * 40}ms;`}>
               {cap}
