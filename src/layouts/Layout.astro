@@ -333,9 +333,14 @@ const {
       // Actualizar viñeta e inmersión global (brillo del fondo se oscurece al bajar)
       document.body.style.setProperty('--scroll-shadow-opacity', String(0.1 + pct * 0.75));
 
-      // Parallax e inmersión tridimensional de fondos
+      // Parallax e inmersión de fondos (desactivado en móviles para evitar parpadeos y bugs de GPU)
+      const isMobile = window.innerWidth < 768;
       document.querySelectorAll('.section-bg').forEach((bg) => {
         const htmlBg = bg as HTMLElement;
+        if (isMobile) {
+          htmlBg.style.transform = ''; // Limpiar transform en móviles
+          return;
+        }
         const rect = htmlBg.parentElement?.getBoundingClientRect();
         if (rect) {
           // Si la sección está total o parcialmente en la pantalla
@@ -345,7 +350,6 @@ const {
             const scrollPercent = (window.innerHeight - rect.top) / (window.innerHeight + parentHeight);
             
             // Mover la imagen dentro de su rango de seguridad (top: -20% a 20%)
-            // Como la imagen tiene height: 140% y top: -20%, tenemos un rango de ±20%
             const maxOffsetPct = 12; // Mover máximo 12% verticalmente
             const yOffset = (scrollPercent - 0.5) * -2 * maxOffsetPct;
             

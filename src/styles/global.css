@@ -50,14 +50,20 @@ body {
 /* ── Section backgrounds with photo ── */
 .section-bg {
   position: absolute;
-  top: -20%;
+  top: 0;
   left: 0;
   width: 100%;
-  height: 140%;
+  height: 100%;
   background-size: cover;
   background-position: center;
   pointer-events: none;
   z-index: 0;
+}
+@media (min-width: 768px) {
+  .section-bg {
+    top: -20%;
+    height: 140%;
+  }
 }
 .section-bg-hero    { background-image: url('/bg-hero.jpg'); }
 .section-bg-bio     { background-image: url('/bg-bio.jpg'); }
