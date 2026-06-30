@@ -1,6 +1,5 @@
 ---
 interface Props {
-  icon: string;
   title: string;
   subtitle: string;
   description: string;
@@ -10,7 +9,7 @@ interface Props {
   delay?: number;
 }
 
-const { icon, title, subtitle, description, href, depth, features, delay = 0 } = Astro.props;
+const { title, subtitle, description, href, depth, features, delay = 0 } = Astro.props;
 ---
 
 <article
@@ -20,10 +19,10 @@ const { icon, title, subtitle, description, href, depth, features, delay = 0 } =
   <!-- Header -->
   <div class="flex items-start gap-4">
     <div
-      class="text-4xl flex-shrink-0 w-16 h-16 flex items-center justify-center rounded-xl"
+      class="flex-shrink-0 w-14 h-14 flex items-center justify-center rounded-xl"
       style="background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2);"
     >
-      {icon}
+      <slot />
     </div>
     <div>
       <span class="depth-badge mb-2 inline-flex">

@@ -36,7 +36,7 @@ import NeuralNetwork from '../components/NeuralNetwork.astro';
 
         <!-- Texto -->
         <div class="lg:col-span-8">
-          <div class="section-label mb-6 inline-flex load-fade-in">🐋 Benthic OPS — Chile y Alemania</div>
+          <div class="section-label mb-6 inline-flex load-fade-in">Benthic OPS — Chile y Alemania</div>
           <h1 class="load-fade-in delay-100" style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(2.4rem,5.5vw,3.8rem); line-height:1.1; color:#e8f4ff; margin:0 0 1.5rem;">
             Inteligencia <span class="text-shimmer">Operativa</span> a la Medida
           </h1>
@@ -89,7 +89,7 @@ import NeuralNetwork from '../components/NeuralNetwork.astro';
 
         <!-- Texto propuesta -->
         <div class="reveal" style="transition-delay:120ms;">
-          <div class="section-label mb-5 inline-flex">🤖 Inteligencia Aplicada</div>
+          <div class="section-label mb-5 inline-flex">Inteligencia Aplicada</div>
           <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(1.8rem,4vw,2.6rem); color:#e8f4ff; margin:0.5rem 0 1.25rem; line-height:1.2;">
             Masticamos los datos.<br/>
             <span style="color:#00d4ff;">Tú tomas las decisiones.</span>
@@ -122,7 +122,7 @@ import NeuralNetwork from '../components/NeuralNetwork.astro';
 
     <div class="max-w-6xl mx-auto relative" style="z-index:2;">
       <div class="text-center mb-16 reveal">
-        <div class="section-label mb-5 inline-flex">⚡ Servicios</div>
+        <div class="section-label mb-5 inline-flex">Servicios</div>
         <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(1.8rem,4vw,2.6rem); color:#e8f4ff; margin:0.5rem 0 1rem;">
           Tres ejes. Un solo objetivo.
         </h2>
@@ -134,28 +134,46 @@ import NeuralNetwork from '../components/NeuralNetwork.astro';
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <ServiceCard
           href="/analytics"
-          icon="📊"
           title="Analytics & Predictive AI"
+          subtitle="Inteligencia de datos"
           description="Transformamos datos dispersos y procesos manuales en reportes ejecutivos simples y predicciones estratégicas mediante IA avanzada."
           features={['Dashboards ejecutivos en tiempo real','Modelos de predicción de demanda','Automatización financiera con IA','Integración con SII']}
+          depth="Capa de datos"
           delay={0}
-        />
+        >
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 6px rgba(0,212,255,0.55));">
+            <line x1="18" y1="20" x2="18" y2="10"></line>
+            <line x1="12" y1="20" x2="12" y2="4"></line>
+            <line x1="6" y1="20" x2="6" y2="14"></line>
+          </svg>
+        </ServiceCard>
         <ServiceCard
           href="/software"
-          icon="💻"
           title="Custom Software & Systems"
+          subtitle="Arquitectura a la medida"
           description="Desarrollamos el software exacto que necesitas: desde CRMs y ERPs personalizados hasta bots de WhatsApp y APIs robustas."
           features={['CRM & ERP a la medida','APIs e integraciones oficiales','Bots de WhatsApp Business','Portales y plataformas web']}
+          depth="Capa de ingeniería"
           delay={150}
-        />
+        >
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 6px rgba(0,212,255,0.55));">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+        </ServiceCard>
         <ServiceCard
           href="/consulting"
-          icon="🛡️"
           title="Consulting & Cyber Security"
+          subtitle="Protección operativa"
           description="Diagnóstico operativo express, auditoría de vulnerabilidades y blindaje de ciberseguridad para proteger tu empresa antes de que sea tarde."
           features={['Diagnóstico operativo en 48h','Auditoría de vulnerabilidades','Plan de respaldos cifrados','Zero Trust y 2FA corporativo']}
+          depth="Capa de seguridad"
           delay={300}
-        />
+        >
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 6px rgba(0,212,255,0.55));">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+        </ServiceCard>
       </div>
     </div>
   </section>
@@ -169,7 +187,7 @@ import NeuralNetwork from '../components/NeuralNetwork.astro';
 
     <div class="max-w-5xl mx-auto relative" style="z-index:2;">
       <div class="text-center mb-16 reveal">
-        <div class="section-label mb-5 inline-flex">🎯 Diferenciadores</div>
+        <div class="section-label mb-5 inline-flex">Diferenciadores</div>
         <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(1.8rem,4vw,2.6rem); color:#e8f4ff; margin:0.5rem 0;">
           El caballo de Troya de tu empresa
         </h2>
@@ -180,15 +198,41 @@ import NeuralNetwork from '../components/NeuralNetwork.astro';
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {[
-          { icon: '⚡', title: 'Resultados en días', desc: 'No en meses. Primeras automatizaciones funcionando en 48-72 horas.' },
-          { icon: '🔗', title: 'Nos adaptamos a ti', desc: 'Nos integramos a lo que ya tienes, sin obligarte a cambiar de plataforma.' },
-          { icon: '🧠', title: 'IA que entiende tu negocio', desc: 'Modelos entrenados con tu historial real, no soluciones genéricas.' },
-          { icon: '🔒', title: 'Seguridad desde el día 1', desc: 'Todo lo que construimos incluye capas de seguridad y respaldos.' },
-          { icon: '📱', title: 'Comunicación directa', desc: 'Sin cuentas de cliente ni tickets. Hablas con quien resuelve.' },
-          { icon: '📊', title: 'Métricas que importan', desc: 'Tiempo ahorrado, dinero recuperado, decisiones mejoradas.' },
-        ].map(({ icon, title, desc }, i) => (
-          <div class="glass-card reveal p-6 text-center" style={`transition-delay:${i * 80}ms;`}>
-            <div class="text-4xl mb-4 float-y" style={`animation-delay:${i * 0.3}s;`}>{icon}</div>
+          { 
+            svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>`, 
+            title: 'Resultados en días', 
+            desc: 'No en meses. Primeras automatizaciones funcionando en 48-72 horas.' 
+          },
+          { 
+            svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>`, 
+            title: 'Nos adaptamos a ti', 
+            desc: 'Nos integramos a lo que ya tienes, sin obligarte a cambiar de plataforma.' 
+          },
+          { 
+            svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1 0-3.12 3 3 0 0 1 0-4.88 2.5 2.5 0 0 1 0-3.12A2.5 2.5 0 0 1 9.5 2zM14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 0-3.12 3 3 0 0 0 0-4.88 2.5 2.5 0 0 0 0-3.12A2.5 2.5 0 0 0 14.5 2z"></path></svg>`, 
+            title: 'IA que entiende tu negocio', 
+            desc: 'Modelos entrenados con tu historial real, no soluciones genéricas.' 
+          },
+          { 
+            svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>`, 
+            title: 'Seguridad desde el día 1', 
+            desc: 'Todo lo que construimos incluye capas de seguridad y respaldos.' 
+          },
+          { 
+            svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>`, 
+            title: 'Comunicación directa', 
+            desc: 'Sin cuentas de cliente ni tickets. Hablas con quien resuelve.' 
+          },
+          { 
+            svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>`, 
+            title: 'Métricas que importan', 
+            desc: 'Tiempo ahorrado, dinero recuperado, decisiones mejoradas.' 
+          },
+        ].map(({ svg, title, desc }, i) => (
+          <div class="glass-card reveal p-6 text-center flex flex-col items-center justify-center" style={`transition-delay:${i * 80}ms;`}>
+            <div class="p-3.5 rounded-xl border border-cyan/20 bg-cyan-950/5 mb-4 float-y flex items-center justify-center" style={`animation-delay:${i * 0.3}s; filter: drop-shadow(0 0 5px rgba(0,212,255,0.45));`}>
+              <Fragment set:html={svg} />
+            </div>
             <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1rem; color:#e8f4ff; margin:0 0 0.6rem;">{title}</h3>
             <p class="text-sm leading-relaxed" style="color:#7aa3cc;">{desc}</p>
           </div>
@@ -205,7 +249,7 @@ import NeuralNetwork from '../components/NeuralNetwork.astro';
     <div class="section-overlay" style="background:rgba(0,7,45,0.65);"></div>
 
     <div class="max-w-3xl mx-auto text-center relative reveal" style="z-index:2;">
-      <div class="section-label mb-6 inline-flex">🚀 ¿Listo para el cambio?</div>
+      <div class="section-label mb-6 inline-flex">¿Listo para el cambio?</div>
       <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(1.8rem,4vw,2.6rem); color:#e8f4ff; margin:0.5rem 0 1.25rem;">
         Contáctanos y recibe tu diagnóstico gratuito
       </h2>
