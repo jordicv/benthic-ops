@@ -146,44 +146,58 @@ import ContactForm from '../components/ContactForm.astro';
           </h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {[
-            {
-              trad: 'Proyectos de 6-12 meses antes de ver resultados',
-              benthic: 'Primeros resultados en días, no meses',
-            },
-            {
-              trad: 'Decenas de slides y reportes que nadie lee',
-              benthic: 'Tres párrafos directo a tu WhatsApp cada semana',
-            },
-            {
-              trad: 'Herramientas genéricas que "casi" encajan',
-              benthic: 'Soluciones construidas para tu flujo exacto',
-            },
-            {
-              trad: 'Equipos grandes con costos fijos elevados',
-              benthic: 'Modelo flexible: pagas por lo que necesitas',
-            },
-            {
-              trad: '"No podemos integrarnos con tu sistema actual"',
-              benthic: 'Nos adaptamos a lo que ya tienes instalado',
-            },
-            {
-              trad: 'Métricas de vanidad sin impacto real',
-              benthic: 'Métricas de operación: tiempo, dinero, decisiones',
-            },
-          ].map(({ trad, benthic }, i) => (
-            <div class="glass-card reveal p-5 grid grid-cols-2 gap-3" style={`transition-delay:${i * 60}ms;`}>
-              <div class="text-sm p-3 rounded-lg" style="background:rgba(255,60,60,0.06); color:#ff9090; border:1px solid rgba(255,60,60,0.15);">
-                <span class="text-red-500 font-bold block mb-1 text-xs">TRADICIONAL:</span>
-                {trad}
-              </div>
-              <div class="text-sm p-3 rounded-lg" style="background:rgba(0,212,255,0.06); color:#a8c4e0; border:1px solid rgba(0,212,255,0.18);">
-                <span class="text-cyan font-bold block mb-1 text-xs">BENTHIC:</span>
-                {benthic}
-              </div>
-            </div>
-          ))}
+        <div class="glass-card reveal overflow-hidden" style="border-color: rgba(0, 212, 255, 0.15); margin-top: 2rem;">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse" style="min-width: 650px; margin: 0;">
+              <thead>
+                <tr style="border-bottom: 2px solid rgba(0, 212, 255, 0.2); background: rgba(0, 15, 60, 0.4);">
+                  <th class="py-4 px-6 text-xs uppercase tracking-wider" style="color: #7aa3cc; font-weight: 700; font-family: 'Space Grotesk', sans-serif;">Criterio</th>
+                  <th class="py-4 px-6 text-xs uppercase tracking-wider" style="color: #ff9090; font-weight: 700; font-family: 'Space Grotesk', sans-serif;">Otras empresas / Consultoras</th>
+                  <th class="py-4 px-6 text-xs uppercase tracking-wider" style="color: #00d4ff; font-weight: 700; font-family: 'Space Grotesk', sans-serif; background: rgba(0, 212, 255, 0.04);">Benthic OPS</th>
+                </tr>
+              </thead>
+              <tbody style="color: #a8c4e0;">
+                {[
+                  {
+                    crit: 'Tiempo de respuesta',
+                    trad: 'Proyectos de 6-12 meses antes de ver resultados tangibles.',
+                    benthic: 'Primeros resultados e integraciones activas en 48 a 72 horas.'
+                  },
+                  {
+                    crit: 'Entregables',
+                    trad: 'Reportes extensos, manuales densos y diapositivas de diagnóstico.',
+                    benthic: 'Reportes ejecutivos de 3 párrafos directo a tu WhatsApp semanalmente.'
+                  },
+                  {
+                    crit: 'Desarrollo',
+                    trad: 'Soluciones genéricas de caja o softwares rígidos adaptados con calzador.',
+                    benthic: 'Software, automatizaciones y bots a la medida de tu flujo operativo.'
+                  },
+                  {
+                    crit: 'Costos',
+                    trad: 'Equipos sobredimensionados con altos costos fijos y mantenciones elevadas.',
+                    benthic: 'Modelo flexible por hitos concretos: pagas por lo que tu negocio necesita.'
+                  },
+                  {
+                    crit: 'Integración',
+                    trad: 'Obligan a reemplazar sistemas o declaran incompatibilidad de plataformas.',
+                    benthic: 'Nos adaptamos a tu flujo e infraestructura actual sin interrupciones.'
+                  },
+                  {
+                    crit: 'Enfoque',
+                    trad: 'Métricas de vanidad, teoría de negocio y análisis a nivel macro.',
+                    benthic: 'Métricas que importan: tiempo ahorrado, costo recuperado y decisiones claras.'
+                  }
+                ].map(({ crit, trad, benthic }) => (
+                  <tr style="border-bottom: 1px solid rgba(0, 212, 255, 0.08); transition: background-color 0.2s ease;" class="hover:bg-cyan-950/10">
+                    <td class="py-4 px-6 text-sm font-semibold" style="color: #e8f4ff; font-family: 'Space Grotesk', sans-serif;">{crit}</td>
+                    <td class="py-4 px-6 text-sm" style="color: #7aa3cc;">{trad}</td>
+                    <td class="py-4 px-6 text-sm font-medium" style="color: #e8f4ff; background: rgba(0, 212, 255, 0.02); border-left: 1px solid rgba(0, 212, 255, 0.05); border-right: 1px solid rgba(0, 212, 255, 0.05);">{benthic}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
