@@ -8,13 +8,14 @@ const { page = '' } = Astro.props;
 <section id="contacto" class="py-24 px-6 relative overflow-hidden">
   <!-- Video de fondo de medusas bioluminiscentes -->
   <div class="section-bg overflow-hidden" style="opacity:0.68;">
-    <video 
-      autoplay 
-      muted 
-      loop 
-      playsinline 
+    <video
+      muted
+      loop
+      playsinline
+      preload="none"
+      poster="/poster-ocean.webp"
       class="w-full h-full object-cover medusas-video"
-      style="filter: brightness(0.92) contrast(1.05); transition: opacity 2.0s cubic-bezier(0.16, 1, 0.3, 1);"
+      style="filter: brightness(0.92) contrast(1.05); transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);"
     >
       <source src="/videos/medusas.webm" type="video/webm" />
       <source src="/videos/medusas.mp4" type="video/mp4" />
@@ -167,33 +168,39 @@ const { page = '' } = Astro.props;
   // Lógica de loop y ralentización para el video de medusas
   (function() {
     const videos = document.querySelectorAll('.medusas-video') as NodeListOf<HTMLVideoElement>;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     videos.forEach(video => {
-      // Ralentizar la reproducción para que sea súper lento e inmersivo (como una pintura viva)
-      video.playbackRate = 0.30;
+      // El clip es de 30 fps (el hero es de 60). A 0.30x se veían solo ~9 fps y saltaba.
+      // A 0.8x quedan 24 fps: fluido (calidad cine) conservando algo de slow-motion.
+      video.playbackRate = 0.8;
 
+      // Está bajo el pliegue: precargar/reproducir al ACERCARSE (rootMargin), no al entrar justo,
+      // para que el búfer se llene antes de ser visible y no vaya a tirones. Respeta movimiento reducido.
+      if (!reduceMotion) {
+        const io = new IntersectionObserver((entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) video.play().catch(() => {});
+            else video.pause();
+          }
+        }, { rootMargin: '1200px 0px', threshold: 0 });
+        io.observe(video);
+      }
+
+      // Fundido breve para disimular el corte del bucle (misma técnica que el vídeo hero, que va perfecto)
       let fadingOut = false;
       video.addEventListener('timeupdate', () => {
         const duration = video.duration;
-        const currentTime = video.currentTime;
         if (!duration) return;
-
-        // A velocidad 0.30, 0.7 segundos virtuales antes del final equivalen a ~2.3 segundos reales
-        if (currentTime > duration - 0.7 && !fadingOut) {
+        if (video.currentTime > duration - 1.0 && !fadingOut) {
           fadingOut = true;
-          video.style.opacity = '0.02';
-        }
-        // Al reiniciar, restaurar opacidad a 1.0 (el contenedor padre limita la opacidad general a 0.68)
-        if (currentTime < 0.6 && fadingOut) {
+          video.style.opacity = '0';
+        } else if (video.currentTime < 0.8 && fadingOut) {
           fadingOut = false;
-          video.style.opacity = '1.0';
+          video.style.opacity = '1';
         }
       });
-
       video.addEventListener('seeked', () => {
-        if (video.currentTime < 1) {
-          fadingOut = false;
-          video.style.opacity = '1.0';
-        }
+        if (video.currentTime < 1) { fadingOut = false; video.style.opacity = '1'; }
       });
     });
   })();

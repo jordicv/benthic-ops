@@ -98,6 +98,7 @@
   let packets: Packet[] = [];
   let frame = 0;
   let raf: number;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // ── Init ──
   function resize() {
@@ -234,14 +235,15 @@
       ctx!.fill();
     }
 
-    raf = requestAnimationFrame(draw);
+    // Con movimiento reducido, dibujar un único frame estático (sin bucle)
+    if (!reduceMotion) raf = requestAnimationFrame(draw);
   }
 
   // ── Visibility observer (pause when off-screen) ──
   const observer = new IntersectionObserver(
     entries => {
       if (entries[0].isIntersecting) {
-        if (!raf) raf = requestAnimationFrame(draw);
+        if (!raf && !reduceMotion) raf = requestAnimationFrame(draw);
       } else {
         cancelAnimationFrame(raf);
         raf = 0;
@@ -259,7 +261,8 @@
   window.addEventListener('resize', () => {
     cancelAnimationFrame(raf);
     resize();
-    raf = requestAnimationFrame(draw);
+    if (reduceMotion) draw();
+    else raf = requestAnimationFrame(draw);
   });
 })();
 </script>

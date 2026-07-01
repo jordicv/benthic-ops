@@ -65,10 +65,19 @@ body {
     height: 140%;
   }
 }
-.section-bg-hero    { background-image: url('/bg-hero.jpg'); }
-.section-bg-bio     { background-image: url('/bg-bio.jpg'); }
-.section-bg-abyss   { background-image: url('/bg-abyss.jpg'); }
-.section-bg-contact { background-image: url('/bg-contact.jpg'); }
+/* WebP primero (≈90% más ligero); el JPG es fallback para navegadores sin image-set() */
+.section-bg-hero {
+  background-image: url('/bg-hero.jpg');
+  background-image: image-set(url('/bg-hero.webp') type('image/webp'), url('/bg-hero.jpg') type('image/jpeg'));
+}
+.section-bg-bio {
+  background-image: url('/bg-bio.jpg');
+  background-image: image-set(url('/bg-bio.webp') type('image/webp'), url('/bg-bio.jpg') type('image/jpeg'));
+}
+.section-bg-abyss {
+  background-image: url('/bg-abyss.jpg');
+  background-image: image-set(url('/bg-abyss.webp') type('image/webp'), url('/bg-abyss.jpg') type('image/jpeg'));
+}
 
 .section-overlay {
   position: absolute;
@@ -279,6 +288,27 @@ body {
 .reveal-delay-300 { transition-delay: 300ms; }
 .reveal-delay-400 { transition-delay: 400ms; }
 .reveal-delay-500 { transition-delay: 500ms; }
+
+/* ═══════════════════════════════
+   ACCESIBILIDAD — Movimiento reducido
+   Detiene animaciones infinitas y parallax para usuarios que lo piden
+   (accesibilidad vestibular + ahorro de CPU/batería), sin ocultar contenido.
+═══════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Garantizar que el contenido con animación/transición de entrada quede visible */
+  .load-fade-in,
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
 
 /* ═══════════════════════════════
    GLASS CARD

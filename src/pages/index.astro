@@ -13,11 +13,12 @@ import NeuralNetwork from '../components/NeuralNetwork.astro';
   <section class="relative min-h-screen flex items-center overflow-hidden">
     <!-- Video de fondo de orca nadando -->
     <div class="section-bg overflow-hidden">
-      <video 
-        autoplay 
-        muted 
-        loop 
-        playsinline 
+      <video
+        muted
+        loop
+        playsinline
+        preload="none"
+        poster="/poster-ocean.webp"
         id="hero-bg-video"
         class="w-full h-full object-cover"
         style="filter: brightness(0.9) contrast(1.05); opacity: 0.48; transition: opacity 1.2s ease-in-out;"
@@ -276,6 +277,18 @@ import NeuralNetwork from '../components/NeuralNetwork.astro';
 
     // Ralentizar la reproducción para hacerlo más largo y majestuoso
     video.playbackRate = 0.55;
+
+    // Reproducir solo cuando el hero está en pantalla; con prefers-reduced-motion se queda en el póster
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduceMotion) {
+      const io = new IntersectionObserver((entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) video.play().catch(() => {});
+          else video.pause();
+        }
+      }, { threshold: 0.1 });
+      io.observe(video);
+    }
 
     let fadingOut = false;
 

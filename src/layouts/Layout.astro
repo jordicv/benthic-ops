@@ -1,6 +1,17 @@
 ---
 import '../styles/global.css';
 
+// Fuentes auto-hospedadas (same-origin, no render-blocking, sin round-trip a Google)
+import '@fontsource/inter/300.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/inter/700.css';
+import '@fontsource/space-grotesk/400.css';
+import '@fontsource/space-grotesk/500.css';
+import '@fontsource/space-grotesk/600.css';
+import '@fontsource/space-grotesk/700.css';
+
 interface Props {
   title: string;
   description?: string;
@@ -24,10 +35,8 @@ const {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <link rel="icon" type="image/png" href="/orca-color.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <title>{title}</title>
   </head>
   <body class="ocean-bg min-h-screen relative">
@@ -53,7 +62,7 @@ const {
         <!-- Logo -->
         <a href="/" class="flex items-center gap-3 group" aria-label="Benthic OPS - Inicio">
           <img
-            src="/orca-color.png"
+            src="/orca-logo.webp"
             alt="Orca con circuitos"
             width="48"
             height="48"
@@ -292,9 +301,15 @@ const {
     { limit: 4000, name: 'Zona Béntica (Abisal)' }
   ];
 
-  window.addEventListener('scroll', () => {
+  // Cachear una vez la lista de fondos (es estática) en vez de re-consultar el DOM en cada scroll
+  const sectionBgs = Array.from(document.querySelectorAll('.section-bg')) as HTMLElement[];
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let ticking = false;
+
+  function onScroll() {
+    ticking = false;
     const scrollY = window.scrollY;
-    
+
     // Navbar style on scroll
     if (scrollY > 40) {
       navbar?.setAttribute('style',
@@ -304,12 +319,18 @@ const {
       navbar?.setAttribute('style', '');
     }
 
-    // Calcular progreso de scroll total
+    // ── FASE DE LECTURA: agrupar todas las medidas para evitar layout thrashing ──
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const vh = window.innerHeight;
+    const doParallax = window.innerWidth >= 768 && !reduceMotion;
+    const rects = doParallax
+      ? sectionBgs.map((bg) => bg.parentElement?.getBoundingClientRect())
+      : [];
+
+    // ── FASE DE ESCRITURA ──
     if (docHeight > 0) {
       const pct = Math.min(1, Math.max(0, scrollY / docHeight));
-      
-      // Activar widget si el usuario empieza a bajar
+
       if (pct > 0.02) {
         depthWidget?.classList.remove('hidden');
         depthWidget?.classList.add('flex');
@@ -318,47 +339,44 @@ const {
         depthWidget?.classList.remove('flex');
       }
 
-      // Calcular metros de profundidad (0 a 4000 metros)
       const currentDepth = Math.round(pct * 4000);
-      
       if (depthNumber) depthNumber.textContent = currentDepth.toLocaleString();
       if (depthProgressBar) depthProgressBar.style.width = `${pct * 100}%`;
 
-      // Actualizar nombre de la zona
       if (depthZoneName) {
         const zona = ZONAS.find(z => currentDepth <= z.limit) || ZONAS[ZONAS.length - 1];
         depthZoneName.textContent = zona.name;
       }
 
-      // Actualizar viñeta e inmersión global (brillo del fondo se oscurece al bajar)
       document.body.style.setProperty('--scroll-shadow-opacity', String(0.1 + pct * 0.75));
+    }
 
-      // Parallax e inmersión de fondos (desactivado en móviles para evitar parpadeos y bugs de GPU)
-      const isMobile = window.innerWidth < 768;
-      document.querySelectorAll('.section-bg').forEach((bg) => {
-        const htmlBg = bg as HTMLElement;
-        if (isMobile) {
-          htmlBg.style.transform = ''; // Limpiar transform en móviles
-          return;
-        }
-        const rect = htmlBg.parentElement?.getBoundingClientRect();
-        if (rect) {
-          // Si la sección está total o parcialmente en la pantalla
-          if (rect.top < window.innerHeight && rect.bottom > 0) {
-            // Calcular posición relativa del elemento (-1 a 1)
-            const parentHeight = rect.height;
-            const scrollPercent = (window.innerHeight - rect.top) / (window.innerHeight + parentHeight);
-            
-            // Mover la imagen dentro de su rango de seguridad (top: -20% a 20%)
-            const maxOffsetPct = 12; // Mover máximo 12% verticalmente
-            const yOffset = (scrollPercent - 0.5) * -2 * maxOffsetPct;
-            
-            htmlBg.style.transform = `translate3d(0, ${yOffset}%, 0)`;
-          }
+    if (doParallax) {
+      sectionBgs.forEach((htmlBg, i) => {
+        const rect = rects[i];
+        if (rect && rect.top < vh && rect.bottom > 0) {
+          const scrollPercent = (vh - rect.top) / (vh + rect.height);
+          const yOffset = (scrollPercent - 0.5) * -2 * 12; // máximo 12% vertical
+          htmlBg.style.transform = `translate3d(0, ${yOffset}%, 0)`;
         }
       });
+    } else {
+      // Móvil o movimiento reducido: limpiar cualquier transform residual (sin escrituras inútiles)
+      for (const bg of sectionBgs) {
+        if (bg.style.transform) bg.style.transform = '';
+      }
     }
-  });
+  }
+
+  // Listener passive + coalescido en un único requestAnimationFrame por frame
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(onScroll);
+    }
+  }, { passive: true });
+
+  onScroll(); // estado inicial
 
   // ── Mobile menu ──
   const toggle = document.getElementById('menu-toggle');
@@ -406,12 +424,12 @@ const {
 
     // Función para activar visibilidad
     function showCta() {
-      cta.classList.add('visible');
+      cta?.classList.add('visible');
     }
 
     // Función para desactivar visibilidad
     function hideCta() {
-      cta.classList.remove('visible');
+      cta?.classList.remove('visible');
     }
 
     // Flujo inicial al cargar
