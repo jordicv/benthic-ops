@@ -87,8 +87,13 @@ import ContactForm from '../components/ContactForm.astro';
             </ul>
           </div>
           <div class="flex justify-center">
-            <div class="glass-card p-6 text-center" style="max-width:220px; border-color: rgba(0,212,255,0.3);">
-              <div class="text-5xl mb-3">⏱️</div>
+            <div class="glass-card p-6 text-center flex flex-col items-center" style="max-width:220px; border-color: rgba(0,212,255,0.3);">
+              <div class="p-3 rounded-xl border border-cyan/20 bg-cyan-950/5 mb-3 flex items-center justify-center" style="filter: drop-shadow(0 0 5px rgba(0,212,255,0.45));">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
               <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; color:#00d4ff;">48-72 horas</div>
               <div class="text-sm mt-1" style="color:#7aa3cc;">Diagnóstico completo entregado</div>
             </div>
@@ -98,8 +103,13 @@ import ContactForm from '../components/ContactForm.astro';
         <!-- Módulo 2: Auditoría de vulnerabilidades -->
         <div class="glass-card reveal p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div class="order-2 md:order-1 flex justify-center">
-            <div class="glass-card p-6 text-center" style="max-width:220px; border-color: rgba(0,212,255,0.3);">
-              <div class="text-5xl mb-3">🔬</div>
+            <div class="glass-card p-6 text-center flex flex-col items-center" style="max-width:220px; border-color: rgba(0,212,255,0.3);">
+              <div class="p-3 rounded-xl border border-cyan/20 bg-cyan-950/5 mb-3 flex items-center justify-center" style="filter: drop-shadow(0 0 5px rgba(0,212,255,0.45));">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </div>
               <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; color:#00d4ff;">Escaneo profundo</div>
               <div class="text-sm mt-1" style="color:#7aa3cc;">Redes, web y endpoints</div>
             </div>
