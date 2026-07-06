@@ -1,0 +1,843 @@
+---
+// Cybersecurity & Data Radar Component - Benthic OPS
+// Renders interactive stats, charts, and calculators to prove the value of ciberseguridad, AI, and automated reporting.
+---
+
+<div class="relative max-w-6xl mx-auto py-12 px-4 md:px-6">
+  <div class="text-center mb-12">
+    <span class="section-label mb-4 inline-flex">Radar de Inteligencia y Seguridad</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(1.8rem,4vw,2.6rem); color:#e8f4ff; margin:0.5rem 0 1rem; line-height:1.2;">
+      El Impacto Real de la <span class="text-shimmer">Inacción</span> en tu Empresa
+    </h2>
+    <p style="color:#7aa3cc; max-width:640px; margin:0 auto;" class="text-sm md:text-base">
+      La ciberseguridad y la automatización inteligente no son lujos de TI, son la continuidad y eficiencia de tu negocio. Haz clic en las métricas para simular su impacto.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+    <!-- Panel Izquierdo: Selectores de Estadísticas (Tabs) -->
+    <div class="lg:col-span-5 flex flex-col gap-3.5">
+      <!-- Tab 1: Ciberseguridad -->
+      <button
+        class="radar-tab-btn active text-left p-4.5 rounded-xl border transition-all duration-300 flex items-center gap-4 bg-cyan-950/5 cursor-pointer"
+        data-target="respaldos"
+        style="border-color: rgba(0,212,255,0.15);"
+      >
+        <div class="tab-icon-wrapper p-2.5 rounded-lg border border-cyan/20 bg-cyan-950/20 text-cyan transition-colors duration-300">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <path d="M12 8v4"></path>
+            <path d="M12 16h.01"></path>
+          </svg>
+        </div>
+        <div class="flex-1">
+          <div class="text-[10px] uppercase tracking-wider font-semibold opacity-60" style="color:#7aa3cc;">Vulnerabilidad en Chile</div>
+          <h3 class="text-base font-bold text-white-ice" style="font-family:'Space Grotesk',sans-serif;">73% de las PYMEs sin Plan</h3>
+          <p class="text-[11px] mt-0.5" style="color:#7aa3cc;">No poseen respaldos activos ni políticas básicas de acceso.</p>
+        </div>
+      </button>
+
+      <!-- Tab 2: Amenazas -->
+      <button
+        class="radar-tab-btn text-left p-4.5 rounded-xl border transition-all duration-300 flex items-center gap-4 bg-cyan-950/5 cursor-pointer"
+        data-target="frecuencia"
+        style="border-color: rgba(0,212,255,0.08);"
+      >
+        <div class="tab-icon-wrapper p-2.5 rounded-lg border border-white/5 bg-cyan-950/5 text-text-muted transition-colors duration-300">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+          </svg>
+        </div>
+        <div class="flex-1">
+          <div class="text-[10px] uppercase tracking-wider font-semibold opacity-60" style="color:#7aa3cc;">Volumen de Amenazas</div>
+          <h3 class="text-base font-bold text-white-ice" style="font-family:'Space Grotesk',sans-serif;">1.846 Ataques Semanales</h3>
+          <p class="text-[11px] mt-0.5" style="color:#7aa3cc;">Intentos maliciosos promedio contra empresas en el país.</p>
+        </div>
+      </button>
+
+      <!-- Tab 3: Costo Ransomware -->
+      <button
+        class="radar-tab-btn text-left p-4.5 rounded-xl border transition-all duration-300 flex items-center gap-4 bg-cyan-950/5 cursor-pointer"
+        data-target="costos"
+        style="border-color: rgba(0,212,255,0.08);"
+      >
+        <div class="tab-icon-wrapper p-2.5 rounded-lg border border-white/5 bg-cyan-950/5 text-text-muted transition-colors duration-300">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="1" x2="12" y2="23"></line>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+          </svg>
+        </div>
+        <div class="flex-1">
+          <div class="text-[10px] uppercase tracking-wider font-semibold opacity-60" style="color:#7aa3cc;">Pérdida Financiera</div>
+          <h3 class="text-base font-bold text-white-ice" style="font-family:'Space Grotesk',sans-serif;">USD $1.2M de Recuperación</h3>
+          <p class="text-[11px] mt-0.5" style="color:#7aa3cc;">Costo medio de restaurar la operación tras ransomware.</p>
+        </div>
+      </button>
+
+      <!-- Tab 4: Reportes y Planillas -->
+      <button
+        class="radar-tab-btn text-left p-4.5 rounded-xl border transition-all duration-300 flex items-center gap-4 bg-cyan-950/5 cursor-pointer"
+        data-target="reportes"
+        style="border-color: rgba(0,212,255,0.08);"
+      >
+        <div class="tab-icon-wrapper p-2.5 rounded-lg border border-white/5 bg-cyan-950/5 text-text-muted transition-colors duration-300">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+        <div class="flex-1">
+          <div class="text-[10px] uppercase tracking-wider font-semibold opacity-60" style="color:#7aa3cc;">Automatización & Analítica</div>
+          <h3 class="text-base font-bold text-white-ice" style="font-family:'Space Grotesk',sans-serif;">1.000 Horas Perdidas al Año</h3>
+          <p class="text-[11px] mt-0.5" style="color:#7aa3cc;">Horas invertidas en planillas de Excel y reportes manuales.</p>
+        </div>
+      </button>
+
+      <!-- Tab 5: Precisión y SII -->
+      <button
+        class="radar-tab-btn text-left p-4.5 rounded-xl border transition-all duration-300 flex items-center gap-4 bg-cyan-950/5 cursor-pointer"
+        data-target="precision"
+        style="border-color: rgba(0,212,255,0.08);"
+      >
+        <div class="tab-icon-wrapper p-2.5 rounded-lg border border-white/5 bg-cyan-950/5 text-text-muted transition-colors duration-300">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+          </svg>
+        </div>
+        <div class="flex-1">
+          <div class="text-[10px] uppercase tracking-wider font-semibold opacity-60" style="color:#7aa3cc;">Inteligencia Artificial</div>
+          <h3 class="text-base font-bold text-white-ice" style="font-family:'Space Grotesk',sans-serif;">95% de Reducción de Errores</h3>
+          <p class="text-[11px] mt-0.5" style="color:#7aa3cc;">Conciliación automática y procesamiento documental con IA.</p>
+        </div>
+      </button>
+
+      <!-- Tab 6: Continuidad -->
+      <button
+        class="radar-tab-btn text-left p-4.5 rounded-xl border transition-all duration-300 flex items-center gap-4 bg-cyan-950/5 cursor-pointer"
+        data-target="quiebra"
+        style="border-color: rgba(0,212,255,0.08);"
+      >
+        <div class="tab-icon-wrapper p-2.5 rounded-lg border border-white/5 bg-cyan-950/5 text-text-muted transition-colors duration-300">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+          </svg>
+        </div>
+        <div class="flex-1">
+          <div class="text-[10px] uppercase tracking-wider font-semibold opacity-60" style="color:#7aa3cc;">Riesgo de Continuidad</div>
+          <h3 class="text-base font-bold text-white-ice" style="font-family:'Space Grotesk',sans-serif;">60% Quiebra Técnica</h3>
+          <p class="text-[11px] mt-0.5" style="color:#7aa3cc;">PYMEs chilenas que cierran tras sufrir un ataque mayor.</p>
+        </div>
+      </button>
+    </div>
+
+    <!-- Panel Derecho: Visualizador Gráfico (Card Container) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="glass-card flex-1 p-6 md:p-8 flex flex-col justify-between border border-cyan/15 bg-cyan-950/5" style="min-height: 500px;">
+        
+        <!-- CARD 1: Respaldos -->
+        <div id="visual-respaldos" class="radar-visual-card flex flex-col justify-between h-full">
+          <div>
+            <div class="flex items-center gap-2 mb-4">
+              <span class="text-red-500 font-semibold text-xs px-2.5 py-1 rounded bg-red-950/20 border border-red-500/20 uppercase">Alerta Crítica</span>
+              <span class="text-xs text-text-muted">Respaldos y Accesos</span>
+            </div>
+            <h4 class="text-2xl font-bold text-white-ice mb-3" style="font-family:'Space Grotesk',sans-serif;">73% de Empresas Vulnerables</h4>
+            <p class="text-sm leading-relaxed mb-6" style="color:#a8c4e0;">
+              En Chile, casi 3 de cada 4 PYMEs carecen de un respaldo fuera de línea aislado o de políticas de doble factor (2FA). Si sufren una intrusión de ransomware, todos sus datos históricos, facturas y sistemas se pierden al instante.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center my-4">
+            <!-- Gráfico de progreso radial -->
+            <div class="flex justify-center relative">
+              <svg width="180" height="180" viewBox="0 0 200 200" class="rotate-[-90deg]">
+                <!-- Circulo base -->
+                <circle cx="100" cy="100" r="80" fill="transparent" stroke="rgba(255,255,255,0.03)" stroke-width="12"></circle>
+                <!-- Anillo Vulnerable (73%) -->
+                <circle
+                  id="circle-vuln"
+                  cx="100"
+                  cy="100"
+                  r="80"
+                  fill="transparent"
+                  stroke="#ffb400"
+                  stroke-width="12"
+                  stroke-dasharray="502.6"
+                  stroke-dashoffset="135.7"
+                  class="transition-all duration-1000 ease-out"
+                  style="filter: drop-shadow(0 0 6px rgba(255,180,0,0.6));"
+                ></circle>
+                <!-- Anillo Protegido (Benthic OPS - 100%) -->
+                <circle
+                  cx="100"
+                  cy="100"
+                  r="60"
+                  fill="transparent"
+                  stroke="#00d4ff"
+                  stroke-width="10"
+                  stroke-dasharray="377"
+                  stroke-dashoffset="0"
+                  style="filter: drop-shadow(0 0 8px rgba(0,212,255,0.7)); opacity: 0.85;"
+                ></circle>
+              </svg>
+              <!-- Info de porcentaje central -->
+              <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+                <span class="text-3xl font-extrabold text-white-ice" style="font-family:'Space Grotesk',sans-serif;">73%</span>
+                <span class="text-[10px] uppercase tracking-widest font-semibold text-amber-400">Sin Respaldo</span>
+              </div>
+            </div>
+
+            <!-- Leyenda / Comparación -->
+            <div class="space-y-4">
+              <div class="p-3 rounded-lg border border-amber-500/10 bg-amber-950/5">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(255,180,0,0.8)]"></span>
+                  <span class="text-xs font-bold text-amber-400">Estado PYME Promedio</span>
+                </div>
+                <p class="text-[11px] leading-relaxed" style="color:#a8c4e0;">Datos compartidos en la misma red local. Sin cifrar. Vulnerable al 100% ante secuestro digital.</p>
+              </div>
+              <div class="p-3 rounded-lg border border-cyan-500/10 bg-cyan-950/5">
+                <div class="flex items-center gap-2 mb-1">
+                  <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(0,212,255,0.8)]"></span>
+                  <span class="text-xs font-bold text-cyan-400">Con Benthic OPS</span>
+                </div>
+                <p class="text-[11px] leading-relaxed" style="color:#a8c4e0;">Respaldos incrementales automatizados e inmutables (cifrado frío 3-2-1). Restauración garantizada.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Acción interactiva -->
+          <div class="mt-4 flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-white/5">
+            <label class="flex items-center gap-3 cursor-pointer select-none">
+              <input type="checkbox" id="btn-simulate-ransom" class="hidden-checkbox sr-only" />
+              <div class="checkbox-visual flex items-center justify-center w-5 h-5 rounded border border-white/20 transition-all duration-300">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-cyan hidden">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <span class="text-sm font-semibold text-white-ice">Simular Ataque de Ransomware</span>
+            </label>
+            <div id="ransom-simulation-result" class="text-xs transition-all duration-300 opacity-0 transform translate-x-2" style="color:#7aa3cc;">
+              Activa la casilla para ver el protocolo de respuesta.
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2: Frecuencia -->
+        <div id="visual-frecuencia" class="radar-visual-card flex flex-col justify-between h-full hidden">
+          <div>
+            <div class="flex items-center gap-2 mb-4">
+              <span class="text-cyan font-semibold text-xs px-2.5 py-1 rounded bg-cyan-950/20 border border-cyan-500/20 uppercase">Actividad de Red</span>
+              <span class="text-xs text-text-muted">Volumen de Ciberamenazas</span>
+            </div>
+            <h4 class="text-2xl font-bold text-white-ice mb-3" style="font-family:'Space Grotesk',sans-serif;">1.846 Intentos de Ataque Semanales</h4>
+            <p class="text-sm leading-relaxed mb-4" style="color:#a8c4e0;">
+              Chile es uno de los países más asediados del continente. Los atacantes utilizan bots automatizados que escanean tu red corporativa 24/7 buscando vulnerabilidades en tu router, correos electrónicos corporativos o contraseñas débiles.
+            </p>
+          </div>
+
+          <!-- Gráfico de Pulso Dinámico SVG -->
+          <div class="relative w-full h-44 rounded-lg bg-cyan-950/5 border border-white/5 overflow-hidden my-4 flex items-center justify-center">
+            <!-- Rejilla de fondo -->
+            <div class="absolute inset-0 bg-[linear-gradient(rgba(0,212,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,212,255,0.03)_1px,transparent_1px)] bg-[size:16px_16px]"></div>
+            
+            <svg id="pulse-chart-svg" class="w-full h-full absolute inset-0" viewBox="0 0 500 150" preserveAspectRatio="none">
+              <!-- Línea normal -->
+              <path
+                id="pulse-line-normal"
+                d="M 0 75 L 50 75 L 75 75 L 85 75 L 100 75 L 150 75 L 175 40 L 190 110 L 205 75 L 250 75 L 300 75 L 320 20 L 335 130 L 350 75 L 400 75 L 430 75 L 450 75 L 500 75"
+                fill="none"
+                stroke="rgba(0,212,255,0.4)"
+                stroke-width="2.5"
+                class="pulse-path"
+              ></path>
+              <!-- Línea de ataques bloqueada -->
+              <path
+                id="pulse-line-attacks"
+                d="M 0 75 L 40 75 L 50 20 L 60 130 L 70 75 L 110 75 L 125 15 L 135 135 L 145 75 L 190 75 L 205 10 L 215 140 L 225 75 L 270 75 L 285 30 L 300 120 L 315 75 L 370 75 L 390 5 L 405 145 L 420 75 L 460 75 L 475 25 L 490 125 L 500 75"
+                fill="none"
+                stroke="#ff3e3e"
+                stroke-width="2.5"
+                class="pulse-path hidden"
+              ></path>
+            </svg>
+            
+            <!-- Indicador en tiempo real -->
+            <div class="absolute top-3 left-4 flex items-center gap-1.5 text-[10px] font-bold tracking-wider uppercase">
+              <span id="threat-indicator-dot" class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_6px_rgba(0,212,255,0.8)]"></span>
+              <span id="threat-indicator-text" class="text-cyan-400">Tráfico Protegido (WAF Activo)</span>
+            </div>
+            
+            <!-- Contador digital -->
+            <div class="absolute bottom-3 right-4 font-mono text-xs p-1.5 rounded bg-black/60 border border-white/10 flex items-center gap-2">
+              <span style="color:#7aa3cc;">ATAQUES BLOQUEADOS:</span>
+              <span id="attack-counter" class="text-cyan-400 font-bold">1,846</span>
+            </div>
+          </div>
+
+          <div class="flex gap-4 justify-center">
+            <button id="btn-toggle-filter" class="btn-outline text-xs py-2 px-4 cursor-pointer">
+              Simular Apagado de Cortafuegos WAF
+            </button>
+          </div>
+        </div>
+
+        <!-- CARD 3: Costos -->
+        <div id="visual-costos" class="radar-visual-card flex flex-col justify-between h-full hidden">
+          <div>
+            <div class="flex items-center gap-2 mb-4">
+              <span class="text-amber-500 font-semibold text-xs px-2.5 py-1 rounded bg-amber-950/20 border border-amber-500/20 uppercase">Simulador Financiero</span>
+              <span class="text-xs text-text-muted">Estimación de Pérdidas</span>
+            </div>
+            <h4 class="text-2xl font-bold text-white-ice mb-2" style="font-family:'Space Grotesk',sans-serif;">Calculadora de Inactividad</h4>
+            <p class="text-xs leading-relaxed mb-6" style="color:#a8c4e0;">
+              Un ataque promedio detiene la operación de una empresa por **14.2 días hábiles**. Ajusta la facturación mensual de tu negocio para estimar la pérdida catastrófica y compárala con nuestra cobertura.
+            </p>
+          </div>
+
+          <!-- Calculadora interactiva -->
+          <div class="space-y-6 my-4 p-5 rounded-xl border border-white/5 bg-cyan-950/5">
+            <!-- Slider -->
+            <div class="space-y-2">
+              <div class="flex justify-between items-center">
+                <label for="billing-range" class="text-xs font-bold uppercase tracking-wider text-white-ice">Facturación Mensual Empresa</label>
+                <span id="billing-display" class="text-base font-extrabold text-cyan font-mono" style="font-family:'Space Grotesk',sans-serif;">$20.000.000 CLP</span>
+              </div>
+              <input
+                type="range"
+                id="billing-range"
+                min="5"
+                max="150"
+                value="20"
+                step="5"
+                class="w-full h-1.5 bg-cyan-950 rounded-lg appearance-none cursor-pointer accent-cyan-400"
+                style="background: rgba(0, 212, 255, 0.12);"
+              />
+              <div class="flex justify-between text-[10px]" style="color:#7aa3cc;">
+                <span>$5M CLP</span>
+                <span>$75M CLP</span>
+                <span>$150M+ CLP</span>
+              </div>
+            </div>
+
+            <!-- Resultados -->
+            <div class="grid grid-cols-2 gap-4">
+              <div class="p-3 rounded-lg border border-red-500/10 bg-red-950/5">
+                <div class="text-[10px] text-red-400 font-bold uppercase tracking-wider">Costo por Inactividad (14 días)</div>
+                <div id="cost-downtime" class="text-lg font-extrabold text-white-ice font-mono mt-1">$15.000.000 CLP</div>
+                <p class="text-[10px] mt-1" style="color:#7aa3cc;">Salarios perdidos, SLAs y daño comercial inmediato.</p>
+              </div>
+              <div class="p-3 rounded-lg border border-cyan-500/10 bg-cyan-950/5">
+                <div class="text-[10px] text-cyan-400 font-bold uppercase tracking-wider">Costo Mensual Benthic OPS</div>
+                <div id="cost-benthic" class="text-lg font-extrabold text-cyan font-mono mt-1">$350.000 CLP</div>
+                <p class="text-[10px] mt-1" style="color:#7aa3cc;">Protección, WAF y respaldos continuos cifrados.</p>
+              </div>
+            </div>
+            
+            <div class="text-[10px] text-center" style="color:#7aa3cc;">
+              * Ransomware catastrófico (rescate medio en Chile): **USD $675K (~$630M CLP)**. Nuestra prevención mitiga este riesgo a cero.
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 4: Reportes y Planillas -->
+        <div id="visual-reportes" class="radar-visual-card flex flex-col justify-between h-full hidden">
+          <div>
+            <div class="flex items-center gap-2 mb-4">
+              <span class="text-cyan font-semibold text-xs px-2.5 py-1 rounded bg-cyan-950/20 border border-cyan-500/20 uppercase">Automatización e IA</span>
+              <span class="text-xs text-text-muted">Pérdida de Tiempo en Reportes</span>
+            </div>
+            <h4 class="text-2xl font-bold text-white-ice mb-2" style="font-family:'Space Grotesk',sans-serif;">Calculadora de Pérdida de Horas</h4>
+            <p class="text-sm leading-relaxed mb-6" style="color:#a8c4e0;">
+              Las PYMEs destinan en promedio el **70% de su tiempo de análisis** a descargar, limpiar e ingresar datos manualmente. Automatizando tus flujos e integrando dashboards predictivos, liberas hasta 1.000 horas anuales de trabajo repetitivo por equipo.
+            </p>
+          </div>
+
+          <!-- Calculadora de horas -->
+          <div class="space-y-6 my-4 p-5 rounded-xl border border-white/5 bg-cyan-950/5">
+            <div class="grid grid-cols-2 gap-4">
+              <div class="space-y-2">
+                <label for="employees-count" class="text-xs font-bold uppercase tracking-wider text-white-ice">Personal en Planillas</label>
+                <input
+                  type="number"
+                  id="employees-count"
+                  min="1"
+                  max="20"
+                  value="2"
+                  class="w-full bg-cyan-950/40 border border-white/10 rounded-lg p-2 font-mono text-cyan focus:outline-none focus:border-cyan-400"
+                />
+              </div>
+              <div class="space-y-2">
+                <label for="hours-count" class="text-xs font-bold uppercase tracking-wider text-white-ice">Horas Semanales c/u</label>
+                <input
+                  type="number"
+                  id="hours-count"
+                  min="1"
+                  max="40"
+                  value="8"
+                  class="w-full bg-cyan-950/40 border border-white/10 rounded-lg p-2 font-mono text-cyan focus:outline-none focus:border-cyan-400"
+                />
+              </div>
+            </div>
+
+            <!-- Resultados -->
+            <div class="grid grid-cols-2 gap-4">
+              <div class="p-3 rounded-lg border border-amber-500/10 bg-amber-950/5">
+                <div class="text-[10px] text-amber-400 font-bold uppercase tracking-wider">Tiempo Desperdiciado Anual</div>
+                <div id="lost-hours" class="text-lg font-extrabold text-white-ice font-mono mt-1">768 Horas</div>
+                <p class="text-[10px] mt-1" style="color:#7aa3cc;">Equivalente a <span id="lost-days">96 jornadas</span> laborales completas.</p>
+              </div>
+              <div class="p-3 rounded-lg border border-cyan-500/10 bg-cyan-950/5">
+                <div class="text-[10px] text-cyan-400 font-bold uppercase tracking-wider">Con Benthic Analytics</div>
+                <div class="text-lg font-extrabold text-cyan font-mono mt-1">100% Automatizado</div>
+                <p class="text-[10px] mt-1" style="color:#7aa3cc;">Información unificada en tiempo real sin manipulación manual.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 5: Precisión y SII -->
+        <div id="visual-precision" class="radar-visual-card flex flex-col justify-between h-full hidden">
+          <div>
+            <div class="flex items-center gap-2 mb-4">
+              <span class="text-cyan font-semibold text-xs px-2.5 py-1 rounded bg-cyan-950/20 border border-cyan-500/20 uppercase">Eficacia Operativa</span>
+              <span class="text-xs text-text-muted">Procesamiento Documental</span>
+            </div>
+            <h4 class="text-2xl font-bold text-white-ice mb-3" style="font-family:'Space Grotesk',sans-serif;">Procesamiento Documental Inteligente</h4>
+            <p class="text-sm leading-relaxed mb-4" style="color:#a8c4e0;">
+              La conciliación de facturas con el SII, depósitos y cobros genera múltiples fricciones contables por errores manuales. Con modelos de IA y OCR, reducimos estas brechas en un **95%**, limpiando tus datos al instante.
+            </p>
+          </div>
+
+          <!-- Visual de pipeline de documentos -->
+          <div class="relative w-full h-40 rounded-lg bg-cyan-950/5 border border-white/5 overflow-hidden my-4 flex flex-col items-center justify-center">
+            <div class="absolute inset-0 bg-[linear-gradient(rgba(0,212,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,212,255,0.03)_1px,transparent_1px)] bg-[size:16px_16px]"></div>
+            
+            <div class="flex gap-4 items-center relative z-10 w-full px-8 justify-around">
+              <!-- Entrada -->
+              <div class="flex flex-col items-center">
+                <span class="text-[9px] text-text-muted mb-1 uppercase tracking-widest font-mono">Facturas/SII</span>
+                <div class="flex gap-1.5" id="pipeline-input-docs">
+                  <span class="doc-icon w-8 h-10 rounded border border-white/20 bg-white/5 flex items-center justify-center text-sm animate-pulse">📄</span>
+                  <span class="doc-icon w-8 h-10 rounded border border-white/20 bg-white/5 flex items-center justify-center text-sm animate-pulse" style="animation-delay:0.3s">📄</span>
+                </div>
+              </div>
+
+              <!-- Filtro OCR/IA -->
+              <div class="flex flex-col items-center relative">
+                <span class="text-[9px] text-cyan-400 mb-1 uppercase tracking-widest font-mono">Motor de IA</span>
+                <div class="w-11 h-11 rounded-full border border-cyan/40 bg-cyan-950/30 flex items-center justify-center shadow-[0_0_12px_rgba(0,212,255,0.3)]" id="pipeline-brain">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M12 6v12M6 12h12"></path>
+                  </svg>
+                </div>
+                <div class="absolute left-[-35px] right-[-35px] top-[26px] h-0.5 bg-gradient-to-r from-transparent via-cyan to-transparent opacity-40"></div>
+              </div>
+
+              <!-- Salida -->
+              <div class="flex flex-col items-center">
+                <span class="text-[9px] text-text-muted mb-1 uppercase tracking-widest font-mono">Conciliación</span>
+                <div class="flex gap-1.5" id="pipeline-output-docs">
+                  <span id="doc-out-1" class="w-8 h-10 rounded border border-green-500/30 bg-green-950/15 flex items-center justify-center text-sm text-green-400">✅</span>
+                  <span id="doc-out-2" class="w-8 h-10 rounded border border-red-500/30 bg-red-950/15 flex items-center justify-center text-sm text-red-400">❌</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Indicador de procesamiento -->
+            <div class="absolute bottom-2 text-[10px] font-mono" id="pipeline-status-text" style="color:#7aa3cc;">
+              Procesamiento Manual (Con Errores Detectados)
+            </div>
+          </div>
+
+          <div class="flex justify-center">
+            <button id="btn-toggle-pipeline" class="btn-outline text-xs py-2 px-4 cursor-pointer">
+              Activar Conciliación Inteligente IA
+            </button>
+          </div>
+        </div>
+
+        <!-- CARD 6: Quiebra / Continuidad -->
+        <div id="visual-quiebra" class="radar-visual-card flex flex-col justify-between h-full hidden">
+          <div>
+            <div class="flex items-center gap-2 mb-4">
+              <span class="text-red-500 font-semibold text-xs px-2.5 py-1 rounded bg-red-950/20 border border-red-500/20 uppercase">Continuidad Operativa</span>
+              <span class="text-xs text-text-muted">Tasa de Supervivencia</span>
+            </div>
+            <h4 class="text-2xl font-bold text-white-ice mb-3" style="font-family:'Space Grotesk',sans-serif;">El 60% de PYMEs Cierra en 6 Meses</h4>
+            <p class="text-sm leading-relaxed mb-6" style="color:#a8c4e0;">
+              La pérdida definitiva de datos contables, carteras de clientes y flujos de trabajo paralizados destruye la confianza y la liquidez comercial. Las PYMEs raramente resisten más de 2 meses con sistemas completamente en blanco.
+            </p>
+          </div>
+
+          <!-- Comparación de Barras de Supervivencia -->
+          <div class="space-y-6 my-4">
+            <!-- Barra Sin Protección -->
+            <div class="space-y-1.5">
+              <div class="flex justify-between text-xs font-bold">
+                <span class="text-amber-400">Sin Plan de Respaldos (PYME Promedio)</span>
+                <span class="text-red-400">60% de Riesgo de Quiebra</span>
+              </div>
+              <div class="w-full h-4 bg-cyan-950/20 border border-white/5 rounded-full overflow-hidden">
+                <div
+                  id="bar-unprotected"
+                  class="h-full bg-gradient-to-r from-amber-600 to-red-500 transition-all duration-1000 ease-out"
+                  style="width: 0%; filter: drop-shadow(0 0 4px rgba(239,68,68,0.5));"
+                ></div>
+              </div>
+            </div>
+
+            <!-- Barra Con Benthic OPS -->
+            <div class="space-y-1.5">
+              <div class="flex justify-between text-xs font-bold">
+                <span class="text-cyan">Con Cobertura Benthic OPS</span>
+                <span class="text-cyan-400">&lt;1% de Riesgo de Cierre</span>
+              </div>
+              <div class="w-full h-4 bg-cyan-950/20 border border-white/5 rounded-full overflow-hidden">
+                <div
+                  id="bar-protected"
+                  class="h-full bg-gradient-to-r from-cyan-600 to-cyan-400 transition-all duration-1000 ease-out"
+                  style="width: 0%; filter: drop-shadow(0 0 6px rgba(0,212,255,0.6));"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 flex justify-center">
+            <button id="btn-animate-bars" class="btn-outline text-xs py-2 px-4 cursor-pointer">
+              Simular Cierre de Caja (6 Meses)
+            </button>
+          </div>
+        </div>
+
+        <!-- Botón de Acción General en la tarjeta -->
+        <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-white/5">
+          <div class="text-xs" style="color:#7aa3cc;">
+            ¿Quieres saber si tu empresa cumple con la nueva Ley 21.663?
+          </div>
+          <a href="/contacto" class="btn-primary text-xs py-2.5 px-5">
+            Agendar Diagnóstico Sin Costo →
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* Estilos para el selector interactivo */
+.radar-tab-btn {
+  background: rgba(10, 36, 114, 0.15);
+  border: 1px solid rgba(0, 212, 255, 0.08);
+  transition: all 0.30s ease;
+}
+
+.radar-tab-btn:hover {
+  border-color: rgba(0, 212, 255, 0.3);
+  background: rgba(10, 36, 114, 0.25);
+  transform: translateX(4px);
+}
+
+.radar-tab-btn.active {
+  border-color: rgba(0, 212, 255, 0.6);
+  background: rgba(0, 212, 255, 0.06);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.08);
+}
+
+.radar-tab-btn.active .tab-icon-wrapper {
+  border-color: rgba(0, 212, 255, 0.5);
+  background: rgba(0, 212, 255, 0.15);
+  color: #00d4ff;
+  filter: drop-shadow(0 0 4px rgba(0, 212, 255, 0.6));
+}
+
+/* Checkbox personalizado */
+.hidden-checkbox:checked + .checkbox-visual {
+  border-color: #00d4ff;
+  background: rgba(0, 212, 255, 0.15);
+  box-shadow: 0 0 8px rgba(0, 212, 255, 0.4);
+}
+
+.hidden-checkbox:checked + .checkbox-visual svg {
+  display: block;
+}
+
+/* Gráfico de pulso */
+.pulse-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw-pulse 10s linear infinite;
+}
+
+@keyframes draw-pulse {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Glitch animation for simulation */
+.glitch-red {
+  animation: glitch-anim 0.3s ease infinite;
+}
+
+@keyframes glitch-anim {
+  0%, 100% { stroke: #ffb400; stroke-width: 12px; }
+  50% { stroke: #ff3e3e; stroke-width: 16px; opacity: 0.8; filter: drop-shadow(0 0 10px rgba(255, 62, 62, 0.9)); }
+}
+</style>
+
+<script>
+(function() {
+  // ── Gestión de Pestañas (Tabs) ──
+  const buttons = document.querySelectorAll('.radar-tab-btn');
+  const cards = document.querySelectorAll('.radar-visual-card');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Remover active de todos los botones
+      buttons.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('style', 'border-color: rgba(0,212,255,0.08);');
+        const wrapper = b.querySelector('.tab-icon-wrapper');
+        if (wrapper) {
+          wrapper.classList.remove('border-cyan/20', 'bg-cyan-950/20', 'text-cyan');
+          wrapper.classList.add('border-white/5', 'bg-cyan-950/5', 'text-text-muted');
+        }
+      });
+
+      // Agregar active al clickeado
+      btn.classList.add('active');
+      btn.setAttribute('style', 'border-color: rgba(0,212,255,0.6);');
+      const activeWrapper = btn.querySelector('.tab-icon-wrapper');
+      if (activeWrapper) {
+        activeWrapper.classList.remove('border-white/5', 'bg-cyan-950/5', 'text-text-muted');
+        activeWrapper.classList.add('border-cyan/20', 'bg-cyan-950/20', 'text-cyan');
+      }
+
+      // Ocultar todas las tarjetas visuales
+      cards.forEach(c => c.classList.add('hidden'));
+
+      // Mostrar la tarjeta correspondiente
+      const targetId = btn.getAttribute('data-target');
+      const targetCard = document.getElementById(`visual-${targetId}`);
+      if (targetCard) {
+        targetCard.classList.remove('hidden');
+        
+        // Disparar animaciones específicas si es necesario
+        if (targetId === 'quiebra') {
+          triggerQuiebraBars();
+        }
+      }
+    });
+  });
+
+  // ── CARD 1: Simulación de Ransomware ──
+  const ransomCheck = document.getElementById('btn-simulate-ransom') as HTMLInputElement;
+  const circleVuln = document.getElementById('circle-vuln');
+  const ransomResult = document.getElementById('ransom-simulation-result');
+
+  if (ransomCheck && circleVuln && ransomResult) {
+    ransomCheck.addEventListener('change', () => {
+      if (ransomCheck.checked) {
+        circleVuln.classList.add('glitch-red');
+        ransomResult.innerHTML = '<span class="text-red-400 font-bold">⚠️ RANSOMWARE ACTIVO:</span> Servidor encriptado. Pérdida estimada: $15M+. Cierre de operación.';
+        ransomResult.classList.remove('opacity-0');
+        ransomResult.classList.add('opacity-1');
+      } else {
+        circleVuln.classList.remove('glitch-red');
+        ransomResult.innerHTML = 'Activa la casilla para ver el protocolo de respuesta.';
+        ransomResult.classList.remove('opacity-1');
+        ransomResult.classList.add('opacity-0');
+      }
+    });
+  }
+
+  // ── CARD 2: Cortafuegos WAF Toggle ──
+  const btnToggleFilter = document.getElementById('btn-toggle-filter');
+  const pulseNormal = document.getElementById('pulse-line-normal');
+  const pulseAttacks = document.getElementById('pulse-line-attacks');
+  const indicatorDot = document.getElementById('threat-indicator-dot');
+  const indicatorText = document.getElementById('threat-indicator-text');
+  const attackCounter = document.getElementById('attack-counter');
+
+  let firewallActive = true;
+  let currentAttackCount = 1846;
+
+  if (btnToggleFilter && pulseNormal && pulseAttacks && indicatorDot && indicatorText && attackCounter) {
+    // Intervalo de contador simulado
+    setInterval(() => {
+      if (!firewallActive) {
+        currentAttackCount += Math.floor(Math.random() * 8) + 3;
+      } else {
+        currentAttackCount += Math.random() > 0.7 ? 1 : 0;
+      }
+      attackCounter.textContent = currentAttackCount.toLocaleString();
+    }, 1500);
+
+    btnToggleFilter.addEventListener('click', () => {
+      firewallActive = !firewallActive;
+      if (!firewallActive) {
+        pulseNormal.classList.add('hidden');
+        pulseAttacks.classList.remove('hidden');
+        
+        indicatorDot.classList.remove('bg-cyan-400', 'shadow-[0_0_6px_rgba(0,212,255,0.8)]');
+        indicatorDot.classList.add('bg-red-500', 'shadow-[0_0_8px_rgba(239,68,68,0.8)]');
+        
+        indicatorText.textContent = 'Servidor Expuesto (Filtro Desactivado)';
+        indicatorText.classList.remove('text-cyan-400');
+        indicatorText.classList.add('text-red-500');
+        
+        btnToggleFilter.textContent = 'Activar Cortafuegos WAF (Bloquear)';
+        btnToggleFilter.classList.remove('border-cyan-500/45');
+        btnToggleFilter.classList.add('border-red-500/40', 'text-red-400');
+      } else {
+        pulseNormal.classList.remove('hidden');
+        pulseAttacks.classList.add('hidden');
+        
+        indicatorDot.classList.remove('bg-red-500', 'shadow-[0_0_8px_rgba(239,68,68,0.8)]');
+        indicatorDot.classList.add('bg-cyan-400', 'shadow-[0_0_6px_rgba(0,212,255,0.8)]');
+        
+        indicatorText.textContent = 'Tráfico Protegido (WAF Activo)';
+        indicatorText.classList.remove('text-red-500');
+        indicatorText.classList.add('text-cyan-400');
+        
+        btnToggleFilter.textContent = 'Simular Apagado de Cortafuegos WAF';
+        btnToggleFilter.classList.remove('border-red-500/40', 'text-red-400');
+        btnToggleFilter.classList.add('border-cyan-500/45');
+      }
+    });
+  }
+
+  // ── CARD 3: Calculadora de Inactividad ──
+  const billingRange = document.getElementById('billing-range') as HTMLInputElement;
+  const billingDisplay = document.getElementById('billing-display');
+  const costDowntime = document.getElementById('cost-downtime');
+  const costBenthic = document.getElementById('cost-benthic');
+
+  if (billingRange && billingDisplay && costDowntime && costBenthic) {
+    billingRange.addEventListener('input', () => {
+      const val = parseInt(billingRange.value);
+      const formattedBilling = (val * 1000000).toLocaleString('es-CL');
+      billingDisplay.textContent = `$${formattedBilling} CLP`;
+
+      // Pérdida por 14 días: aprox 50% de facturación mensual directa + 40% de costo de recuperación / reputación
+      const loss = Math.round(val * 1000000 * 0.75);
+      costDowntime.textContent = `$${loss.toLocaleString('es-CL')} CLP`;
+
+      // Costo de Benthic: escala ligeramente con el tamaño de facturación simulando complejidad
+      let benthicPrice = 350000;
+      if (val > 40 && val <= 80) benthicPrice = 600000;
+      else if (val > 80) benthicPrice = 950000;
+      
+      costBenthic.textContent = `$${benthicPrice.toLocaleString('es-CL')} CLP`;
+    });
+  }
+
+  // ── CARD 4: Calculadora de Pérdida de Horas (Reportes) ──
+  const inputEmployees = document.getElementById('employees-count') as HTMLInputElement;
+  const inputHours = document.getElementById('hours-count') as HTMLInputElement;
+  const lostHoursDisplay = document.getElementById('lost-hours');
+  const lostDaysDisplay = document.getElementById('lost-days');
+
+  function calculateHoursLost() {
+    if (!inputEmployees || !inputHours || !lostHoursDisplay || !lostDaysDisplay) return;
+    const employees = parseInt(inputEmployees.value) || 0;
+    const hours = parseInt(inputHours.value) || 0;
+
+    // Horas al año = empleados * horas_semana * 48 semanas operativas
+    const totalHours = employees * hours * 48;
+    const totalDays = Math.round(totalHours / 8);
+
+    lostHoursDisplay.textContent = `${totalHours.toLocaleString()} Horas`;
+    lostDaysDisplay.textContent = `${totalDays.toLocaleString()} jornadas`;
+  }
+
+  if (inputEmployees && inputHours) {
+    inputEmployees.addEventListener('input', calculateHoursLost);
+    inputHours.addEventListener('input', calculateHoursLost);
+  }
+
+  // ── CARD 5: Pipeline de Conciliación Documental ──
+  const btnTogglePipeline = document.getElementById('btn-toggle-pipeline');
+  const pipelineBrain = document.getElementById('pipeline-brain');
+  const docOut2 = document.getElementById('doc-out-2');
+  const pipelineStatusText = document.getElementById('pipeline-status-text');
+
+  let aiPipelineActive = false;
+
+  if (btnTogglePipeline && pipelineBrain && docOut2 && pipelineStatusText) {
+    btnTogglePipeline.addEventListener('click', () => {
+      aiPipelineActive = !aiPipelineActive;
+      if (aiPipelineActive) {
+        // Activado: WAF/IA procesa sin errores
+        pipelineBrain.classList.add('animate-spin');
+        pipelineBrain.setAttribute('style', 'animation-duration: 3s; filter: drop-shadow(0 0 16px rgba(0,212,255,0.75));');
+        
+        docOut2.textContent = '✅';
+        docOut2.classList.remove('border-red-500/30', 'bg-red-950/15', 'text-red-400');
+        docOut2.classList.add('border-green-500/30', 'bg-green-950/15', 'text-green-400');
+        
+        pipelineStatusText.textContent = 'Conciliación IA Activada: Precisión del 99.8% (0 Errores)';
+        pipelineStatusText.classList.remove('text-[rgba(255,255,255,0.5)]');
+        pipelineStatusText.classList.add('text-green-400');
+        
+        btnTogglePipeline.textContent = 'Volver a Procesamiento Manual';
+        btnTogglePipeline.classList.remove('border-cyan-500/45');
+        btnTogglePipeline.classList.add('border-amber-500/40', 'text-amber-400');
+      } else {
+        // Desactivado: errores tipográficos normales
+        pipelineBrain.classList.remove('animate-spin');
+        pipelineBrain.removeAttribute('style');
+        
+        docOut2.textContent = '❌';
+        docOut2.classList.remove('border-green-500/30', 'bg-green-950/15', 'text-green-400');
+        docOut2.classList.add('border-red-500/30', 'bg-red-950/15', 'text-red-400');
+        
+        pipelineStatusText.textContent = 'Procesamiento Manual (Con Errores Detectados)';
+        pipelineStatusText.classList.remove('text-green-400');
+        pipelineStatusText.classList.add('text-[rgba(255,255,255,0.5)]');
+        
+        btnTogglePipeline.textContent = 'Activar Conciliación Inteligente IA';
+        btnTogglePipeline.classList.remove('border-amber-500/40', 'text-amber-400');
+        btnTogglePipeline.classList.add('border-cyan-500/45');
+      }
+    });
+  }
+
+  // ── CARD 6: Barras de Supervivencia ──
+  const barUnprotected = document.getElementById('bar-unprotected');
+  const barProtected = document.getElementById('bar-protected');
+  const btnAnimateBars = document.getElementById('btn-animate-bars');
+
+  function triggerQuiebraBars() {
+    if (!barUnprotected || !barProtected) return;
+    
+    // Iniciar con un pequeño delay
+    setTimeout(() => {
+      barUnprotected.style.width = '60%';
+      barProtected.style.width = '1%';
+    }, 150);
+  }
+
+  if (btnAnimateBars) {
+    btnAnimateBars.addEventListener('click', () => {
+      if (!barUnprotected || !barProtected) return;
+      
+      // Reset
+      barUnprotected.style.width = '0%';
+      barProtected.style.width = '0%';
+      
+      // Animar de nuevo
+      setTimeout(() => {
+        barUnprotected.style.width = '60%';
+        barProtected.style.width = '0.5%';
+      }, 100);
+    });
+  }
+})();
+</script>

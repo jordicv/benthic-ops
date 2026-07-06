@@ -1,0 +1,250 @@
+/* Barra Superior ChileCompra */
+#barra_superior_chc {
+    width: 100%;
+    text-align: right;
+    background: #ffffff;
+    /*margin-bottom: 20px;*/
+    font-family: "gobCL_Regular";
+    border-top: 5px solid #d8d8d8;
+}
+nav.menu_chc {
+    width: 1240px;
+    text-align: right;
+    margin: 0 auto;
+    position: relative;
+    top: -4px;
+}
+nav.menu_chc ul.menu_chc_container {
+    text-align: right;
+    display: block;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 5px;
+}
+nav.menu_chc ul li {
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    border-top: 4px solid #d8d8d8;
+    padding: 5px 14px 0 14px;
+    letter-spacing: 0px;
+    margin-right: -4px;
+}
+nav.menu_chc ul li:hover {
+    border-top: 4px solid #585a59;
+}
+#container_botones_chc {
+    position: relative;
+    top: 4px;
+}
+.menu_chc_container li span {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin: 0 5px;
+    cursor: pointer;
+    background: url(images/barras/acces-icon.png) no-repeat;
+}
+.menu_chc_container li span#aumentar {
+    background-position: 0 0;
+}
+.menu_chc_container li span#aumentar:hover {
+    background-position: 0 -20px;
+}
+.menu_chc_container li span#disminuir {
+    background-position: -20px 0;
+}
+.menu_chc_container li span#disminuir:hover {
+    background-position: -20px -20px;
+}
+.menu_chc_container li span#contraste {
+    background-position: -40px 0;
+    margin-right: 0;
+}
+.menu_chc_container li span#contraste:hover {
+    background-position: -40px -20px;
+    margin-right: 0;
+}
+li.botones_superior {
+    border: none !important;
+    padding: 7px 0 !important;
+}
+nav.menu_chc a {
+    color: #0f4980;
+    font-size: 0.9em;
+}
+nav.menu_chc a:hover {
+    text-decoration: underline;
+}
+
+#capacitacion_menu {
+    display: inline-block;
+    width: 22px;
+    height: 20px;
+    padding: 0 5px 0 1px;
+    vertical-align: bottom;
+    background: url("images/barras/capacitacion_inactive.png") no-repeat;
+}
+#susuario_menu {
+    display: inline-block;
+    width: 22px;
+    height: 20px;
+    padding: 0 5px 0 1px;
+    vertical-align: bottom;
+    background: url("images/barras/susuario_inactive.png") no-repeat;
+}
+select#menu_general_option {
+    background: #606060;
+    border: none;
+    color: white;
+    font-family: "gobCL_Bold";
+}
+/* Fin Barra Chilecompra */
+/* Footer Chilecompra */
+footer {
+    width: 100%;
+    background: #585959;
+    vertical-align: bottom;
+    margin-top: 0px;
+    padding-bottom: 50px;
+}
+#contenedor_footer {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 50px 15px;
+    text-align: center;
+}
+#contenedor_footer a.iconos_footer {
+    width: auto;
+    display: inline-block;
+    margin: 0 10px;
+}
+.contenedor_footer_interno {
+    width: 29%;
+    display: inline-block;
+    height: auto;
+    text-align: left;
+    padding: 0 0 0 3%;
+    border-right: 1px solid #a9a2a2;
+    vertical-align: top;
+}
+.contenedor_footer_interno:last-child {
+    border-right: none;
+}
+#contenedor_footer figure {
+    margin-bottom: 30px;
+}
+#contenedor_footer h3 {
+    color: white;
+    font-size: 1em;
+    margin-bottom: 20px;
+    width: 100%;
+}
+#contenedor_footer p {
+    color: white;
+    margin: 5px 0;
+    font-size: 0.85em;
+}
+#contenedor_footer a {
+    color: #add8e6;
+    font-size: 0.85em;
+    width: 100%;
+    display: block;
+    margin: 12px 0;
+}
+#contenedor_footer a:hover {
+    color: #c5eff7;
+    text-decoration: underline;
+}
+a.button_a {
+    background: #7a7979;
+    padding: 12px 15px;
+    text-transform: uppercase;
+    margin-top: 40px !important;
+    width: 146px !important;
+}
+ul.inline_order {
+    margin-bottom: 30px;
+}
+.inline_order li {
+            display: inline-block;
+        }
+        .inline_order li a {
+            vertical-align: top;
+    padding: 5px 0 0 5px;
+    margin: 0 !important;
+    position: relative;
+    top: 5px;
+    color: #fff;
+    text-decoration: none;
+    display: inline-block !important;
+    width: auto !important;
+        }
+        .inline_order li a:hover {
+            color: #fff;
+        }
+        .contenedor_footer_interno span {
+            background-image: url("images/iconos_sociales.png");
+            background-repeat: no-repeat;
+            width: 25px;
+            height: 25px;
+            display: inline-block;
+            background-position: -1px 0px;
+        }
+        .sociales_footer li {
+            display: inline-block;
+            list-style: none;
+            margin-right: 10px;
+        }
+        #telefono_fijo {
+            background-position: -1px -26px;
+        }
+        #telefono_fijo:hover {
+            background-position: -27px -26px;
+        }
+        #telefono_movil {
+            background-position: -53px -26px;
+        }
+        #telefono_movil:hover {
+            background-position: -79px -26px;
+        }
+        #nuestras_oficinas {
+            background-position: -2px 0px;
+        }
+        #nuestras_oficinas:hover {
+            background-position: -27px 0px;
+        }
+        #siguenos_facebook {
+            background-position: -53px 0px;
+        }
+        #siguenos_facebook:hover {
+            background-position: -79px 0px;
+        }
+        #siguenos_twitter {
+            background-position: -105px 0px;
+        }
+        #siguenos_twitter:hover {
+            background-position: -131px 0px;
+        }
+        #siguenos_linkedin {
+            background-position: -105px -26px;
+        }
+        #siguenos_linkedin:hover {
+            background-position: -131px -26px;
+        }
+        #siguenos_youtube {
+            background-position: -157px 0px;
+        }
+        #siguenos_youtube:hover {
+            background-position: -183px 0px;
+        }
+        #siguenos_instagram {
+            background-position: -157px -26px;
+        }
+        #siguenos_instagram:hover {
+            background-position: -183px -26px;
+        }
+#contenedor_footer a.item_footer_movil {
+    display: none;
+}
+/* Fin Footer Chilecompra */

@@ -1,0 +1,31 @@
+---
+import { countries } from '../data/countries';
+
+interface Props {
+  id: string;
+  name?: string;
+  defaultCode?: string;
+}
+
+const { id, name = 'countryCode', defaultCode = '+56' } = Astro.props;
+---
+
+<div class="relative shrink-0 w-[100px]">
+  <select
+    id={id}
+    name={name}
+    class="form-input text-sm cursor-pointer pl-3 pr-8 w-full"
+    style="appearance: none; -webkit-appearance: none; -moz-appearance: none;"
+  >
+    {countries.map((c) => (
+      <option value={c.dialCode} selected={c.dialCode === defaultCode} style="background:#051650;">
+        {c.flag} {c.dialCode}
+      </option>
+    ))}
+  </select>
+  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3.5" style="color: #00d4ff;">
+    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </div>
+</div>

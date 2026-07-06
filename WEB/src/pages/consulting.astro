@@ -36,12 +36,11 @@ import ContactForm from '../components/ContactForm.astro';
 
       <!-- Alerta de contexto unificada dentro del Hero -->
       <div class="max-w-3xl mx-auto mt-14 load-fade-in delay-400">
-        <div class="glass-card p-5 flex items-start gap-4 text-left" style="border-color: rgba(255,180,0,0.25); background: rgba(255,150,0,0.04);">
+        <div class="glass-card p-5 flex items-start gap-4 text-left" style="border-color: rgba(255,100,100,0.25); background: rgba(255,50,50,0.03);">
           <span class="text-2xl flex-shrink-0">⚠️</span>
           <div>
             <p class="text-sm leading-relaxed" style="color:#a8c4e0;">
-              <strong style="color:#ffd700;">El 73% de las PYMEs en Chile</strong> no tiene un plan de respaldo activo ni políticas básicas de acceso. Un ataque de ransomware puede detener tu operación por semanas — o para siempre.
-              Nosotros lo prevenimos antes de que ocurra.
+              <strong style="color:#ff5555;">El 73% de las PYMEs en Chile</strong> carece de un plan de respaldo inmutable y políticas de acceso 2FA. Con la entrada en vigor de la nueva <strong style="color:#00d4ff;">Ley Marco de Ciberseguridad (Ley 21.663)</strong>, tu empresa enfrenta multas severas e inactividad forzada de semanas ante un incidente. Te blindamos antes de que ocurra.
             </p>
           </div>
         </div>
@@ -189,9 +188,9 @@ import ContactForm from '../components/ContactForm.astro';
         </h3>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
           {[
-            { val: '$4.5M', label: 'Costo promedio de una brecha de datos en una PYME (USD)', icon: '💸' },
-            { val: '22 días', label: 'Tiempo promedio de inactividad tras un ataque de ransomware', icon: '🔴' },
-            { val: '60%', label: 'De PYMEs que sufren un ciberataque cierran en 6 meses', icon: '📉' },
+            { val: 'USD $675K', label: 'Pago promedio de rescates por ransomware en Chile', icon: '💸' },
+            { val: '1.846', label: 'Ataques cibernéticos semanales promedio por empresa en Chile', icon: '🔴' },
+            { val: '60%', label: 'De PYMEs que sufren un ciberataque quiebran en 6 meses', icon: '📉' },
           ].map(({ val, label, icon }) => (
             <div>
               <div class="text-3xl mb-2">{icon}</div>
@@ -199,6 +198,9 @@ import ContactForm from '../components/ContactForm.astro';
               <div class="text-xs mt-2 leading-relaxed" style="color:#7aa3cc;">{label}</div>
             </div>
           ))}
+        </div>
+        <div class="mt-8 text-center text-xs" style="color:#7aa3cc; border-top: 1px solid rgba(0,212,255,0.1); padding-top: 1.5rem;">
+          📢 <strong>Nueva Regulación en Chile:</strong> La Ley Marco de Ciberseguridad (Ley 21.663) establece multas severas y responsabilidades de continuidad operativa para directores y administradores.
         </div>
       </div>
     </div>

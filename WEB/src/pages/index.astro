@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import ContactForm from '../components/ContactForm.astro';
 import NeuralNetwork from '../components/NeuralNetwork.astro';
+import CybersecurityRadar from '../components/CybersecurityRadar.astro';
 ---
 
 <Layout title="Benthic OPS — Inteligencia Operativa y Tecnología a la Medida" currentPage="/">
@@ -176,6 +177,17 @@ import NeuralNetwork from '../components/NeuralNetwork.astro';
           </svg>
         </ServiceCard>
       </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       RADAR DE CIBERSEGURIDAD — Fondo abismal/oscuro
+  ═══════════════════════════════════════ -->
+  <section class="relative py-20 px-6 overflow-hidden border-t border-b border-white/5">
+    <div class="section-bg section-bg-abyss" style="opacity:0.42;"></div>
+    <div class="section-overlay" style="background:rgba(0,5,20,0.75);"></div>
+    <div class="relative reveal" style="z-index:2;">
+      <CybersecurityRadar />
     </div>
   </section>
 

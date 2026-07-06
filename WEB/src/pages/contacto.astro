@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import CountrySelect from '../components/CountrySelect.astro';
 ---
 
 <Layout
@@ -154,30 +155,67 @@ import Layout from '../layouts/Layout.astro';
               </div>
               <div>
                 <label for="phone-main" class="block text-xs font-semibold mb-2 uppercase tracking-widest" style="color:#00d4ff;">Teléfono</label>
-                <input type="tel" id="phone-main" name="phone" placeholder="+56 9 XXXX XXXX" class="form-input" />
+                <div class="flex gap-3">
+                  <CountrySelect id="country-code-main" name="countryCode" defaultCode="+56" />
+                  <input type="tel" id="phone-main" name="phone" placeholder="9 XXXX XXXX" class="form-input flex-1" />
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="employees-main" class="block text-xs font-semibold mb-2 uppercase tracking-widest" style="color:#00d4ff;">Tamaño de empresa</label>
+                <div class="relative w-full">
+                  <select id="employees-main" name="employees" class="form-input pr-10" style="cursor:pointer; appearance: none; -webkit-appearance: none; -moz-appearance: none;">
+                    <option value="" style="background:#051650;">Selecciona una opción</option>
+                    <option value="1-5" style="background:#051650;">Menos de 5 personas</option>
+                    <option value="5-20" style="background:#051650;">5 – 20 personas</option>
+                    <option value="20-50" style="background:#051650;">20 – 50 personas</option>
+                    <option value="50-200" style="background:#051650;">50 – 200 personas</option>
+                    <option value="200+" style="background:#051650;">Más de 200 personas</option>
+                  </select>
+                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3.5" style="color: #00d4ff;">
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <label for="billing-main" class="block text-xs font-semibold mb-2 uppercase tracking-widest" style="color:#00d4ff;">Facturación anual</label>
+                <div class="relative w-full">
+                  <select id="billing-main" name="billing" class="form-input pr-10" style="cursor:pointer; appearance: none; -webkit-appearance: none; -moz-appearance: none;">
+                    <option value="" style="background:#051650;">Selecciona una opción</option>
+                    <option value="micro" style="background:#051650;">Menos de 2.400 UF</option>
+                    <option value="small" style="background:#051650;">2.400 – 25.000 UF</option>
+                    <option value="medium" style="background:#051650;">25.000 – 100.000 UF</option>
+                    <option value="large" style="background:#051650;">Más de 100.000 UF</option>
+                  </select>
+                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3.5" style="color: #00d4ff;">
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </div>
               </div>
             </div>
 
             <div>
-              <label for="employees-main" class="block text-xs font-semibold mb-2 uppercase tracking-widest" style="color:#00d4ff;">Tamaño de empresa</label>
-              <select id="employees-main" name="employees" class="form-input" style="cursor:pointer;">
-                <option value="" style="background:#051650;">Selecciona una opción</option>
-                <option value="5-20" style="background:#051650;">5 – 20 personas</option>
-                <option value="20-50" style="background:#051650;">20 – 50 personas</option>
-                <option value="50-200" style="background:#051650;">50 – 200 personas</option>
-                <option value="200+" style="background:#051650;">Más de 200 personas</option>
-              </select>
-            </div>
-
-            <div>
               <label for="service-main" class="block text-xs font-semibold mb-2 uppercase tracking-widest" style="color:#00d4ff;">¿En qué podemos ayudarte? *</label>
-              <select id="service-main" name="service" required class="form-input" style="cursor:pointer;">
-                <option value="" style="background:#051650;">Selecciona un servicio</option>
-                <option value="analytics" style="background:#051650;">Analytics & Predictive AI</option>
-                <option value="software" style="background:#051650;">Custom Software & Systems</option>
-                <option value="consulting" style="background:#051650;">Consulting & Cyber Security</option>
-                <option value="all" style="background:#051650;">Varios / No estoy seguro</option>
-              </select>
+              <div class="relative w-full">
+                <select id="service-main" name="service" required class="form-input pr-10" style="cursor:pointer; appearance: none; -webkit-appearance: none; -moz-appearance: none;">
+                  <option value="" style="background:#051650;">Selecciona un servicio</option>
+                  <option value="analytics" style="background:#051650;">Analytics & Predictive AI</option>
+                  <option value="software" style="background:#051650;">Custom Software & Systems</option>
+                  <option value="consulting" style="background:#051650;">Consulting & Cyber Security</option>
+                  <option value="all" style="background:#051650;">Varios / No estoy seguro</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3.5" style="color: #00d4ff;">
+                  <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
             </div>
 
             <div>
