@@ -111,7 +111,9 @@ app.post('/api/exchange-token', checkFintocInit, async (req, res) => {
   }
   
   try {
-    const response = await fetch(`https://api.fintoc.com/v1/links?exchange_token=${exchangeToken}`, {
+    // Correct endpoint: GET /v1/links/exchange?exchange_token=...
+    // This is the ONLY call that returns link_token (not null)
+    const response = await fetch(`https://api.fintoc.com/v1/links/exchange?exchange_token=${exchangeToken}`, {
       method: 'GET',
       headers: {
         'Authorization': fintocApiKey
@@ -123,29 +125,34 @@ app.post('/api/exchange-token', checkFintocInit, async (req, res) => {
       throw new Error(errText || `Fintoc API returned status ${response.status}`);
     }
 
-    const linksList = await response.json();
-    if (!linksList || linksList.length === 0) {
-      return res.status(404).json({ error: 'No se encontró ninguna conexión vinculada para este token de intercambio.' });
+    const link = await response.json();
+    
+    if (!link || !link.id) {
+      return res.status(502).json({ error: 'Respuesta inesperada de Fintoc al hacer el exchange.' });
     }
 
-    const link = linksList[0];
+    if (!link.link_token) {
+      return res.status(502).json({ error: 'Fintoc no devolvió link_token. El exchange_token puede haber expirado.' });
+    }
     
     // Save link information to local JSON database
     const db = readDb();
     const newLink = {
       id: link.id,
       linkToken: link.link_token,
-      username: link.username || 'Usuario Banco Chile',
-      institution: link.institution ? link.institution.name : 'Banco Chile',
+      username: link.username || 'Usuario',
+      institution: link.institution ? link.institution.name : 'Banco',
       connectedAt: new Date().toISOString()
     };
     
-    // Avoid duplicates
-    const exists = db.links.some(l => l.id === link.id);
-    if (!exists) {
+    // Insert or update (same link reconnected)
+    const idx = db.links.findIndex(l => l.id === link.id);
+    if (idx === -1) {
       db.links.push(newLink);
-      writeDb(db);
+    } else {
+      db.links[idx] = newLink;
     }
+    writeDb(db);
     
     res.json(newLink);
   } catch (error) {
