@@ -196,8 +196,8 @@
               </div>
               
               <!-- Controles de filtros avanzados -->
-              <div class="flex-wrap items-center gap-2 flex-grow justify-end" style="display: flex; gap: 10px; align-items: flex-end;">
-                 <div class="filter-group">
+              <div class="filters-container">
+                 <div class="filter-group flex-grow">
                    <label class="filter-label">Buscar</label>
                    <input type="text" id="mov-search" class="filter-input" placeholder="Ej: supermercado...">
                  </div>
@@ -211,9 +211,10 @@
                  </div>
                  <div class="filter-group">
                    <label class="filter-label">Cuenta</label>
-                   <select id="account-selector" class="account-select" style="min-width: 150px;"></select>
+                   <select id="account-selector" class="account-select"></select>
                  </div>
                  <div class="filter-group">
+                   <label class="filter-label">&nbsp;</label>
                    <button id="btn-clear-filters" class="btn-clear" title="Limpiar todos los filtros y restablecer fechas">Limpiar</button>
                  </div>
               </div>
