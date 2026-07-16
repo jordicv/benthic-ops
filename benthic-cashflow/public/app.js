@@ -74,11 +74,25 @@ connectBtn.addEventListener('click', async () => {
       publicKey: publicKey,
       holderType: 'individual',
       widgetToken: widgetToken,
-      onSuccess: async (linkIntent) => {
-        console.log('Fintoc link intent success!', linkIntent);
+      onSuccess: async (result) => {
+        console.log('Fintoc link success!', result);
+        
+        let token = '';
+        if (typeof result === 'string') {
+          token = result;
+        } else if (result && typeof result === 'object') {
+          token = result.exchange_token || result.link_token || result.id || '';
+        }
+        
+        if (!token) {
+          console.error('No token found in Fintoc onSuccess argument:', result);
+          alert('Error: No se encontró ningún token en el retorno de Fintoc.');
+          resetConnectButton();
+          return;
+        }
         
         // Exchange token with backend
-        await exchangeToken(linkIntent.exchange_token);
+        await exchangeToken(token);
       },
       onExit: () => {
         console.log('User closed Fintoc Widget');
