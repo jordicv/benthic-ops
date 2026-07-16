@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const { Fintoc } = require('fintoc');
 const fs = require('fs');
 const path = require('path');
 require('dotenv').config();
@@ -35,19 +34,15 @@ function writeDb(data) {
   }
 }
 
-// Initialize Fintoc client
+// Fintoc API Key
 const fintocApiKey = process.env.FINTOC_SECRET_KEY || '';
-const fintoc = fintocApiKey ? new Fintoc(fintocApiKey) : null;
 
-// Middleware to check Fintoc client initialization
+// Middleware to check Fintoc API Key configuration
 const checkFintocInit = (req, res, next) => {
   if (!fintocApiKey || fintocApiKey.includes('your_secret_key')) {
     return res.status(400).json({ 
       error: 'Fintoc Secret API Key is not configured. Please update the .env file.' 
     });
-  }
-  if (!fintoc) {
-    return res.status(500).json({ error: 'Fintoc client failed to initialize.' });
   }
   next();
 };
@@ -65,13 +60,27 @@ app.get('/api/links', (req, res) => {
   res.json(db.links);
 });
 
-// API: Create a Link Intent for the Widget
+// API: Create a Link Intent for the Widget (Direct REST API Call)
 app.post('/api/link-intent', checkFintocInit, async (req, res) => {
   try {
-    const linkIntent = await fintoc.link_intents.create({
-      product: 'movements',
-      holder_type: 'individual'
+    const response = await fetch('https://api.fintoc.com/v1/link_intents', {
+      method: 'POST',
+      headers: {
+        'Authorization': fintocApiKey,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        product: 'movements',
+        holder_type: 'individual'
+      })
     });
+
+    if (!response.ok) {
+      const errText = await response.text();
+      throw new Error(errText || `Fintoc API returned status ${response.status}`);
+    }
+
+    const linkIntent = await response.json();
     
     res.json({
       id: linkIntent.id,
@@ -83,7 +92,7 @@ app.post('/api/link-intent', checkFintocInit, async (req, res) => {
   }
 });
 
-// API: Exchange the temporary token for a permanent Link ID
+// API: Exchange the temporary token for a permanent Link ID (Direct REST API Call)
 app.post('/api/exchange-token', checkFintocInit, async (req, res) => {
   const { exchangeToken } = req.body;
   
@@ -92,13 +101,29 @@ app.post('/api/exchange-token', checkFintocInit, async (req, res) => {
   }
   
   try {
-    // Exchange token for Link object
-    const link = await fintoc.link_intents.exchange(exchangeToken);
+    const response = await fetch('https://api.fintoc.com/v1/link_intents/exchange', {
+      method: 'POST',
+      headers: {
+        'Authorization': fintocApiKey,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        exchange_token: exchangeToken
+      })
+    });
+
+    if (!response.ok) {
+      const errText = await response.text();
+      throw new Error(errText || `Fintoc API returned status ${response.status}`);
+    }
+
+    const link = await response.json();
     
     // Save link information to local JSON database
     const db = readDb();
     const newLink = {
       id: link.id,
+      linkToken: link.link_token,
       username: link.username || 'Usuario Banco Chile',
       institution: link.institution ? link.institution.name : 'Banco Chile',
       connectedAt: new Date().toISOString()
@@ -118,7 +143,7 @@ app.post('/api/exchange-token', checkFintocInit, async (req, res) => {
   }
 });
 
-// API: List accounts for a specific link
+// API: List accounts for a specific link (Direct REST API Call)
 app.get('/api/accounts', checkFintocInit, async (req, res) => {
   const { linkId } = req.query;
   
@@ -127,10 +152,30 @@ app.get('/api/accounts', checkFintocInit, async (req, res) => {
   }
   
   try {
-    const linkObj = await fintoc.links.get(linkId);
+    // Find the link token from our database
+    const db = readDb();
+    const savedLink = db.links.find(l => l.id === linkId);
+    if (!savedLink) {
+      return res.status(404).json({ error: 'Link connection not found in local database' });
+    }
     
-    // Fetch all accounts for this link
-    const accounts = await linkObj.accounts.all();
+    const linkToken = savedLink.linkToken;
+
+    // Fetch Link object details which contains the accounts array
+    const response = await fetch(`https://api.fintoc.com/v1/links/${linkToken}`, {
+      method: 'GET',
+      headers: {
+        'Authorization': fintocApiKey
+      }
+    });
+
+    if (!response.ok) {
+      const errText = await response.text();
+      throw new Error(errText || `Fintoc API returned status ${response.status}`);
+    }
+
+    const linkData = await response.json();
+    const accounts = linkData.accounts || [];
     
     // Map accounts to a simplified format for frontend
     const formattedAccounts = accounts.map(acc => ({
@@ -153,7 +198,7 @@ app.get('/api/accounts', checkFintocInit, async (req, res) => {
   }
 });
 
-// API: List movements (transactions) for an account
+// API: List movements (transactions) for an account (Direct REST API Call)
 app.get('/api/accounts/:accountId/movements', checkFintocInit, async (req, res) => {
   const { linkId } = req.query;
   const { accountId } = req.params;
@@ -163,18 +208,29 @@ app.get('/api/accounts/:accountId/movements', checkFintocInit, async (req, res) 
   }
   
   try {
-    const linkObj = await fintoc.links.get(linkId);
-    
-    // Find the specific account
-    const accounts = await linkObj.accounts.all();
-    const account = accounts.find(acc => acc.id === accountId);
-    
-    if (!account) {
-      return res.status(404).json({ error: 'Account not found' });
+    // Find the link token from our database
+    const db = readDb();
+    const savedLink = db.links.find(l => l.id === linkId);
+    if (!savedLink) {
+      return res.status(404).json({ error: 'Link connection not found in local database' });
     }
     
-    // Fetch movements (limiting to top 50 for performance)
-    const movements = await account.movements.all();
+    const linkToken = savedLink.linkToken;
+
+    // Fetch movements directly from REST API
+    const response = await fetch(`https://api.fintoc.com/v1/accounts/${accountId}/movements?link_token=${linkToken}`, {
+      method: 'GET',
+      headers: {
+        'Authorization': fintocApiKey
+      }
+    });
+
+    if (!response.ok) {
+      const errText = await response.text();
+      throw new Error(errText || `Fintoc API returned status ${response.status}`);
+    }
+
+    const movements = await response.json();
     
     const formattedMovements = movements.slice(0, 50).map(mov => ({
       id: mov.id,
