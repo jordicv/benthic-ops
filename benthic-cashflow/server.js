@@ -71,7 +71,8 @@ app.post('/api/link-intent', checkFintocInit, async (req, res) => {
       },
       body: JSON.stringify({
         product: 'movements',
-        holder_type: 'individual'
+        holder_type: 'individual',
+        country: 'cl'
       })
     });
 
