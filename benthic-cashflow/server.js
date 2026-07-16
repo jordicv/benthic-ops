@@ -111,7 +111,7 @@ app.post('/api/exchange-token', checkFintocInit, async (req, res) => {
   }
   
   try {
-    const response = await fetch(`https://api.fintoc.com/v1/links/${exchangeToken}`, {
+    const response = await fetch(`https://api.fintoc.com/v1/links?exchange_token=${exchangeToken}`, {
       method: 'GET',
       headers: {
         'Authorization': fintocApiKey
@@ -123,7 +123,12 @@ app.post('/api/exchange-token', checkFintocInit, async (req, res) => {
       throw new Error(errText || `Fintoc API returned status ${response.status}`);
     }
 
-    const link = await response.json();
+    const linksList = await response.json();
+    if (!linksList || linksList.length === 0) {
+      return res.status(404).json({ error: 'No se encontró ninguna conexión vinculada para este token de intercambio.' });
+    }
+
+    const link = linksList[0];
     
     // Save link information to local JSON database
     const db = readDb();
