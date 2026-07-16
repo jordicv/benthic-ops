@@ -65,7 +65,12 @@ connectBtn.addEventListener('click', async () => {
     const { widgetToken } = await res.json();
 
     // Initialize Fintoc Widget
-    const widget = Fintoc.create({
+    const fintocSdk = window.Fintoc || (typeof Fintoc !== 'undefined' ? Fintoc : null);
+    if (!fintocSdk) {
+      throw new Error('El SDK de Fintoc (Fintoc.js) no se ha cargado en el navegador. Esto ocurre si usas Brave o un bloqueador de anuncios (AdBlock, uBlock Origin) que bloquea el dominio js.fintoc.com. Por favor, desactívalo para localhost e intenta de nuevo.');
+    }
+
+    const widget = fintocSdk.create({
       publicKey: publicKey,
       holderType: 'individual',
       widgetToken: widgetToken,
