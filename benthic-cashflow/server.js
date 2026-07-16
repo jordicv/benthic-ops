@@ -262,7 +262,7 @@ app.get('/api/accounts/:accountId/movements', checkFintocInit, async (req, res) 
       amount: mov.amount,
       postDate: mov.post_date,
       description: mov.description,
-      type: mov.type, // 'debit' or 'credit'
+      type: mov.amount >= 0 ? 'credit' : 'debit', // Determinar según signo matemático
       currency: mov.currency,
       pending: mov.pending
     }));
