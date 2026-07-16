@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Benthic Cashflow — Inteligencia de Cuentas y Flujo de Caja</title>
+  
+  <!-- Font Source: Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Fintoc.js library for Widget Integration -->
+  <script src="https://js.fintoc.com/v1/"></script>
+</head>
+<body class="ocean-bg min-h-screen relative">
+  <!-- Background bubble generator -->
+  <div aria-hidden="true" id="bubbles-container">
+    <div class="bubble" style="left:8%;  width:10px; height:10px; --duration:9s;  --delay:0s;"></div>
+    <div class="bubble" style="left:18%; width:6px;  height:6px;  --duration:12s; --delay:2s;"></div>
+    <div class="bubble" style="left:30%; width:14px; height:14px; --duration:8s;  --delay:4s;"></div>
+    <div class="bubble" style="left:45%; width:8px;  height:8px;  --duration:11s; --delay:1s;"></div>
+    <div class="bubble" style="left:60%; width:12px; height:12px; --duration:10s; --delay:3s;"></div>
+    <div class="bubble" style="left:72%; width:7px;  height:7px;  --duration:13s; --delay:0.5s;"></div>
+    <div class="bubble" style="left:85%; width:10px; height:10px; --duration:9s;  --delay:5s;"></div>
+    <div class="bubble" style="left:93%; width:5px;  height:5px;  --duration:14s; --delay:2.5s;"></div>
+  </div>
+
+  <!-- Superficial Light Ray -->
+  <div class="depth-ray" aria-hidden="true"></div>
+
+  <!-- Header / Navbar -->
+  <header id="navbar" class="fixed top-0 left-0 right-0 z-50">
+    <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <!-- Logo Benthic -->
+      <a href="/" class="flex items-center gap-3 group">
+        <!-- SVG Orca Logo drawing inspired by Benthic OPS -->
+        <svg width="48" height="48" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition-transform duration-300 group-hover:scale-110">
+          <path d="M85 50C85 69.33 69.33 85 50 85C30.67 85 15 69.33 15 50C15 30.67 30.67 15 50 15C69.33 15 85 30.67 85 50Z" stroke="#00d4ff" stroke-width="2" stroke-dasharray="4 4" />
+          <path d="M30 45C38 32 62 32 70 45C72 48.5 75 52 70 56C64 61 58 64 50 64C42 64 36 61 30 56C25 52 28 48.5 30 45Z" fill="#00d4ff" fill-opacity="0.15" stroke="#00d4ff" stroke-width="3" stroke-linejoin="round" />
+          <path d="M50 32C52 38 58 42 64 43" stroke="#00d4ff" stroke-width="2.5" stroke-linecap="round" />
+          <circle cx="42" cy="46" r="3" fill="#e8f4ff" />
+        </svg>
+        <div class="flex flex-col leading-tight">
+          <span class="logo-title">BENTHIC</span>
+          <span class="logo-subtitle">CASHFLOW</span>
+        </div>
+      </a>
+      
+      <!-- Nav links -->
+      <div class="flex items-center gap-6">
+        <span class="nav-status-badge">
+          <span class="status-dot"></span> API Conectada
+        </span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-6xl mx-auto px-6 pt-28 pb-20 relative z-10">
+    <!-- Hero / Connect Section -->
+    <section id="connect-section" class="py-12 text-center max-w-2xl mx-auto">
+      <div class="section-label mb-6">Módulo de Integración Bancaria</div>
+      <h1 class="hero-title mb-6">Controla tu liquidez desde las profundidades</h1>
+      <p class="hero-desc mb-10">Conecta tu cuenta de Banco Chile de forma segura mediante Fintoc y automatiza el monitoreo de saldos y movimientos históricos.</p>
+      
+      <!-- Connect Card -->
+      <div class="glass-card p-8 flex flex-col items-center">
+        <div class="connect-icon-wrapper mb-6">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 4px rgba(0,212,255,0.45));">
+            <rect x="2" y="5" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="2" y1="10" x2="22" y2="10"></line>
+          </svg>
+        </div>
+        <h3 class="mb-4 text-white font-bold text-lg">Banco Chile vía Fintoc</h3>
+        <p class="text-sm text-text-muted mb-6 max-w-sm">Para realizar la conexión, haz clic abajo. Se abrirá el formulario seguro de Fintoc para autenticarte en tu institución bancaria.</p>
+        
+        <button id="connect-btn" class="btn-primary flex items-center gap-2">
+          <span>Conectar Banco Chile</span> 🚀
+        </button>
+      </div>
+
+      <!-- Config Warning Alert (hidden by default) -->
+      <div id="config-alert" class="alert-box hidden mt-6">
+        <p>⚠️ <strong>Atención:</strong> Las llaves de Fintoc no están configuradas en el archivo <code>.env</code>. Edita este archivo en la raíz del proyecto para habilitar la API.</p>
+      </div>
+    </section>
+
+    <!-- Dashboard Section (Hidden until connected) -->
+    <section id="dashboard-section" class="hidden">
+      <!-- Dashboard Top Header -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+        <div>
+          <span class="section-label mb-2">Panel Operativo</span>
+          <h2 class="text-white font-bold text-2xl" id="dashboard-title">Benthic Cashflow Dashboard</h2>
+          <p class="text-sm text-text-muted" id="dashboard-subtitle">Visualización en tiempo real de tu cuenta bancaria</p>
+        </div>
+        <button id="disconnect-btn" class="btn-outline flex items-center gap-2 text-xs py-2 px-4">
+          <span>Desconectar Banco</span> ✕
+        </button>
+      </div>
+
+      <!-- Overview Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8" id="accounts-grid">
+        <!-- Accounts will be loaded dynamically here -->
+      </div>
+
+      <!-- Detailed Analysis Area -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <!-- Movements Table (Left / Span 8) -->
+        <div class="lg:col-span-8 glass-card p-6">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <h3 class="text-white font-bold text-lg">Historial de Movimientos</h3>
+              <p class="text-xs text-text-muted">Últimos movimientos detectados en tu cuenta</p>
+            </div>
+            <select id="account-selector" class="form-select text-xs">
+              <!-- Dynamically populated -->
+            </select>
+          </div>
+          
+          <div class="overflow-x-auto">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Fecha</th>
+                  <th>Descripción</th>
+                  <th>Tipo</th>
+                  <th class="text-right">Monto</th>
+                </tr>
+              </thead>
+              <tbody id="movements-tbody">
+                <!-- Loaded dynamically -->
+                <tr>
+                  <td colspan="4" class="text-center py-8 text-text-muted">Cargando transacciones...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Cashflow metrics (Right / Span 4) -->
+        <div class="lg:col-span-4 flex flex-col gap-6">
+          <!-- Summary card -->
+          <div class="glass-card p-6 flex-grow">
+            <h3 class="text-white font-bold text-lg mb-6">Resumen de Flujos</h3>
+            
+            <div class="space-y-6">
+              <div>
+                <span class="text-xs text-text-muted uppercase tracking-widest block mb-1">Entradas (Créditos)</span>
+                <div class="flex items-baseline gap-1">
+                  <span class="text-xl font-bold text-green-accent" id="total-income">$0</span>
+                  <span class="text-xs text-green-accent">CLP</span>
+                </div>
+              </div>
+              
+              <div class="border-t border-cyan-glow-dim pt-4">
+                <span class="text-xs text-text-muted uppercase tracking-widest block mb-1">Salidas (Débitos)</span>
+                <div class="flex items-baseline gap-1">
+                  <span class="text-xl font-bold text-red-accent" id="total-expense">$0</span>
+                  <span class="text-xs text-red-accent">CLP</span>
+                </div>
+              </div>
+
+              <div class="border-t border-cyan-glow-dim pt-4">
+                <span class="text-xs text-text-muted uppercase tracking-widest block mb-1">Diferencia Neta</span>
+                <div class="flex items-baseline gap-1">
+                  <span class="text-xl font-bold text-cyan" id="net-cashflow">$0</span>
+                  <span class="text-xs text-cyan">CLP</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="relative z-10 border-t border-cyan-glow-dim bg-deep-black-solid">
+    <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-text-muted">
+      <p>© 2026 Benthic OPS SpA. Todos los derechos reservados.</p>
+      <div class="flex items-center gap-1">
+        <span>Diseñado para</span> <a href="https://benthic-ops.vercel.app" class="text-cyan hover:underline" target="_blank">Benthic OPS</a> 🌊
+      </div>
+    </div>
+  </footer>
+
+  <!-- Depth Meter Widget -->
+  <div id="depth-meter-widget" class="fixed bottom-6 left-6 z-40 flex flex-col gap-1 p-4 rounded-xl glass-card">
+    <div class="flex items-baseline gap-1">
+      <span id="depth-number">0</span>
+      <span class="text-[0.65rem] font-semibold text-cyan">METROS</span>
+    </div>
+    <div class="text-[0.6rem] tracking-widest text-text-muted uppercase font-bold" id="depth-zone-name">Zona Epipelágica</div>
+    <div class="w-full h-1 bg-deep-black-dim rounded-full mt-2 overflow-hidden relative">
+      <div id="depth-progress-bar" class="absolute top-0 left-0 bottom-0 bg-cyan transition-all duration-100" style="width: 0%;"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
