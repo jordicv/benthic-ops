@@ -421,9 +421,28 @@ function renderPagedTable() {
 
   const pageItems = filteredMovements.slice(startIdx, endIdx);
 
+  // Configurar los límites de fecha permitidos dinámicamente en base a los movimientos reales
+  if (movementsData.length > 0) {
+    const dates = movementsData.map(m => m.postDate).sort();
+    const minDateStr = dates[0].split('T')[0];
+    const maxDateStr = dates[dates.length - 1].split('T')[0];
+    
+    filterSinceInput.min = minDateStr;
+    filterSinceInput.max = maxDateStr;
+    filterUntilInput.min = minDateStr;
+    filterUntilInput.max = maxDateStr;
+  }
+
   pageItems.forEach(mov => {
     const tr = document.createElement('tr');
-    const dateStr = new Date(mov.postDate).toLocaleDateString('es-CL', { day: '2-digit', month: 'short' });
+    
+    // Cambiado para mostrar el año como 2 dígitos (ej: 09 jul 26)
+    const dateStr = new Date(mov.postDate).toLocaleDateString('es-CL', { 
+      day: '2-digit', 
+      month: 'short', 
+      year: '2-digit' 
+    });
+    
     const amountStr = new Intl.NumberFormat('es-CL', { style: 'currency', currency: mov.currency || 'CLP', maximumFractionDigits: 0 }).format(Math.abs(mov.amount));
     const catMeta = getCategoryMeta(mov.category);
     const isCredit = mov.type === 'credit';
@@ -640,7 +659,14 @@ async function loadBankMovements(accountId, linkId) {
     
     categorized.forEach(mov => {
       const tr = document.createElement('tr');
-      const dateStr = new Date(mov.postDate).toLocaleDateString('es-CL', { day: '2-digit', month: 'short' });
+      
+      // Mostrar el año (ej: 09 jul 26)
+      const dateStr = new Date(mov.postDate).toLocaleDateString('es-CL', { 
+        day: '2-digit', 
+        month: 'short', 
+        year: '2-digit' 
+      });
+      
       const amountStr = new Intl.NumberFormat('es-CL', { style: 'currency', currency: mov.currency || 'CLP', maximumFractionDigits: 0 }).format(Math.abs(mov.amount));
       const catMeta = getCategoryMeta(mov.category);
       const isCredit = mov.type === 'credit';
@@ -671,7 +697,11 @@ function renderBankHistoryChart(movements) {
   const labels = [];
 
   movements.forEach(mov => {
-    const dateLabel = new Date(mov.postDate).toLocaleDateString('es-CL', { day: '2-digit', month: 'short' });
+    const dateLabel = new Date(mov.postDate).toLocaleDateString('es-CL', { 
+      day: '2-digit', 
+      month: 'short', 
+      year: '2-digit' 
+    });
     labels.push(dateLabel);
     dataPoints.push(currentSimulated);
     
