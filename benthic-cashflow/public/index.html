@@ -189,12 +189,31 @@
 
           <!-- Categorized movements -->
           <div class="movements-panel">
-            <div class="movements-header">
+            <div class="movements-header flex-column md:flex-row gap-4 items-stretch md:items-end">
               <div>
                 <h3 class="section-title">Historial Consolidado</h3>
-                <p class="section-sub">Todas tus cuentas con categorización inteligente aplicada</p>
+                <p class="section-sub">Buscador y filtros de fechas del histórico</p>
               </div>
-              <select id="account-selector" class="account-select"></select>
+              
+              <!-- Controles de filtros avanzados -->
+              <div class="flex-wrap items-center gap-2 flex-grow justify-end" style="display: flex; gap: 10px;">
+                <div class="filter-group">
+                  <label class="filter-label">Buscar</label>
+                  <input type="text" id="mov-search" class="filter-input" placeholder="Ej: supermercado...">
+                </div>
+                <div class="filter-group">
+                  <label class="filter-label">Desde</label>
+                  <input type="date" id="filter-since" class="filter-input">
+                </div>
+                <div class="filter-group">
+                  <label class="filter-label">Hasta</label>
+                  <input type="date" id="filter-until" class="filter-input">
+                </div>
+                <div class="filter-group">
+                  <label class="filter-label">Cuenta</label>
+                  <select id="account-selector" class="account-select" style="min-width: 150px;"></select>
+                </div>
+              </div>
             </div>
 
             <div class="table-wrap">
@@ -211,6 +230,15 @@
                   <tr><td colspan="4" class="table-empty">Cargando transacciones…</td></tr>
                 </tbody>
               </table>
+            </div>
+            
+            <!-- Paginación de movimientos -->
+            <div class="table-pagination">
+              <span class="pagination-info" id="pagination-info">Mostrando 0-0 de 0 movimientos</span>
+              <div class="pagination-buttons">
+                <button id="btn-prev-page" class="btn-pagination" disabled>◀ Anterior</button>
+                <button id="btn-next-page" class="btn-pagination" disabled>Siguiente ▶</button>
+              </div>
             </div>
           </div>
         </section>

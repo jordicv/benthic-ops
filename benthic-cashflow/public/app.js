@@ -11,6 +11,12 @@ let categoryChartInstance = null;
 let monthlyChartInstance = null;
 let bankHistoryChartInstance = null;
 
+// Paginación y Filtrado del historial consolidado
+let movementsData = [];       // Movimientos originales cargados
+let filteredMovements = [];   // Movimientos filtrados por fecha/búsqueda
+let currentPage = 1;
+const pageSize = 15;          // Paginación de 15 movimientos por hoja
+
 // DOM Elements
 const connectBtn       = document.getElementById('connect-btn');
 const connectView      = document.getElementById('connect-view');
@@ -36,6 +42,14 @@ const disconnectBankBtn = document.getElementById('disconnect-bank-btn');
 const navbarPageTitle  = document.getElementById('navbar-page-title');
 const sidebarEl        = document.getElementById('app-sidebar');
 const toggleSidebarBtn = document.getElementById('toggle-sidebar');
+
+// Elementos de Filtros y Paginación
+const movSearchInput   = document.getElementById('mov-search');
+const filterSinceInput = document.getElementById('filter-since');
+const filterUntilInput = document.getElementById('filter-until');
+const paginationInfo   = document.getElementById('pagination-info');
+const btnPrevPage      = document.getElementById('btn-prev-page');
+const btnNextPage      = document.getElementById('btn-next-page');
 
 // ─── Init ────────────────────────────────────────────────────────────────────
 async function init() {
@@ -315,6 +329,7 @@ accountSelector.addEventListener('change', () => {
 });
 
 // ─── Dashboard Movements Loader & Categorizer ──────────────────────────────
+// ─── Dashboard Movements Loader & Categorizer ──────────────────────────────
 async function loadDashboardMovements(accountId, linkId, since, until) {
   movementsTbody.innerHTML = '<tr><td colspan="4" class="table-empty">Cargando transacciones con categorías...</td></tr>';
   
@@ -325,43 +340,146 @@ async function loadDashboardMovements(accountId, linkId, since, until) {
 
     if (movements.length === 0) {
       movementsTbody.innerHTML = '<tr><td colspan="4" class="table-empty">No hay transacciones en este período.</td></tr>';
+      movementsData = [];
+      filteredMovements = [];
       calculateDashboardSummary([]);
-      renderCharts([], []);
+      renderCharts([]);
+      updatePaginationControls();
       return;
     }
 
-    movementsTbody.innerHTML = '';
-    
-    // Categorize
-    const categorizedMovements = movements.map(mov => {
+    // Guardar movimientos categorizados
+    movementsData = movements.map(mov => {
       const catKey = categorizeMov(mov.description);
       return { ...mov, category: catKey };
     });
 
-    categorizedMovements.forEach(mov => {
-      const tr = document.createElement('tr');
-      const dateStr = new Date(mov.postDate).toLocaleDateString('es-CL', { day: '2-digit', month: 'short' });
-      const amountStr = new Intl.NumberFormat('es-CL', { style: 'currency', currency: mov.currency || 'CLP', maximumFractionDigits: 0 }).format(Math.abs(mov.amount));
-      const catMeta = getCategoryMeta(mov.category);
-      const isCredit = mov.type === 'credit';
-      const cls = isCredit ? 'credit' : 'debit';
-
-      tr.innerHTML = `
-        <td style="color:var(--text-3);white-space:nowrap;">${dateStr}</td>
-        <td class="mov-desc" title="${mov.description}">${mov.description}</td>
-        <td><span class="mov-badge ${mov.category}">${catMeta.label}</span></td>
-        <td class="mov-amount ${cls}">${isCredit ? '+' : '-'}${amountStr}</td>
-      `;
-      movementsTbody.appendChild(tr);
-    });
-
-    calculateDashboardSummary(categorizedMovements);
-    renderCharts(categorizedMovements);
+    currentPage = 1;
+    applyFiltersAndRender();
 
   } catch (error) {
     movementsTbody.innerHTML = `<tr><td colspan="4" class="table-error">${error.message}</td></tr>`;
   }
 }
+
+// ─── Aplicar Filtros de Búsqueda y Rango de Fechas ────────────────────────────
+function applyFiltersAndRender() {
+  const searchQuery = movSearchInput.value.trim().toLowerCase();
+  const filterSince = filterSinceInput.value;
+  const filterUntil = filterUntilInput.value;
+
+  filteredMovements = movementsData.filter(mov => {
+    // 1. Filtro de búsqueda
+    const catMeta = getCategoryMeta(mov.category);
+    const matchesSearch = 
+      mov.description.toLowerCase().includes(searchQuery) ||
+      catMeta.label.toLowerCase().includes(searchQuery);
+
+    // 2. Filtro de fecha desde
+    let matchesSince = true;
+    if (filterSince) {
+      const movDate = new Date(mov.postDate).toISOString().split('T')[0];
+      matchesSince = movDate >= filterSince;
+    }
+
+    // 3. Filtro de fecha hasta
+    let matchesUntil = true;
+    if (filterUntil) {
+      const movDate = new Date(mov.postDate).toISOString().split('T')[0];
+      matchesUntil = movDate <= filterUntil;
+    }
+
+    return matchesSearch && matchesSince && matchesUntil;
+  });
+
+  // Renderizar gráficos de barras y donut con los datos del filtro
+  calculateDashboardSummary(filteredMovements);
+  renderCharts(filteredMovements);
+
+  renderPagedTable();
+}
+
+// ─── Renderizar Tabla Paginada ────────────────────────────────────────────────
+function renderPagedTable() {
+  movementsTbody.innerHTML = '';
+
+  if (filteredMovements.length === 0) {
+    movementsTbody.innerHTML = '<tr><td colspan="4" class="table-empty">No se encontraron movimientos con los filtros aplicados.</td></tr>';
+    updatePaginationControls();
+    return;
+  }
+
+  const totalItems = filteredMovements.length;
+  const totalPages = Math.ceil(totalItems / pageSize);
+
+  // Ajustar página actual si excede límites
+  if (currentPage > totalPages) currentPage = totalPages;
+  if (currentPage < 1) currentPage = 1;
+
+  const startIdx = (currentPage - 1) * pageSize;
+  const endIdx = Math.min(startIdx + pageSize, totalItems);
+
+  const pageItems = filteredMovements.slice(startIdx, endIdx);
+
+  pageItems.forEach(mov => {
+    const tr = document.createElement('tr');
+    const dateStr = new Date(mov.postDate).toLocaleDateString('es-CL', { day: '2-digit', month: 'short' });
+    const amountStr = new Intl.NumberFormat('es-CL', { style: 'currency', currency: mov.currency || 'CLP', maximumFractionDigits: 0 }).format(Math.abs(mov.amount));
+    const catMeta = getCategoryMeta(mov.category);
+    const isCredit = mov.type === 'credit';
+    const cls = isCredit ? 'credit' : 'debit';
+
+    tr.innerHTML = `
+      <td style="color:var(--text-3);white-space:nowrap;">${dateStr}</td>
+      <td class="mov-desc" title="${mov.description}">${mov.description}</td>
+      <td><span class="mov-badge ${mov.category}">${catMeta.label}</span></td>
+      <td class="mov-amount ${cls}">${isCredit ? '+' : '-'}${amountStr}</td>
+    `;
+    movementsTbody.appendChild(tr);
+  });
+
+  // Actualizar info y botones
+  paginationInfo.textContent = `Mostrando ${startIdx + 1}-${endIdx} de ${totalItems} movimientos`;
+  btnPrevPage.disabled = currentPage === 1;
+  btnNextPage.disabled = currentPage === totalPages || totalPages === 0;
+}
+
+function updatePaginationControls() {
+  paginationInfo.textContent = `Mostrando 0-0 de 0 movimientos`;
+  btnPrevPage.disabled = true;
+  btnNextPage.disabled = true;
+}
+
+// ─── Listeners de Filtros y Búsqueda ──────────────────────────────────────────
+movSearchInput.addEventListener('input', () => {
+  currentPage = 1;
+  applyFiltersAndRender();
+});
+
+filterSinceInput.addEventListener('change', () => {
+  currentPage = 1;
+  applyFiltersAndRender();
+});
+
+filterUntilInput.addEventListener('change', () => {
+  currentPage = 1;
+  applyFiltersAndRender();
+});
+
+btnPrevPage.addEventListener('click', () => {
+  if (currentPage > 1) {
+    currentPage--;
+    renderPagedTable();
+  }
+});
+
+btnNextPage.addEventListener('click', () => {
+  const totalPages = Math.ceil(filteredMovements.length / pageSize);
+  if (currentPage < totalPages) {
+    currentPage++;
+    renderPagedTable();
+  }
+});
 
 // ─── Dashboard Summary calculation ──────────────────────────────────────────
 function calculateDashboardSummary(movements) {
