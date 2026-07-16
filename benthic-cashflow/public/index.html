@@ -92,15 +92,27 @@
     <!-- Dashboard Section (Hidden until connected) -->
     <section id="dashboard-section" class="hidden">
       <!-- Dashboard Top Header -->
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-        <div>
-          <span class="section-label mb-2">Panel Operativo</span>
-          <h2 class="text-white font-bold text-2xl" id="dashboard-title">Benthic Cashflow Dashboard</h2>
-          <p class="text-sm text-text-muted" id="dashboard-subtitle">Visualización en tiempo real de tu cuenta bancaria</p>
+      <div class="flex flex-col gap-4 mb-8">
+        <div class="flex flex-col md:flex-row md:items-start justify-between gap-4">
+          <div>
+            <span class="section-label mb-2">Panel Operativo</span>
+            <h2 class="text-white font-bold text-2xl">Benthic Cashflow Dashboard</h2>
+            <p class="text-sm text-text-muted">Análisis centralizado de todas tus cuentas bancarias</p>
+          </div>
+          <!-- Total Balance Badge -->
+          <div class="glass-card px-6 py-4 flex flex-col items-end min-w-[200px]">
+            <span class="text-xs text-text-muted uppercase tracking-widest mb-1">Saldo Total Consolidado</span>
+            <span id="total-balance" class="text-2xl font-bold text-cyan">$0</span>
+          </div>
         </div>
-        <button id="disconnect-btn" class="btn-outline flex items-center gap-2 text-xs py-2 px-4">
-          <span>Desconectar Banco</span> ✕
-        </button>
+
+        <!-- Linked Banks Bar -->
+        <div class="flex flex-wrap items-center gap-3">
+          <div id="linked-banks-bar" class="flex flex-wrap gap-2"></div>
+          <button id="add-bank-btn" class="btn-add-bank">
+            <span>+ Agregar Banco</span>
+          </button>
+        </div>
       </div>
 
       <!-- Overview Cards Grid -->

@@ -475,3 +475,82 @@ body {
 .w-full {
   width: 100%;
 }
+
+/* ── Multi-bank chip ─────────────────────────────────────────────────────── */
+.bank-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(0, 212, 255, 0.08);
+  border: 1px solid rgba(0, 212, 255, 0.22);
+  border-radius: 9999px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  transition: background 0.2s;
+}
+
+.bank-chip:hover {
+  background: rgba(0, 212, 255, 0.14);
+}
+
+.bank-chip-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 6px #22c55e;
+  flex-shrink: 0;
+}
+
+.bank-chip-name {
+  white-space: nowrap;
+}
+
+.bank-chip-remove {
+  background: none;
+  border: none;
+  color: rgba(168, 196, 224, 0.6);
+  cursor: pointer;
+  font-size: 0.7rem;
+  padding: 0 0.1rem;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.bank-chip-remove:hover {
+  color: var(--color-red);
+}
+
+/* ── Add Bank button ─────────────────────────────────────────────────────── */
+.btn-add-bank {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  border: 1px dashed rgba(0, 212, 255, 0.35);
+  border-radius: 9999px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-cyan);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  font-family: var(--font-family);
+}
+
+.btn-add-bank:hover {
+  background: rgba(0, 212, 255, 0.08);
+  border-color: var(--color-cyan);
+}
+
+.btn-add-bank:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Total balance highlight ─────────────────────────────────────────────── */
+.text-cyan {
+  color: var(--color-cyan);
+}
