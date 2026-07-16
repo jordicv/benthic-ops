@@ -34,14 +34,23 @@ function writeDb(data) {
   }
 }
 
-// Fintoc API Key
-const fintocApiKey = process.env.FINTOC_SECRET_KEY || '';
+// Mode select: 'test' or 'live' (defaults to 'test' if not explicitly 'live')
+const FINTOC_MODE = process.env.FINTOC_MODE === 'live' ? 'live' : 'test';
+
+// Select active keys based on mode
+const fintocApiKey = FINTOC_MODE === 'live' 
+  ? process.env.FINTOC_SECRET_KEY_LIVE 
+  : process.env.FINTOC_SECRET_KEY_TEST;
+
+const fintocPublicKey = FINTOC_MODE === 'live' 
+  ? process.env.FINTOC_PUBLIC_KEY_LIVE 
+  : process.env.FINTOC_PUBLIC_KEY_TEST;
 
 // Middleware to check Fintoc API Key configuration
 const checkFintocInit = (req, res, next) => {
-  if (!fintocApiKey || fintocApiKey.includes('your_secret_key')) {
+  if (!fintocApiKey || fintocApiKey.includes('your_secret_key') || fintocApiKey.includes('COPIA_AQUI')) {
     return res.status(400).json({ 
-      error: 'Fintoc Secret API Key is not configured. Please update the .env file.' 
+      error: `Fintoc Secret API Key for mode [${FINTOC_MODE}] is not configured. Please update your .env file.` 
     });
   }
   next();
@@ -50,7 +59,7 @@ const checkFintocInit = (req, res, next) => {
 // API: Get current public API key (needed by frontend widget)
 app.get('/api/config', (req, res) => {
   res.json({
-    publicKey: process.env.FINTOC_PUBLIC_KEY || ''
+    publicKey: fintocPublicKey || ''
   });
 });
 
