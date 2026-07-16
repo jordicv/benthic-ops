@@ -500,6 +500,18 @@ btnNextPage.addEventListener('click', () => {
   }
 });
 
+// Listener para el botón de limpiar filtros
+const btnClearFilters = document.getElementById('btn-clear-filters');
+if (btnClearFilters) {
+  btnClearFilters.addEventListener('click', () => {
+    movSearchInput.value = '';
+    filterSinceInput.value = '';
+    filterUntilInput.value = '';
+    currentPage = 1;
+    applyFiltersAndRender();
+  });
+}
+
 // ─── Dashboard Summary calculation ──────────────────────────────────────────
 function calculateDashboardSummary(movements) {
   let income = 0;

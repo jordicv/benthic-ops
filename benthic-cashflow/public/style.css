@@ -708,21 +708,49 @@ body {
 }
 
 .filter-input {
-  background: var(--surface);
+  background: rgba(255,255,255,0.03);
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-sm);
-  padding: 6px 12px;
+  padding: 8px 12px;
   color: var(--text-primary);
   font-family: var(--font-body);
   font-size: 0.78rem;
   transition: var(--transition);
   outline: none;
+  min-height: 34px;
 }
 
 .filter-input:focus {
   border-color: var(--accent);
   box-shadow: 0 0 0 2px rgba(99,102,241,0.15);
 }
+
+/* Forzar visualización de icon de fecha en Chrome/Firefox */
+.filter-input::-webkit-calendar-picker-indicator {
+  filter: invert(1) sepia(100%) saturate(10000%) hue-rotate(240deg) brightness(1.2);
+  cursor: pointer;
+}
+
+.btn-clear {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: 8px 16px;
+  color: var(--text-2);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  min-height: 34px;
+}
+
+.btn-clear:hover {
+  background: rgba(239, 68, 68, 0.08);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: var(--red);
+}
+
 
 .table-pagination {
   display: flex;

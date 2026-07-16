@@ -196,23 +196,26 @@
               </div>
               
               <!-- Controles de filtros avanzados -->
-              <div class="flex-wrap items-center gap-2 flex-grow justify-end" style="display: flex; gap: 10px;">
-                <div class="filter-group">
-                  <label class="filter-label">Buscar</label>
-                  <input type="text" id="mov-search" class="filter-input" placeholder="Ej: supermercado...">
-                </div>
-                <div class="filter-group">
-                  <label class="filter-label">Desde</label>
-                  <input type="date" id="filter-since" class="filter-input">
-                </div>
-                <div class="filter-group">
-                  <label class="filter-label">Hasta</label>
-                  <input type="date" id="filter-until" class="filter-input">
-                </div>
-                <div class="filter-group">
-                  <label class="filter-label">Cuenta</label>
-                  <select id="account-selector" class="account-select" style="min-width: 150px;"></select>
-                </div>
+              <div class="flex-wrap items-center gap-2 flex-grow justify-end" style="display: flex; gap: 10px; align-items: flex-end;">
+                 <div class="filter-group">
+                   <label class="filter-label">Buscar</label>
+                   <input type="text" id="mov-search" class="filter-input" placeholder="Ej: supermercado...">
+                 </div>
+                 <div class="filter-group">
+                   <label class="filter-label">Desde</label>
+                   <input type="date" id="filter-since" class="filter-input" placeholder="dd-mm-aaaa">
+                 </div>
+                 <div class="filter-group">
+                   <label class="filter-label">Hasta</label>
+                   <input type="date" id="filter-until" class="filter-input" placeholder="dd-mm-aaaa">
+                 </div>
+                 <div class="filter-group">
+                   <label class="filter-label">Cuenta</label>
+                   <select id="account-selector" class="account-select" style="min-width: 150px;"></select>
+                 </div>
+                 <div class="filter-group">
+                   <button id="btn-clear-filters" class="btn-clear" title="Limpiar todos los filtros y restablecer fechas">Limpiar</button>
+                 </div>
               </div>
             </div>
 
