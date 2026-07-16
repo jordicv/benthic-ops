@@ -111,15 +111,11 @@ app.post('/api/exchange-token', checkFintocInit, async (req, res) => {
   }
   
   try {
-    const response = await fetch('https://api.fintoc.com/v1/link_intents/exchange', {
-      method: 'POST',
+    const response = await fetch(`https://api.fintoc.com/v1/links/${exchangeToken}`, {
+      method: 'GET',
       headers: {
-        'Authorization': fintocApiKey,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        exchange_token: exchangeToken
-      })
+        'Authorization': fintocApiKey
+      }
     });
 
     if (!response.ok) {
