@@ -3,216 +3,286 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Benthic Cashflow — Inteligencia de Cuentas y Flujo de Caja</title>
-  
-  <!-- Font Source: Space Grotesk -->
+  <title>Benthic Cashflow — Dashboard Analítico Bancario</title>
+  <meta name="description" content="Dashboard de monitoreo bancario en tiempo real para Benthic OPS SpA. Conecta y analiza todas tus cuentas bancarias con categorización de gastos e historial de 12 meses.">
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Custom Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
-  
-  <!-- Fintoc.js library for Widget Integration -->
   <script src="https://js.fintoc.com/v1/"></script>
+  <!-- Chart.js para visualizaciones -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body class="ocean-bg min-h-screen relative">
-  <!-- Background bubble generator -->
-  <div aria-hidden="true" id="bubbles-container">
-    <div class="bubble" style="left:8%;  width:10px; height:10px; --duration:9s;  --delay:0s;"></div>
-    <div class="bubble" style="left:18%; width:6px;  height:6px;  --duration:12s; --delay:2s;"></div>
-    <div class="bubble" style="left:30%; width:14px; height:14px; --duration:8s;  --delay:4s;"></div>
-    <div class="bubble" style="left:45%; width:8px;  height:8px;  --duration:11s; --delay:1s;"></div>
-    <div class="bubble" style="left:60%; width:12px; height:12px; --duration:10s; --delay:3s;"></div>
-    <div class="bubble" style="left:72%; width:7px;  height:7px;  --duration:13s; --delay:0.5s;"></div>
-    <div class="bubble" style="left:85%; width:10px; height:10px; --duration:9s;  --delay:5s;"></div>
-    <div class="bubble" style="left:93%; width:5px;  height:5px;  --duration:14s; --delay:2.5s;"></div>
+<body>
+
+  <!-- ── Ambient background ─────────────────────────────────────────────── -->
+  <div class="ambient" aria-hidden="true">
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
   </div>
 
-  <!-- Superficial Light Ray -->
-  <div class="depth-ray" aria-hidden="true"></div>
+  <!-- ── Main App Container ─────────────────────────────────────────────── -->
+  <div class="app-layout">
 
-  <!-- Header / Navbar -->
-  <header id="navbar" class="fixed top-0 left-0 right-0 z-50">
-    <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <!-- Logo Benthic -->
-      <a href="/" class="flex items-center gap-3 group">
-        <!-- SVG Orca Logo drawing inspired by Benthic OPS -->
-        <svg width="48" height="48" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition-transform duration-300 group-hover:scale-110">
-          <path d="M85 50C85 69.33 69.33 85 50 85C30.67 85 15 69.33 15 50C15 30.67 30.67 15 50 15C69.33 15 85 30.67 85 50Z" stroke="#00d4ff" stroke-width="2" stroke-dasharray="4 4" />
-          <path d="M30 45C38 32 62 32 70 45C72 48.5 75 52 70 56C64 61 58 64 50 64C42 64 36 61 30 56C25 52 28 48.5 30 45Z" fill="#00d4ff" fill-opacity="0.15" stroke="#00d4ff" stroke-width="3" stroke-linejoin="round" />
-          <path d="M50 32C52 38 58 42 64 43" stroke="#00d4ff" stroke-width="2.5" stroke-linecap="round" />
-          <circle cx="42" cy="46" r="3" fill="#e8f4ff" />
-        </svg>
-        <div class="flex flex-col leading-tight">
-          <span class="logo-title">BENTHIC</span>
-          <span class="logo-subtitle">CASHFLOW</span>
-        </div>
-      </a>
-      
-      <!-- Nav links -->
-      <div class="flex items-center gap-6">
-        <span class="nav-status-badge">
-          <span class="status-dot"></span> API Conectada
-        </span>
-      </div>
-    </nav>
-  </header>
-
-  <!-- Main Content -->
-  <main class="max-w-6xl mx-auto px-6 pt-28 pb-20 relative z-10">
-    <!-- Hero / Connect Section -->
-    <section id="connect-section" class="py-12 text-center max-w-2xl mx-auto">
-      <div class="section-label mb-6">Módulo de Integración Bancaria</div>
-      <h1 class="hero-title mb-6">Controla tu liquidez desde las profundidades</h1>
-      <p class="hero-desc mb-10">Conecta tu cuenta de Banco Chile de forma segura mediante Fintoc y automatiza el monitoreo de saldos y movimientos históricos.</p>
-      
-      <!-- Connect Card -->
-      <div class="glass-card p-8 flex flex-col items-center">
-        <div class="connect-icon-wrapper mb-6">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 4px rgba(0,212,255,0.45));">
-            <rect x="2" y="5" width="20" height="14" rx="2" ry="2"></rect>
-            <line x1="2" y1="10" x2="22" y2="10"></line>
+    <!-- ── Sidebar ──────────────────────────────────────────────────────── -->
+    <aside class="sidebar hidden" id="app-sidebar">
+      <div class="sidebar-brand">
+        <div class="logo-mark">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+            <path d="M7 12c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="12" cy="14" r="2" fill="white"/>
           </svg>
         </div>
-        <h3 class="mb-4 text-white font-bold text-lg">Banco Chile vía Fintoc</h3>
-        <p class="text-sm text-text-muted mb-6 max-w-sm">Para realizar la conexión, haz clic abajo. Se abrirá el formulario seguro de Fintoc para autenticarte en tu institución bancaria.</p>
-        
-        <button id="connect-btn" class="btn-primary flex items-center gap-2">
-          <span>Conectar Banco Chile</span> 🚀
+        <div class="brand-text">
+          <span class="brand-name">Benthic</span>
+          <span class="brand-sub">Cashflow</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#dashboard" class="nav-item active" id="nav-dash">
+          <span>📊 Dashboard General</span>
+        </a>
+        <div class="nav-section-title">BANCOS CONECTADOS</div>
+        <div id="sidebar-banks-list" class="sidebar-sublist">
+          <!-- Dinámico -->
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button id="sidebar-add-bank-btn" class="btn-sidebar-add">
+          <span>+ Conectar Banco</span>
         </button>
       </div>
+    </aside>
 
-      <!-- Config Warning Alert (hidden by default) -->
-      <div id="config-alert" class="alert-box hidden mt-6">
-        <p>⚠️ <strong>Atención:</strong> Las llaves de Fintoc no están configuradas en el archivo <code>.env</code>. Edita este archivo en la raíz del proyecto para habilitar la API.</p>
-      </div>
-    </section>
+    <!-- ── Content Wrapper ──────────────────────────────────────────────── -->
+    <div class="content-wrapper">
 
-    <!-- Dashboard Section (Hidden until connected) -->
-    <section id="dashboard-section" class="hidden">
-      <!-- Dashboard Top Header -->
-      <div class="flex flex-col gap-4 mb-8">
-        <div class="flex flex-col md:flex-row md:items-start justify-between gap-4">
-          <div>
-            <span class="section-label mb-2">Panel Operativo</span>
-            <h2 class="text-white font-bold text-2xl">Benthic Cashflow Dashboard</h2>
-            <p class="text-sm text-text-muted">Análisis centralizado de todas tus cuentas bancarias</p>
+      <!-- ── Navbar ─────────────────────────────────────────────────────────── -->
+      <header class="navbar">
+        <div class="navbar-inner">
+          <div class="navbar-left">
+            <button id="toggle-sidebar" class="btn-menu hidden">☰</button>
+            <span class="page-current-title" id="navbar-page-title">Cargando aplicación...</span>
           </div>
-          <!-- Total Balance Badge -->
-          <div class="glass-card px-6 py-4 flex flex-col items-end min-w-[200px]">
-            <span class="text-xs text-text-muted uppercase tracking-widest mb-1">Saldo Total Consolidado</span>
-            <span id="total-balance" class="text-2xl font-bold text-cyan">$0</span>
+
+          <div class="navbar-right">
+            <div class="status-pill" id="api-status-pill">
+              <span class="status-dot-live"></span>
+              <span>Conectado</span>
+            </div>
           </div>
         </div>
+      </header>
 
-        <!-- Linked Banks Bar -->
-        <div class="flex flex-wrap items-center gap-3">
-          <div id="linked-banks-bar" class="flex flex-wrap gap-2"></div>
-          <button id="add-bank-btn" class="btn-add-bank">
-            <span>+ Agregar Banco</span>
-          </button>
-        </div>
-      </div>
+      <!-- ── Main View Container ───────────────────────────────────────────── -->
+      <main class="main-content">
 
-      <!-- Overview Cards Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8" id="accounts-grid">
-        <!-- Accounts will be loaded dynamically here -->
-      </div>
+        <!-- ── CONNECT SCREEN ──────────────────────────────────────────────── -->
+        <section id="connect-view" class="connect-screen">
+          <div class="connect-inner">
+            <p class="eyebrow">Inteligencia Financiera</p>
+            <h1 class="hero-heading">Tu dinero,<br><em>todo en un lugar.</em></h1>
+            <p class="hero-sub">Conecta tus cuentas bancarias chilenas para comparar, analizar tus gastos y ver tendencias de flujo de caja del último año.</p>
 
-      <!-- Detailed Analysis Area -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        <!-- Movements Table (Left / Span 8) -->
-        <div class="lg:col-span-8 glass-card p-6">
-          <div class="flex items-center justify-between mb-6">
+            <div class="connect-card">
+              <div class="connect-card-header">
+                <div class="bank-icon-wrap">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="1" y="4" width="22" height="16" rx="3"/>
+                    <line x1="1" y1="10" x2="23" y2="10"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="connect-card-label">Bancos chilenos vía Fintoc</p>
+                  <p class="connect-card-hint">Conexión 100% segura y encriptada</p>
+                </div>
+              </div>
+
+              <button id="connect-btn" class="btn-primary-lg">
+                <span>Conectar Primer Banco</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </button>
+
+              <div id="config-alert" class="config-alert hidden">
+                ⚠️ Las API keys de Fintoc no están configuradas en <code>.env</code>
+              </div>
+            </div>
+
+            <div class="trust-row">
+              <span class="trust-badge">🔒 Encriptación bancaria</span>
+              <span class="trust-badge">🏦 Banco Chile, Santander, Itaú, etc</span>
+              <span class="trust-badge">⚡ Historial 12+ meses</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── DASHBOARD VIEW ──────────────────────────────────────────────── -->
+        <section id="dashboard-view" class="view-pane hidden">
+          <!-- Control Panel Header -->
+          <div class="dash-topbar">
             <div>
-              <h3 class="text-white font-bold text-lg">Historial de Movimientos</h3>
-              <p class="text-xs text-text-muted">Últimos movimientos detectados en tu cuenta</p>
+              <h2 class="dash-title">Consolidado General</h2>
+              <p class="dash-sub">Análisis consolidado de tu salud financiera</p>
             </div>
-            <select id="account-selector" class="form-select text-xs">
-              <!-- Dynamically populated -->
-            </select>
+            <div class="period-selector">
+              <button class="btn-period" data-months="3">3 Meses</button>
+              <button class="btn-period" data-months="6">6 Meses</button>
+              <button class="btn-period active" data-months="12">12 Meses</button>
+            </div>
           </div>
-          
-          <div class="overflow-x-auto">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th>Fecha</th>
-                  <th>Descripción</th>
-                  <th>Tipo</th>
-                  <th class="text-right">Monto</th>
-                </tr>
-              </thead>
-              <tbody id="movements-tbody">
-                <!-- Loaded dynamically -->
-                <tr>
-                  <td colspan="4" class="text-center py-8 text-text-muted">Cargando transacciones...</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
 
-        <!-- Cashflow metrics (Right / Span 4) -->
-        <div class="lg:col-span-4 flex flex-col gap-6">
-          <!-- Summary card -->
-          <div class="glass-card p-6 flex-grow">
-            <h3 class="text-white font-bold text-lg mb-6">Resumen de Flujos</h3>
-            
-            <div class="space-y-6">
+          <!-- KPI row -->
+          <div class="kpi-row">
+            <div class="kpi-card kpi-main">
+              <p class="kpi-label">Saldo Disponible Total</p>
+              <p class="kpi-value" id="total-balance">$0</p>
+              <p class="kpi-hint">Actualizado en tiempo real</p>
+            </div>
+            <div class="kpi-card">
+              <p class="kpi-label">Entradas del período</p>
+              <p class="kpi-value kpi-green" id="total-income">$0</p>
+              <p class="kpi-hint">Créditos analizados</p>
+            </div>
+            <div class="kpi-card">
+              <p class="kpi-label">Salidas del período</p>
+              <p class="kpi-value kpi-red" id="total-expense">$0</p>
+              <p class="kpi-hint">Gastos analizados</p>
+            </div>
+            <div class="kpi-card">
+              <p class="kpi-label">Flujo Neto</p>
+              <p class="kpi-value" id="net-cashflow">$0</p>
+              <p class="kpi-hint">Entradas vs Salidas</p>
+            </div>
+          </div>
+
+          <!-- Charts Section -->
+          <div class="charts-layout">
+            <div class="chart-box main-chart">
+              <h3 class="chart-title">Distribución de Gastos (Supermercado, Salud, etc.)</h3>
+              <div class="chart-container-donut">
+                <canvas id="categoryChart"></canvas>
+              </div>
+            </div>
+
+            <div class="chart-box">
+              <h3 class="chart-title">Gasto Mensual Comparado (Últimos 12 Meses)</h3>
+              <div class="chart-container-bar">
+                <canvas id="monthlyChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Accounts Overview -->
+          <div class="section-header">
+            <h3 class="section-title">Todas las cuentas</h3>
+          </div>
+          <div class="accounts-grid" id="accounts-grid"></div>
+
+          <!-- Categorized movements -->
+          <div class="movements-panel">
+            <div class="movements-header">
               <div>
-                <span class="text-xs text-text-muted uppercase tracking-widest block mb-1">Entradas (Créditos)</span>
-                <div class="flex items-baseline gap-1">
-                  <span class="text-xl font-bold text-green-accent" id="total-income">$0</span>
-                  <span class="text-xs text-green-accent">CLP</span>
-                </div>
+                <h3 class="section-title">Historial Consolidado</h3>
+                <p class="section-sub">Todas tus cuentas con categorización inteligente aplicada</p>
               </div>
-              
-              <div class="border-t border-cyan-glow-dim pt-4">
-                <span class="text-xs text-text-muted uppercase tracking-widest block mb-1">Salidas (Débitos)</span>
-                <div class="flex items-baseline gap-1">
-                  <span class="text-xl font-bold text-red-accent" id="total-expense">$0</span>
-                  <span class="text-xs text-red-accent">CLP</span>
-                </div>
-              </div>
+              <select id="account-selector" class="account-select"></select>
+            </div>
 
-              <div class="border-t border-cyan-glow-dim pt-4">
-                <span class="text-xs text-text-muted uppercase tracking-widest block mb-1">Diferencia Neta</span>
-                <div class="flex items-baseline gap-1">
-                  <span class="text-xl font-bold text-cyan" id="net-cashflow">$0</span>
-                  <span class="text-xs text-cyan">CLP</span>
-                </div>
+            <div class="table-wrap">
+              <table class="movements-table">
+                <thead>
+                  <tr>
+                    <th>Fecha</th>
+                    <th>Descripción</th>
+                    <th>Categoría</th>
+                    <th class="text-right">Monto</th>
+                  </tr>
+                </thead>
+                <tbody id="movements-tbody">
+                  <tr><td colspan="4" class="table-empty">Cargando transacciones…</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── BANK DETAIL VIEW ────────────────────────────────────────────── -->
+        <section id="bank-view" class="view-pane hidden">
+          <div class="bank-topbar">
+            <div>
+              <h2 class="dash-title" id="bank-detail-name">Banco</h2>
+              <p class="dash-sub" id="bank-detail-meta">Detalle de cuentas y transacciones asociadas</p>
+            </div>
+            <button id="disconnect-bank-btn" class="btn-disconnect">
+              ❌ Desconectar Banco
+            </button>
+          </div>
+
+          <!-- Bank specific stats -->
+          <div class="kpi-row">
+            <div class="kpi-card kpi-main">
+              <p class="kpi-label">Saldo Disponible en Banco</p>
+              <p class="kpi-value" id="bank-balance">$0</p>
+              <p class="kpi-hint" id="bank-accounts-count">0 cuentas conectadas</p>
+            </div>
+            <div class="kpi-card" style="grid-column: span 3;">
+              <p class="kpi-label">Evolución de Saldo Disponible (Historial)</p>
+              <div class="chart-container-line">
+                <canvas id="bankHistoryChart"></canvas>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-  </main>
 
-  <!-- Footer -->
-  <footer class="relative z-10 border-t border-cyan-glow-dim bg-deep-black-solid">
-    <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-text-muted">
-      <p>© 2026 Benthic OPS SpA. Todos los derechos reservados.</p>
-      <div class="flex items-center gap-1">
-        <span>Diseñado para</span> <a href="https://benthic-ops.vercel.app" class="text-cyan hover:underline" target="_blank">Benthic OPS</a> 🌊
-      </div>
-    </div>
-  </footer>
+          <div class="section-header">
+            <h3 class="section-title">Cuentas de este Banco</h3>
+          </div>
+          <div class="accounts-grid" id="bank-accounts-grid"></div>
 
-  <!-- Depth Meter Widget -->
-  <div id="depth-meter-widget" class="fixed bottom-6 left-6 z-40 flex flex-col gap-1 p-4 rounded-xl glass-card">
-    <div class="flex items-baseline gap-1">
-      <span id="depth-number">0</span>
-      <span class="text-[0.65rem] font-semibold text-cyan">METROS</span>
-    </div>
-    <div class="text-[0.6rem] tracking-widest text-text-muted uppercase font-bold" id="depth-zone-name">Zona Epipelágica</div>
-    <div class="w-full h-1 bg-deep-black-dim rounded-full mt-2 overflow-hidden relative">
-      <div id="depth-progress-bar" class="absolute top-0 left-0 bottom-0 bg-cyan transition-all duration-100" style="width: 0%;"></div>
+          <div class="movements-panel">
+            <div class="movements-header">
+              <div>
+                <h3 class="section-title">Movimientos Recientes</h3>
+                <p class="section-sub">Historial detallado para este banco</p>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table class="movements-table">
+                <thead>
+                  <tr>
+                    <th>Fecha</th>
+                    <th>Descripción</th>
+                    <th>Categoría</th>
+                    <th class="text-right">Monto</th>
+                  </tr>
+                </thead>
+                <tbody id="bank-movements-tbody">
+                  <tr><td colspan="4" class="table-empty">Cargando transacciones…</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- ── Footer ─────────────────────────────────────────────────────────── -->
+      <footer class="footer">
+        <p>© 2026 Benthic OPS SpA · Powered by <a href="https://fintoc.com" target="_blank" rel="noopener">Fintoc</a></p>
+      </footer>
+
     </div>
   </div>
 
-  <script src="app.js?v=2"></script>
+  <script src="categorizer.js"></script>
+  <script src="app.js?v=4"></script>
 </body>
 </html>

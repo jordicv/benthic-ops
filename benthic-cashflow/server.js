@@ -218,7 +218,7 @@ app.get('/api/accounts', checkFintocInit, async (req, res) => {
 
 // API: List movements (transactions) for an account (Direct REST API Call)
 app.get('/api/accounts/:accountId/movements', checkFintocInit, async (req, res) => {
-  const { linkId } = req.query;
+  const { linkId, since, until } = req.query;
   const { accountId } = req.params;
   
   if (!linkId) {
@@ -235,8 +235,14 @@ app.get('/api/accounts/:accountId/movements', checkFintocInit, async (req, res) 
     
     const linkToken = savedLink.linkToken;
 
+    // Construct Fintoc API URL with optional filters
+    let url = `https://api.fintoc.com/v1/accounts/${accountId}/movements?link_token=${linkToken}`;
+    if (since) url += `&since=${since}`;
+    if (until) url += `&until=${until}`;
+    url += `&per_page=300`; // Fetch more items for analysis
+
     // Fetch movements directly from REST API
-    const response = await fetch(`https://api.fintoc.com/v1/accounts/${accountId}/movements?link_token=${linkToken}`, {
+    const response = await fetch(url, {
       method: 'GET',
       headers: {
         'Authorization': fintocApiKey
@@ -250,7 +256,8 @@ app.get('/api/accounts/:accountId/movements', checkFintocInit, async (req, res) 
 
     const movements = await response.json();
     
-    const formattedMovements = movements.slice(0, 50).map(mov => ({
+    // Map Fintoc movements
+    const formattedMovements = movements.map(mov => ({
       id: mov.id,
       amount: mov.amount,
       postDate: mov.post_date,
