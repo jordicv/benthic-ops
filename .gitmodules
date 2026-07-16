@@ -1,0 +1,3 @@
+[submodule "benthic-cashflow"]
+	path = benthic-cashflow
+	url = https://github.com/jordicv/benthic-cashflow.git
