@@ -1,0 +1,10 @@
+{
+  "name": "benthic-ops-monorepo",
+  "private": true,
+  "workspaces": [
+    "WEB"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace=WEB"
+  }
+}
