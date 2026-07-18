@@ -14,10 +14,10 @@ import ContactForm from '../components/ContactForm.astro';
     <div class="section-bg section-bg-bio" style="opacity:0.28;"></div>
     <div class="section-overlay" style="background:rgba(0,7,45,0.8);"></div>
     <div class="max-w-4xl mx-auto text-center relative" style="z-index:2;">
-      <span class="section-label mb-6 inline-flex load-fade-in">Custom Software & Systems</span>
+      <span class="section-label mb-6 inline-flex load-fade-in" style="border-color:rgba(0,255,183,0.3); color:#00ffb7; background:rgba(0,255,183,0.08);">Custom Software & Systems</span>
       <div class="flex justify-center mb-8 load-fade-in">
-        <div class="p-5 rounded-2xl border border-cyan/20 bg-cyan-950/10 shadow-[0_0_30px_rgba(0,212,255,0.12)]">
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 8px rgba(0,212,255,0.6));">
+        <div class="p-5 rounded-2xl border border-[#00ffb7]/20 bg-[#00ffb7]/5 shadow-[0_0_30px_rgba(0,255,183,0.15)]">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#00ffb7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 8px rgba(0,255,183,0.6));">
             <polyline points="16 18 22 12 16 6"></polyline>
             <polyline points="8 6 2 12 8 18"></polyline>
           </svg>
@@ -25,14 +25,14 @@ import ContactForm from '../components/ContactForm.astro';
       </div>
       <h1 class="load-fade-in delay-100" style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(2rem,5vw,3rem); line-height:1.15; color:#e8f4ff; margin:0 0 1.25rem;">
         Arquitectura tecnológica
-        <span style="color:#00d4ff; display:block;">que escala contigo</span>
+        <span style="color:#00ffb7; display:block;">que escala contigo</span>
       </h1>
       <p class="text-lg leading-relaxed max-w-2xl mx-auto load-fade-in delay-200" style="color:#7aa3cc;">
         Construimos software robusto a la medida e infraestructuras web ultra-rápidas diseñadas para automatizar tus procesos internos y captar clientes de manera autónoma.
       </p>
       <div class="flex flex-wrap gap-4 justify-center mt-8 load-fade-in delay-300">
-        <a href="#servicios" class="btn-primary">Ver capacidades →</a>
-        <a href="#contacto" class="btn-outline">Cotizar proyecto</a>
+        <a href="#servicios" class="btn-primary" style="background: linear-gradient(135deg, #00ffb7 0%, #00996f 100%); color: #00072d; border: none; font-weight: 600;">Ver capacidades →</a>
+        <a href="#contacto" class="btn-outline" style="border-color: rgba(0,255,183,0.4); color: #00ffb7;">Cotizar proyecto</a>
       </div>
     </div>
   </section>
@@ -51,9 +51,9 @@ import ContactForm from '../components/ContactForm.astro';
         </div>
 
         <!-- Módulo 1: Micro-SaaS -->
-        <div class="glass-card reveal p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="glass-card reveal p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center" style="border-color: rgba(0,255,183,0.2);">
           <div>
-            <span class="section-label mb-4 inline-flex">Módulo 1</span>
+            <span class="section-label mb-4 inline-flex" style="border-color:rgba(0,255,183,0.3); color:#00ffb7; background:rgba(0,255,183,0.08);">Módulo 1</span>
             <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.3rem; color:#e8f4ff; margin:0.5rem 0;">
               Desarrollo de Aplicaciones (Micro-SaaS)
             </h3>
@@ -69,39 +69,39 @@ import ContactForm from '../components/ContactForm.astro';
                 'Dashboards ejecutivos personalizados',
               ].map(f => (
                 <li class="flex items-start gap-2 text-sm" style="color:#a8c4e0;">
-                  <span style="color:#00d4ff; flex-shrink:0;">▸</span>{f}
+                  <span style="color:#00ffb7; flex-shrink:0;">▸</span>{f}
                 </li>
               ))}
             </ul>
           </div>
           <div class="flex justify-center">
-            <div class="glass-card p-6 text-center flex flex-col items-center" style="max-width:220px; border-color: rgba(0,212,255,0.3);">
-              <div class="p-3 rounded-xl border border-cyan/20 bg-cyan-950/5 mb-3 flex items-center justify-center" style="filter: drop-shadow(0 0 5px rgba(0,212,255,0.45));">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <div class="glass-card p-6 text-center flex flex-col items-center" style="max-width:220px; border-color: rgba(0,255,183,0.3);">
+              <div class="p-3 rounded-xl border border-[#00ffb7]/20 bg-[#00ffb7]/5 mb-3 flex items-center justify-center" style="filter: drop-shadow(0 0 5px rgba(0,255,183,0.45));">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00ffb7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
                 </svg>
               </div>
-              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; color:#00d4ff;">Días, no meses</div>
+              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; color:#00ffb7;">Días, no meses</div>
               <div class="text-sm mt-1" style="color:#7aa3cc;">Metodología ágil + IA</div>
             </div>
           </div>
         </div>
 
         <!-- Módulo 2: Webs -->
-        <div class="glass-card reveal p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="glass-card reveal p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center" style="border-color: rgba(0,255,183,0.2);">
           <div class="order-2 md:order-1 flex justify-center">
-            <div class="glass-card p-6 text-center flex flex-col items-center" style="max-width:220px; border-color: rgba(0,212,255,0.3);">
-              <div class="p-3 rounded-xl border border-cyan/20 bg-cyan-950/5 mb-3 flex items-center justify-center" style="filter: drop-shadow(0 0 5px rgba(0,212,255,0.45));">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <div class="glass-card p-6 text-center flex flex-col items-center" style="max-width:220px; border-color: rgba(0,255,183,0.3);">
+              <div class="p-3 rounded-xl border border-[#00ffb7]/20 bg-[#00ffb7]/5 mb-3 flex items-center justify-center" style="filter: drop-shadow(0 0 5px rgba(0,255,183,0.45));">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00ffb7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M12 2a10 10 0 0 1 7.54 16.59l-1.41-1.41A8 8 0 1 0 5.88 15.2l-1.42 1.4A10 10 0 0 1 12 2zm0 6a4 4 0 1 1-4 4 4 4 0 0 1 4-4z"></path>
                 </svg>
               </div>
-              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; color:#00d4ff;">Agente IA 24/7</div>
+              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; color:#00ffb7;">Agente IA 24/7</div>
               <div class="text-sm mt-1" style="color:#7aa3cc;">Califica clientes mientras duermes</div>
             </div>
           </div>
           <div class="order-1 md:order-2">
-            <span class="section-label mb-4 inline-flex">Módulo 2</span>
+            <span class="section-label mb-4 inline-flex" style="border-color:rgba(0,255,183,0.3); color:#00ffb7; background:rgba(0,255,183,0.08);">Módulo 2</span>
             <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.3rem; color:#e8f4ff; margin:0.5rem 0;">
               Infraestructuras Web de Alta Conversión
             </h3>
@@ -117,7 +117,7 @@ import ContactForm from '../components/ContactForm.astro';
                 'Integración con CRM y WhatsApp Business',
               ].map(f => (
                 <li class="flex items-start gap-2 text-sm" style="color:#a8c4e0;">
-                  <span style="color:#00d4ff; flex-shrink:0;">▸</span>{f}
+                  <span style="color:#00ffb7; flex-shrink:0;">▸</span>{f}
                 </li>
               ))}
             </ul>
@@ -125,9 +125,9 @@ import ContactForm from '../components/ContactForm.astro';
         </div>
 
         <!-- Módulo 3: Sistemas complejos -->
-        <div class="glass-card reveal p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="glass-card reveal p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center" style="border-color: rgba(0,255,183,0.2);">
           <div>
-            <span class="section-label mb-4 inline-flex">Módulo 3</span>
+            <span class="section-label mb-4 inline-flex" style="border-color:rgba(0,255,183,0.3); color:#00ffb7; background:rgba(0,255,183,0.08);">Módulo 3</span>
             <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.3rem; color:#e8f4ff; margin:0.5rem 0;">
               Sistemas Complejos en la Nube
             </h3>
@@ -143,19 +143,19 @@ import ContactForm from '../components/ContactForm.astro';
                 'Integración con ERPs y sistemas existentes',
               ].map(f => (
                 <li class="flex items-start gap-2 text-sm" style="color:#a8c4e0;">
-                  <span style="color:#00d4ff; flex-shrink:0;">▸</span>{f}
+                  <span style="color:#00ffb7; flex-shrink:0;">▸</span>{f}
                 </li>
               ))}
             </ul>
           </div>
           <div class="flex justify-center">
-            <div class="glass-card p-6 text-center flex flex-col items-center" style="max-width:220px; border-color: rgba(0,212,255,0.3);">
-              <div class="p-3 rounded-xl border border-cyan/20 bg-cyan-950/5 mb-3 flex items-center justify-center" style="filter: drop-shadow(0 0 5px rgba(0,212,255,0.45));">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <div class="glass-card p-6 text-center flex flex-col items-center" style="max-width:220px; border-color: rgba(0,255,183,0.3);">
+              <div class="p-3 rounded-xl border border-[#00ffb7]/20 bg-[#00ffb7]/5 mb-3 flex items-center justify-center" style="filter: drop-shadow(0 0 5px rgba(0,255,183,0.45));">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00ffb7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
                 </svg>
               </div>
-              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; color:#00d4ff;">Supabase Cloud</div>
+              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; color:#00ffb7;">Supabase Cloud</div>
               <div class="text-sm mt-1" style="color:#7aa3cc;">Escalable desde día uno</div>
             </div>
           </div>

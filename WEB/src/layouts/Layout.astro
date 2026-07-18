@@ -91,7 +91,7 @@ const {
           <div class="relative group">
             <button
               class={`nav-link flex items-center gap-1 bg-transparent border-0 cursor-pointer ${
-                ['/analytics','/software','/consulting'].includes(currentPage) ? 'active' : ''
+                ['/analytics','/software','/consulting','/cctv'].includes(currentPage) ? 'active' : ''
               }`}
             >
               Servicios
@@ -118,6 +118,13 @@ const {
                 </svg>
                 Custom Software
               </a>
+              <a href="/cctv" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm transition-colors hover:bg-cyan-900/20" style="color:#a8c4e0;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0" style="filter: drop-shadow(0 0 4px rgba(0,212,255,0.45));">
+                  <path d="M23 7l-7 5 7 5V7z"></path>
+                  <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                </svg>
+                Smart CCTV & Monitoreo
+              </a>
               <a href="/consulting" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm transition-colors hover:bg-cyan-900/20" style="color:#a8c4e0;">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0" style="filter: drop-shadow(0 0 4px rgba(0,212,255,0.45));">
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
@@ -136,20 +143,21 @@ const {
         <button
           id="menu-toggle"
           class="md:hidden flex flex-col gap-1.5 p-2"
-          aria-label="Abrir menú"
-          aria-expanded="false"
-          aria-controls="mobile-menu"
+          class="md:hidden p-2 rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-colors bg-transparent border-0 cursor-pointer"
+          aria-label="Toggle Navigation Menu"
         >
-          <span class="block w-6 h-0.5 bg-white/70 transition-all duration-300" id="bar1"></span>
-          <span class="block w-6 h-0.5 bg-white/70 transition-all duration-300" id="bar2"></span>
-          <span class="block w-6 h-0.5 bg-white/70 transition-all duration-300" id="bar3"></span>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
         </button>
       </nav>
 
-      <!-- Mobile menu -->
+      <!-- Mobile menu container -->
       <div
         id="mobile-menu"
-        class="md:hidden hidden flex-col gap-1 px-4 pb-6 pt-2"
+        class="hidden md:hidden px-6 pb-6 pt-2 flex flex-col gap-1 border-t border-white/10"
         style="background: rgba(5,22,80,0.97); backdrop-filter: blur(20px);"
       >
         <a href="/" class="nav-link text-base py-3 px-2 border-b border-white/10 block">Inicio</a>
@@ -165,14 +173,21 @@ const {
             Analytics & IA
           </a>
           <a href="/software" class="nav-link text-sm py-2 pl-2 flex items-center gap-2">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ffb7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0">
               <polyline points="16 18 22 12 16 6"></polyline>
               <polyline points="8 6 2 12 8 18"></polyline>
             </svg>
             Custom Software
           </a>
+          <a href="/cctv" class="nav-link text-sm py-2 pl-2 flex items-center gap-2">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#bd00ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0">
+              <path d="M23 7l-7 5 7 5V7z"></path>
+              <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+            </svg>
+            Smart CCTV & Monitoreo
+          </a>
           <a href="/consulting" class="nav-link text-sm py-2 pl-2 flex items-center gap-2">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ff5e00" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
             </svg>
             Consultoría
@@ -210,6 +225,7 @@ const {
             <ul class="space-y-2">
               <li><a href="/analytics" class="text-sm hover:text-cyan-300 transition-colors" style="color:#7aa3cc;">Analytics & Predictive AI</a></li>
               <li><a href="/software" class="text-sm hover:text-cyan-300 transition-colors" style="color:#7aa3cc;">Custom Software & Systems</a></li>
+              <li><a href="/cctv" class="text-sm hover:text-cyan-300 transition-colors" style="color:#7aa3cc;">Smart CCTV & Video Analytics</a></li>
               <li><a href="/consulting" class="text-sm hover:text-cyan-300 transition-colors" style="color:#7aa3cc;">Consulting & Cyber Security</a></li>
             </ul>
           </div>

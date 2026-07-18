@@ -7,49 +7,55 @@ interface Props {
   depth: string;
   features: string[];
   delay?: number;
+  color?: string;
 }
 
-const { title, subtitle, description, href, depth, features, delay = 0 } = Astro.props;
+const { title, subtitle, description, href, depth, features, delay = 0, color = "#00d4ff" } = Astro.props;
 ---
 
 <article
-  class="glass-card reveal p-8 flex flex-col gap-6 h-full"
-  style={`transition-delay: ${delay}ms;`}
+  class="glass-card reveal p-6 flex flex-col gap-5 h-full transition-all duration-300 group"
+  style={`transition-delay: ${delay}ms; border-color: ${color}25;`}
 >
   <!-- Header -->
-  <div class="flex items-start gap-4">
+  <div class="flex items-start gap-3.5">
     <div
-      class="flex-shrink-0 w-14 h-14 flex items-center justify-center rounded-xl"
-      style="background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2);"
+      class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-105"
+      style={`background: ${color}14; border: 1px solid ${color}40; color: ${color}; box-shadow: 0 0 15px ${color}1a;`}
     >
       <slot />
     </div>
-    <div>
-      <span class="depth-badge mb-2 inline-flex">
-        <span>⬇</span> {depth}
+    <div class="min-w-0 flex-1">
+      <span class="depth-badge mb-1.5 inline-flex items-center justify-center text-center text-[0.7rem] px-2.5 py-0.5" style={`border-color: ${color}35; color: ${color}; background: ${color}10;`}>
+        {depth}
       </span>
-      <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.1rem; color: #e8f4ff; margin: 0;">
+      <h3 style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.05rem; line-height: 1.3; color: #e8f4ff; margin: 0;">
         {title}
       </h3>
-      <p class="text-xs mt-1" style="color:#00d4ff;">{subtitle}</p>
+      <p class="text-xs mt-1 font-semibold" style={`color:${color};`}>{subtitle}</p>
     </div>
   </div>
 
   <!-- Description -->
-  <p class="text-sm leading-relaxed flex-grow" style="color:#7aa3cc;">{description}</p>
+  <p class="text-xs sm:text-sm leading-relaxed flex-grow" style="color:#7aa3cc;">{description}</p>
 
   <!-- Features -->
   <ul class="space-y-2">
     {features.map(feat => (
-      <li class="flex items-start gap-2 text-sm" style="color:#a8c4e0;">
-        <span style="color:#00d4ff; flex-shrink:0; margin-top:2px;">▸</span>
+      <li class="flex items-start gap-2 text-xs sm:text-sm" style="color:#a8c4e0;">
+        <span style={`color:${color}; flex-shrink:0; margin-top:2px;`}>▸</span>
         <span>{feat}</span>
       </li>
     ))}
   </ul>
 
   <!-- CTA -->
-  <a href={href} class="btn-primary text-sm justify-center mt-auto">
-    Explorar servicio →
+  <a
+    href={href}
+    class="btn-primary text-xs sm:text-sm whitespace-nowrap justify-center mt-auto flex items-center gap-2 py-2.5 px-4"
+    style={`border-color: ${color}50; box-shadow: 0 0 12px ${color}20;`}
+  >
+    <span>Explorar servicio</span>
+    <span class="transition-transform duration-200 group-hover:translate-x-1 flex-shrink-0">→</span>
   </a>
 </article>

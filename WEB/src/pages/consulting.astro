@@ -14,33 +14,33 @@ import ContactForm from '../components/ContactForm.astro';
     <div class="section-bg section-bg-abyss" style="opacity:0.28;"></div>
     <div class="section-overlay" style="background:rgba(0,7,45,0.8);"></div>
     <div class="max-w-4xl mx-auto text-center relative" style="z-index:2;">
-      <span class="section-label mb-6 inline-flex load-fade-in">Consulting & Cyber Security</span>
+      <span class="section-label mb-6 inline-flex load-fade-in" style="border-color:rgba(255,94,0,0.3); color:#ff5e00; background:rgba(255,94,0,0.08);">Consulting & Cyber Security</span>
       <div class="flex justify-center mb-8 load-fade-in">
-        <div class="p-5 rounded-2xl border border-cyan/20 bg-cyan-950/10 shadow-[0_0_30px_rgba(0,212,255,0.12)]">
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 8px rgba(0,212,255,0.6));">
+        <div class="p-5 rounded-2xl border border-[#ff5e00]/20 bg-[#ff5e00]/5 shadow-[0_0_30px_rgba(255,94,0,0.15)]">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#ff5e00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 8px rgba(255,94,0,0.6));">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
           </svg>
         </div>
       </div>
       <h1 class="load-fade-in delay-100" style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(2rem,5vw,3rem); line-height:1.15; color:#e8f4ff; margin:0 0 1.25rem;">
         Protección y destrabe
-        <span style="color:#00d4ff; display:block;">de tu operación digital</span>
+        <span style="color:#ff5e00; display:block;">de tu operación digital</span>
       </h1>
       <p class="text-lg leading-relaxed max-w-2xl mx-auto load-fade-in delay-200" style="color:#7aa3cc;">
         Diagnóstico acelerado de tus procesos digitales y un blindaje integral para garantizar la continuidad operativa y la paz mental de tu empresa.
       </p>
       <div class="flex flex-wrap gap-4 justify-center mt-8 load-fade-in delay-300">
-        <a href="#servicios" class="btn-primary">Ver servicios →</a>
-        <a href="#contacto" class="btn-outline">Agendar auditoría</a>
+        <a href="#servicios" class="btn-primary" style="background: linear-gradient(135deg, #ff5e00 0%, #cc3300 100%); color: #ffffff; border: none; font-weight: 600;">Ver servicios →</a>
+        <a href="#contacto" class="btn-outline" style="border-color: rgba(255,94,0,0.4); color: #ff5e00;">Agendar auditoría</a>
       </div>
 
       <!-- Alerta de contexto unificada dentro del Hero -->
       <div class="max-w-3xl mx-auto mt-14 load-fade-in delay-400">
-        <div class="glass-card p-5 flex items-start gap-4 text-left" style="border-color: rgba(255,100,100,0.25); background: rgba(255,50,50,0.03);">
+        <div class="glass-card p-5 flex items-start gap-4 text-left" style="border-color: rgba(255,94,0,0.3); background: rgba(255,94,0,0.04);">
           <span class="text-2xl flex-shrink-0">⚠️</span>
           <div>
             <p class="text-sm leading-relaxed" style="color:#a8c4e0;">
-              <strong style="color:#ff5555;">El 73% de las PYMEs en Chile</strong> carece de un plan de respaldo inmutable y políticas de acceso 2FA. Con la entrada en vigor de la nueva <strong style="color:#00d4ff;">Ley Marco de Ciberseguridad (Ley 21.663)</strong>, tu empresa enfrenta multas severas e inactividad forzada de semanas ante un incidente. Te blindamos antes de que ocurra.
+              <strong style="color:#ff5e00;">El 73% de las PYMEs en Chile</strong> carece de un plan de respaldo inmutable y políticas de acceso 2FA. Con la entrada en vigor de la nueva <strong style="color:#ff5e00;">Ley Marco de Ciberseguridad (Ley 21.663)</strong>, tu empresa enfrenta multas severas e inactividad forzada de semanas ante un incidente. Te blindamos antes de que ocurra.
             </p>
           </div>
         </div>
@@ -62,9 +62,9 @@ import ContactForm from '../components/ContactForm.astro';
         </div>
 
         <!-- Módulo 1: Consultoría Express -->
-        <div class="glass-card reveal p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="glass-card reveal p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center" style="border-color: rgba(255,94,0,0.2);">
           <div>
-            <span class="section-label mb-4 inline-flex">Módulo 1</span>
+            <span class="section-label mb-4 inline-flex" style="border-color:rgba(255,94,0,0.3); color:#ff5e00; background:rgba(255,94,0,0.08);">Módulo 1</span>
             <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.3rem; color:#e8f4ff; margin:0.5rem 0;">
               Consultoría Operativa Express
             </h3>
@@ -80,41 +80,41 @@ import ContactForm from '../components/ContactForm.astro';
                 'Entrega en 48-72 horas hábiles',
               ].map(f => (
                 <li class="flex items-start gap-2 text-sm" style="color:#a8c4e0;">
-                  <span style="color:#00d4ff; flex-shrink:0;">▸</span>{f}
+                  <span style="color:#ff5e00; flex-shrink:0;">▸</span>{f}
                 </li>
               ))}
             </ul>
           </div>
           <div class="flex justify-center">
-            <div class="glass-card p-6 text-center flex flex-col items-center" style="max-width:220px; border-color: rgba(0,212,255,0.3);">
-              <div class="p-3 rounded-xl border border-cyan/20 bg-cyan-950/5 mb-3 flex items-center justify-center" style="filter: drop-shadow(0 0 5px rgba(0,212,255,0.45));">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <div class="glass-card p-6 text-center flex flex-col items-center" style="max-width:220px; border-color: rgba(255,94,0,0.3);">
+              <div class="p-3 rounded-xl border border-[#ff5e00]/20 bg-[#ff5e00]/5 mb-3 flex items-center justify-center" style="filter: drop-shadow(0 0 5px rgba(255,94,0,0.45));">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ff5e00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <circle cx="12" cy="12" r="10"></circle>
                   <polyline points="12 6 12 12 16 14"></polyline>
                 </svg>
               </div>
-              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; color:#00d4ff;">48-72 horas</div>
+              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; color:#ff5e00;">48-72 horas</div>
               <div class="text-sm mt-1" style="color:#7aa3cc;">Diagnóstico completo entregado</div>
             </div>
           </div>
         </div>
 
         <!-- Módulo 2: Auditoría de vulnerabilidades -->
-        <div class="glass-card reveal p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="glass-card reveal p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center" style="border-color: rgba(255,94,0,0.2);">
           <div class="order-2 md:order-1 flex justify-center">
-            <div class="glass-card p-6 text-center flex flex-col items-center" style="max-width:220px; border-color: rgba(0,212,255,0.3);">
-              <div class="p-3 rounded-xl border border-cyan/20 bg-cyan-950/5 mb-3 flex items-center justify-center" style="filter: drop-shadow(0 0 5px rgba(0,212,255,0.45));">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <div class="glass-card p-6 text-center flex flex-col items-center" style="max-width:220px; border-color: rgba(255,94,0,0.3);">
+              <div class="p-3 rounded-xl border border-[#ff5e00]/20 bg-[#ff5e00]/5 mb-3 flex items-center justify-center" style="filter: drop-shadow(0 0 5px rgba(255,94,0,0.45));">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ff5e00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <circle cx="11" cy="11" r="8"></circle>
                   <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
               </div>
-              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; color:#00d4ff;">Escaneo profundo</div>
+              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; color:#ff5e00;">Escaneo profundo</div>
               <div class="text-sm mt-1" style="color:#7aa3cc;">Redes, web y endpoints</div>
             </div>
           </div>
           <div class="order-1 md:order-2">
-            <span class="section-label mb-4 inline-flex">Módulo 2</span>
+            <span class="section-label mb-4 inline-flex" style="border-color:rgba(255,94,0,0.3); color:#ff5e00; background:rgba(255,94,0,0.08);">Módulo 2</span>
             <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.3rem; color:#e8f4ff; margin:0.5rem 0;">
               Auditoría de Vulnerabilidades
             </h3>
@@ -130,7 +130,7 @@ import ContactForm from '../components/ContactForm.astro';
                 'Plan de remediación priorizado',
               ].map(f => (
                 <li class="flex items-start gap-2 text-sm" style="color:#a8c4e0;">
-                  <span style="color:#00d4ff; flex-shrink:0;">▸</span>{f}
+                  <span style="color:#ff5e00; flex-shrink:0;">▸</span>{f}
                 </li>
               ))}
             </ul>
@@ -138,9 +138,9 @@ import ContactForm from '../components/ContactForm.astro';
         </div>
 
         <!-- Módulo 3: Blindaje -->
-        <div class="glass-card reveal p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="glass-card reveal p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center" style="border-color: rgba(255,94,0,0.2);">
           <div>
-            <span class="section-label mb-4 inline-flex">Módulo 3</span>
+            <span class="section-label mb-4 inline-flex" style="border-color:rgba(255,94,0,0.3); color:#ff5e00; background:rgba(255,94,0,0.08);">Módulo 3</span>
             <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.3rem; color:#e8f4ff; margin:0.5rem 0;">
               Ciberseguridad y Blindaje
             </h3>
@@ -156,19 +156,19 @@ import ContactForm from '../components/ContactForm.astro';
                 'Simulacro de recuperación ante ransomware',
               ].map(f => (
                 <li class="flex items-start gap-2 text-sm" style="color:#a8c4e0;">
-                  <span style="color:#00d4ff; flex-shrink:0;">▸</span>{f}
+                  <span style="color:#ff5e00; flex-shrink:0;">▸</span>{f}
                 </li>
               ))}
             </ul>
           </div>
           <div class="flex justify-center">
-            <div class="glass-card p-6 text-center" style="max-width:220px; border-color: rgba(0,212,255,0.3);">
-              <div class="flex justify-center mb-3 text-cyan">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 6px rgba(0,212,255,0.5));">
+            <div class="glass-card p-6 text-center" style="max-width:220px; border-color: rgba(255,94,0,0.3);">
+              <div class="flex justify-center mb-3">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ff5e00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 6px rgba(255,94,0,0.5));">
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                 </svg>
               </div>
-              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; color:#00d4ff;">RTO &lt; 4 horas</div>
+              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; color:#ff5e00;">RTO &lt; 4 horas</div>
               <div class="text-sm mt-1" style="color:#7aa3cc;">Recuperación garantizada</div>
             </div>
           </div>
@@ -182,7 +182,7 @@ import ContactForm from '../components/ContactForm.astro';
     <div class="section-bg section-bg-abyss" style="opacity:0.25;"></div>
     <div class="section-overlay" style="background:rgba(0,7,45,0.85);"></div>
     <div class="max-w-4xl mx-auto relative" style="z-index:2;">
-      <div class="glass-card reveal p-10" style="border-color: rgba(0,212,255,0.2);">
+      <div class="glass-card reveal p-10" style="border-color: rgba(255,94,0,0.2);">
         <h3 class="text-center mb-10" style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.4rem; color:#e8f4ff;">
           El costo de no actuar
         </h3>
@@ -194,13 +194,13 @@ import ContactForm from '../components/ContactForm.astro';
           ].map(({ val, label, icon }) => (
             <div>
               <div class="text-3xl mb-2">{icon}</div>
-              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:2rem; color:#00d4ff;">{val}</div>
+              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:2rem; color:#ff5e00;">{val}</div>
               <div class="text-xs mt-2 leading-relaxed" style="color:#7aa3cc;">{label}</div>
             </div>
           ))}
         </div>
-        <div class="mt-8 text-center text-xs" style="color:#7aa3cc; border-top: 1px solid rgba(0,212,255,0.1); padding-top: 1.5rem;">
-          📢 <strong>Nueva Regulación en Chile:</strong> La Ley Marco de Ciberseguridad (Ley 21.663) establece multas severas y responsabilidades de continuidad operativa para directores y administradores.
+        <div class="mt-8 text-center text-xs" style="color:#7aa3cc; border-top: 1px solid rgba(255,94,0,0.15); padding-top: 1.5rem;">
+          📢 <strong style="color:#ff5e00;">Nueva Regulación en Chile:</strong> La Ley Marco de Ciberseguridad (Ley 21.663) establece multas severas y responsabilidades de continuidad operativa para directores y administradores.
         </div>
       </div>
     </div>

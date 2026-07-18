@@ -1,0 +1,195 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<Layout
+  title="Smart CCTV & Video Analytics — Benthic OPS"
+  description="Sistemas de software para cámaras de seguridad, monitoreo proactivo y analítica de video con Inteligencia Artificial. Control de producción, robos y accidentes."
+  currentPage="/cctv"
+>
+
+  <!-- Hero -->
+  <section class="relative pt-36 pb-20 px-6 overflow-hidden">
+    <div class="section-bg section-bg-bio" style="opacity:0.28;"></div>
+    <div class="section-overlay" style="background:rgba(0,7,45,0.8);"></div>
+    <div class="max-w-4xl mx-auto text-center relative" style="z-index:2;">
+      <span class="section-label mb-6 inline-flex load-fade-in" style="border-color:rgba(189,0,255,0.3); color:#bd00ff; background:rgba(189,0,255,0.08);">Smart CCTV & Video Analytics</span>
+      <div class="flex justify-center mb-8 load-fade-in">
+        <div class="p-5 rounded-2xl border border-[#bd00ff]/20 bg-[#bd00ff]/5 shadow-[0_0_30px_rgba(189,0,255,0.15)]">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#bd00ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 8px rgba(189,0,255,0.6));">
+            <path d="M23 7l-7 5 7 5V7z"></path>
+            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+          </svg>
+        </div>
+      </div>
+      <h1 class="load-fade-in delay-100" style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(2rem,5vw,3rem); line-height:1.15; color:#e8f4ff; margin:0 0 1.25rem;">
+        Del registro pasivo
+        <span style="color:#bd00ff; display:block;">a la acción preventiva</span>
+      </h1>
+      <p class="text-lg leading-relaxed max-w-2xl mx-auto load-fade-in delay-200" style="color:#7aa3cc;">
+        Las cámaras tradicionales graban eventos para verlos después del siniestro. Nosotros integramos software de IA que recolecta datos, analiza patrones en tiempo real y te avisa para actuar antes de que sea tarde.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center mt-8 load-fade-in delay-300">
+        <a href="#servicios" class="btn-primary" style="background: linear-gradient(135deg, #bd00ff 0%, #700099 100%); color: #ffffff; border: none; font-weight: 600;">Ver capacidades →</a>
+        <a href="#contacto" class="btn-outline" style="border-color: rgba(189,0,255,0.4); color: #bd00ff;">Solicitar demo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sub-servicios / Módulos -->
+  <section id="servicios" class="relative py-20 px-6 overflow-hidden">
+    <div class="section-bg section-bg-hero" style="opacity:0.25;"></div>
+    <div class="section-overlay" style="background:rgba(0,5,25,0.85);"></div>
+    <div class="relative" style="z-index:2;">
+      <div class="max-w-5xl mx-auto space-y-8">
+        <div class="text-center mb-14 reveal">
+          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.8rem; color:#e8f4ff; margin:0 0 0.75rem;">
+            Capacidades del Sistema
+          </h2>
+          <p style="color:#7aa3cc;">Convertimos feeds de video pasivos en fuentes continuas de datos útiles y protección activa.</p>
+        </div>
+
+        <!-- Módulo 1: Seguridad e Intrusiones -->
+        <div class="glass-card reveal p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center" style="border-color: rgba(189,0,255,0.2);">
+          <div>
+            <span class="section-label mb-4 inline-flex" style="border-color:rgba(189,0,255,0.3); color:#bd00ff; background:rgba(189,0,255,0.08);">Módulo 1</span>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.3rem; color:#e8f4ff; margin:0.5rem 0;">
+              Seguridad Inteligente & Detección de Robos
+            </h3>
+            <p class="text-sm leading-relaxed mb-4" style="color:#7aa3cc;">
+              Superamos el modelo tradicional de grabación forense. Nuestro software analiza el feed en tiempo real para detectar intrusiones en perímetros, merodeos sospechosos y comportamientos de riesgo antes de que ocurra el incidente.
+            </p>
+            <ul class="space-y-2">
+              {[
+                'Detección de intrusiones en perímetros sensibles 24/7',
+                'Diferenciación inteligente entre personas, vehículos y animales',
+                'Alertas sonoras y notificaciones instantáneas (WhatsApp/Telegram)',
+                'Integración con sistemas de alarma y control de accesos existentes',
+              ].map(f => (
+                <li class="flex items-start gap-2 text-sm" style="color:#a8c4e0;">
+                  <span style="color:#bd00ff; flex-shrink:0;">▸</span>{f}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="flex justify-center">
+            <div class="glass-card p-6 text-center flex flex-col items-center" style="max-width:220px; border-color: rgba(189,0,255,0.3);">
+              <div class="p-3 rounded-xl border border-[#bd00ff]/20 bg-[#bd00ff]/5 mb-3 flex items-center justify-center" style="filter: drop-shadow(0 0 5px rgba(189,0,255,0.45));">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#bd00ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+              </div>
+              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; color:#bd00ff;">Prevención Real</div>
+              <div class="text-sm mt-1" style="color:#7aa3cc;">Filtro de falsas alarmas</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Módulo 2: Seguridad Ocupacional y Accidentes -->
+        <div class="glass-card reveal p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center" style="border-color: rgba(189,0,255,0.2);">
+          <div class="order-2 md:order-1 flex justify-center">
+            <div class="glass-card p-6 text-center flex flex-col items-center" style="max-width:220px; border-color: rgba(189,0,255,0.3);">
+              <div class="p-3 rounded-xl border border-[#bd00ff]/20 bg-[#bd00ff]/5 mb-3 flex items-center justify-center" style="filter: drop-shadow(0 0 5px rgba(189,0,255,0.45));">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#bd00ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                  <line x1="12" y1="9" x2="12" y2="13"></line>
+                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+              </div>
+              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; color:#bd00ff;">Zero Accidentes</div>
+              <div class="text-sm mt-1" style="color:#7aa3cc;">Monitoreo de seguridad EPP</div>
+            </div>
+          </div>
+          <div class="order-1 md:order-2">
+            <span class="section-label mb-4 inline-flex" style="border-color:rgba(189,0,255,0.3); color:#bd00ff; background:rgba(189,0,255,0.08);">Módulo 2</span>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.3rem; color:#e8f4ff; margin:0.5rem 0;">
+              Prevención de Accidentes y Salud Ocupacional
+            </h3>
+            <p class="text-sm leading-relaxed mb-4" style="color:#7aa3cc;">
+              Monitorea automáticamente las condiciones de seguridad en plantas industriales o almacenes. Identifica de manera autónoma la falta de elementos de protección personal (EPP), caídas de operarios o bloqueos de salidas de emergencia.
+            </p>
+            <ul class="space-y-2">
+              {[
+                'Detección automática de uso de casco, chaleco y arnés',
+                'Alertas en tiempo real por caídas o tropiezos de personal',
+                'Identificación de bloqueos en zonas de evacuación e hidrantes',
+                'Reportes automáticos de incidentes para auditorías internas',
+              ].map(f => (
+                <li class="flex items-start gap-2 text-sm" style="color:#a8c4e0;">
+                  <span style="color:#bd00ff; flex-shrink:0;">▸</span>{f}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <!-- Módulo 3: Métricas de Producción y Flujos -->
+        <div class="glass-card reveal p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center" style="border-color: rgba(189,0,255,0.2);">
+          <div>
+            <span class="section-label mb-4 inline-flex" style="border-color:rgba(189,0,255,0.3); color:#bd00ff; background:rgba(189,0,255,0.08);">Módulo 3</span>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.3rem; color:#e8f4ff; margin:0.5rem 0;">
+              Analítica de Producción & Flujos de Proceso
+            </h3>
+            <p class="text-sm leading-relaxed mb-4" style="color:#7aa3cc;">
+              Extrae valor operativo de las cámaras. Mide el flujo de productos en líneas de producción, calcula tiempos muertos, detecta cuellos de botella y genera reportes ejecutivos automatizados con datos reales de tu operación.
+            </p>
+            <ul class="space-y-2">
+              {[
+                'Conteo automatizado de unidades en bandas transportadoras',
+                'Detección de paradas no programadas en líneas de ensamblaje',
+                'Medición de tiempos de ciclo y congestión en zonas clave',
+                'Dashboard integrado con métricas de eficiencia (OEE)',
+              ].map(f => (
+                <li class="flex items-start gap-2 text-sm" style="color:#a8c4e0;">
+                  <span style="color:#bd00ff; flex-shrink:0;">▸</span>{f}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="flex justify-center">
+            <div class="glass-card p-6 text-center flex flex-col items-center" style="max-width:220px; border-color: rgba(189,0,255,0.3);">
+              <div class="p-3 rounded-xl border border-[#bd00ff]/20 bg-[#bd00ff]/5 mb-3 flex items-center justify-center" style="filter: drop-shadow(0 0 5px rgba(189,0,255,0.45));">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#bd00ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="20" x2="18" y2="10"></line>
+                  <line x1="12" y1="20" x2="12" y2="4"></line>
+                  <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+              </div>
+              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; color:#bd00ff;">Métricas Reales</div>
+              <div class="text-sm mt-1" style="color:#7aa3cc;">Optimización de procesos</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Métricas de impacto -->
+  <section class="relative py-16 px-6 overflow-hidden">
+    <div class="section-bg section-bg-abyss" style="opacity:0.25;"></div>
+    <div class="section-overlay" style="background:rgba(0,7,45,0.85);"></div>
+    <div class="max-w-4xl mx-auto relative" style="z-index:2;">
+      <div class="glass-card reveal p-10" style="border-color: rgba(189,0,255,0.2);">
+        <h3 class="text-center mb-10" style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.4rem; color:#e8f4ff;">
+          El impacto de la visión inteligente
+        </h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          {[
+            { val: '0 seg', label: 'Tiempo de alerta ante siniestros' },
+            { val: '24/7', label: 'Vigilancia y análisis continuo' },
+            { val: '+97%', label: 'Precisión en detección' },
+            { val: '0%', label: 'Reemplazo de cámaras actuales' },
+          ].map(({ val, label }) => (
+            <div>
+              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:2rem; color:#bd00ff;">{val}</div>
+              <div class="text-xs mt-1" style="color:#7aa3cc;">{label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ContactForm page="cctv" />
+</Layout>

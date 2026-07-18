@@ -15,6 +15,11 @@
   --color-white-ice:  #e8f4ff;
   --color-text-muted: #7aa3cc;
 
+  --color-analytics:  #00d4ff;
+  --color-software:   #00ffb7;
+  --color-cctv:       #bd00ff;
+  --color-consulting: #ff5e00;
+
   --font-sans:    "Inter", system-ui, sans-serif;
   --font-display: "Space Grotesk", "Inter", sans-serif;
 }
@@ -349,7 +354,8 @@ body {
 .depth-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  justify-content: center;
+  text-align: center;
   font-size: 0.75rem;
   color: #00d4ff;
   background: rgba(0,212,255,0.08);
