@@ -176,17 +176,73 @@ import ContactForm from '../components/ContactForm.astro';
           Lo que automatizamos en tu empresa
         </h3>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          {[
-            { val: '80%', label: 'Reducción en tiempo de reportes' },
-            { val: '24/7', label: 'Monitoreo de licitaciones' },
-            { val: '< 3min', label: 'Análisis de base licitación' },
-            { val: '100%', label: 'Integración SII automatizada' },
-          ].map(({ val, label }) => (
-            <div>
-              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:2rem; color:#00d4ff;">{val}</div>
-              <div class="text-xs mt-1" style="color:#7aa3cc;">{label}</div>
+          
+          <!-- 1. Reducción tiempo reportes: HIGHER IS BETTER (Subiendo) -->
+          <div class="flex flex-col items-center">
+            <span class="inline-flex items-center gap-1 text-[0.65rem] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full mb-2 bg-emerald-900/30 text-emerald-300 border border-emerald-500/30">
+              <span class="text-emerald-400">↑</span> Higher is Better
+            </span>
+            <div 
+              class="animate-counter" 
+              data-direction="up" 
+              data-start="0" 
+              data-target="80" 
+              data-suffix="%"
+              style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:2rem; color:#00d4ff;"
+            >
+              0%
             </div>
-          ))}
+            <div class="text-xs mt-1" style="color:#7aa3cc;">Reducción en tiempo de reportes</div>
+          </div>
+
+          <!-- 2. Monitoreo: 24/7 Continuo -->
+          <div class="flex flex-col items-center justify-between">
+            <span class="inline-flex items-center gap-1 text-[0.65rem] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full mb-2 bg-cyan-900/30 text-cyan-300 border border-cyan-500/30">
+              <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span> Continuo
+            </span>
+            <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:2rem; color:#00d4ff;">
+              24/7
+            </div>
+            <div class="text-xs mt-1" style="color:#7aa3cc;">Monitoreo de licitaciones</div>
+          </div>
+
+          <!-- 3. Análisis de base: LOWEST IS BETTER (Bajando) -->
+          <div class="flex flex-col items-center">
+            <span class="inline-flex items-center gap-1 text-[0.65rem] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full mb-2 bg-cyan-900/30 text-cyan-300 border border-cyan-500/30">
+              <span class="text-cyan-400">↓</span> Lowest is Better
+            </span>
+            <div 
+              class="animate-counter" 
+              data-direction="down" 
+              data-start="60" 
+              data-target="3" 
+              data-prefix="< " 
+              data-suffix=" min"
+              style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:2rem; color:#00d4ff;"
+            >
+              < 60 min
+            </div>
+            <div class="text-xs mt-1" style="color:#7aa3cc;">Análisis de base licitación</div>
+          </div>
+
+          <!-- 4. Integración SII: HIGHER IS BETTER (Subiendo) -->
+          <div class="flex flex-col items-center">
+            <span class="inline-flex items-center gap-1 text-[0.65rem] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full mb-2 bg-emerald-900/30 text-emerald-300 border border-emerald-500/30">
+              <span class="text-emerald-400">↑</span> Higher is Better
+            </span>
+            <div 
+              class="animate-counter" 
+              data-direction="up" 
+              data-start="0" 
+              data-target="100" 
+              data-suffix="%"
+              style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:2rem; color:#00d4ff;"
+            >
+              0%
+            </div>
+            <div class="text-xs mt-1" style="color:#7aa3cc;">Integración SII automatizada</div>
+          </div>
+
         </div>
       </div>
     </div>

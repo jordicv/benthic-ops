@@ -1,0 +1,451 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<Layout
+  title="Benthic Vision — Inteligencia Artificial & Analítica de Cámaras"
+  description="Benthic Vision: Software avanzado para cámaras de seguridad, monitoreo proactivo y analítica de video con Inteligencia Artificial en tiempo real."
+  currentPage="/benthic-vision"
+>
+
+  <!-- Hero -->
+  <section class="relative pt-36 pb-20 px-6 overflow-hidden">
+    <div class="section-bg section-bg-bio" style="opacity:0.28;"></div>
+    <div class="section-overlay" style="background:rgba(0,7,45,0.8);"></div>
+    <div class="max-w-4xl mx-auto text-center relative" style="z-index:2;">
+      <span class="section-label mb-6 inline-flex load-fade-in" style="border-color:rgba(189,0,255,0.3); color:#bd00ff; background:rgba(189,0,255,0.08);">Benthic Vision — IA & Analítica de Video</span>
+      <div class="flex justify-center mb-8 load-fade-in">
+        <div class="p-5 rounded-2xl border border-[#bd00ff]/20 bg-[#bd00ff]/5 shadow-[0_0_30px_rgba(189,0,255,0.15)]">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#bd00ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 8px rgba(189,0,255,0.6));">
+            <path d="M23 7l-7 5 7 5V7z"></path>
+            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+          </svg>
+        </div>
+      </div>
+      <h1 class="load-fade-in delay-100" style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(2rem,5vw,3rem); line-height:1.15; color:#e8f4ff; margin:0 0 1.25rem;">
+        Del registro pasivo
+        <span style="color:#bd00ff; display:block;">a la acción preventiva</span>
+      </h1>
+      <p class="text-lg leading-relaxed max-w-2xl mx-auto load-fade-in delay-200" style="color:#7aa3cc;">
+        Las cámaras tradicionales graban eventos para verlos después del siniestro. Nosotros integramos software de IA que recolecta datos, analiza patrones en tiempo real y te avisa para actuar antes de que sea tarde.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center mt-8 load-fade-in delay-300">
+        <a href="#servicios" class="btn-primary" style="background: linear-gradient(135deg, #bd00ff 0%, #700099 100%); color: #ffffff; border: none; font-weight: 600;">Ver capacidades →</a>
+        <a href="#contacto" class="btn-outline" style="border-color: rgba(189,0,255,0.4); color: #bd00ff;">Solicitar demo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sub-servicios / Módulos -->
+  <section id="servicios" class="relative py-20 px-6 overflow-hidden">
+    <div class="section-bg section-bg-hero" style="opacity:0.25;"></div>
+    <div class="section-overlay" style="background:rgba(0,5,25,0.85);"></div>
+    <div class="relative" style="z-index:2;">
+      <div class="max-w-5xl mx-auto space-y-8">
+        <div class="text-center mb-14 reveal">
+          <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.8rem; color:#e8f4ff; margin:0 0 0.75rem;">
+            Capacidades del Sistema
+          </h2>
+          <p style="color:#7aa3cc;">Convertimos feeds de video pasivos en fuentes continuas de datos útiles y protección activa.</p>
+        </div>
+
+        <!-- Módulo 1: Seguridad e Intrusiones -->
+        <div class="glass-card reveal p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center" style="border-color: rgba(189,0,255,0.2);">
+          <div>
+            <span class="section-label mb-4 inline-flex" style="border-color:rgba(189,0,255,0.3); color:#bd00ff; background:rgba(189,0,255,0.08);">Módulo 1</span>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.3rem; color:#e8f4ff; margin:0.5rem 0;">
+              Seguridad Inteligente & Detección de Robos
+            </h3>
+            <p class="text-sm leading-relaxed mb-4" style="color:#7aa3cc;">
+              Superamos el modelo tradicional de grabación forense. Nuestro software analiza el feed en tiempo real para detectar intrusiones en perímetros, merodeos sospechosos y comportamientos de riesgo antes de que ocurra el incidente.
+            </p>
+            <ul class="space-y-2">
+              {[
+                'Detección de intrusiones en perímetros sensibles 24/7',
+                'Diferenciación inteligente entre personas, vehículos y animales',
+                'Alertas sonoras y notificaciones instantáneas (WhatsApp/Telegram)',
+                'Integración con sistemas de alarma y control de accesos existentes',
+              ].map(f => (
+                <li class="flex items-start gap-2 text-sm" style="color:#a8c4e0;">
+                  <span style="color:#bd00ff; flex-shrink:0;">▸</span>{f}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="flex justify-center">
+            <div class="glass-card p-6 text-center flex flex-col items-center" style="max-width:220px; border-color: rgba(189,0,255,0.3);">
+              <div class="p-3 rounded-xl border border-[#bd00ff]/20 bg-[#bd00ff]/5 mb-3 flex items-center justify-center" style="filter: drop-shadow(0 0 5px rgba(189,0,255,0.45));">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#bd00ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+              </div>
+              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; color:#bd00ff;">Prevención Real</div>
+              <div class="text-sm mt-1" style="color:#7aa3cc;">Filtro de falsas alarmas</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Módulo 2: Seguridad Ocupacional y Accidentes -->
+        <div class="glass-card reveal p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center" style="border-color: rgba(189,0,255,0.2);">
+          <div class="order-2 md:order-1 flex justify-center">
+            <div class="glass-card p-6 text-center flex flex-col items-center" style="max-width:220px; border-color: rgba(189,0,255,0.3);">
+              <div class="p-3 rounded-xl border border-[#bd00ff]/20 bg-[#bd00ff]/5 mb-3 flex items-center justify-center" style="filter: drop-shadow(0 0 5px rgba(189,0,255,0.45));">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#bd00ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                  <line x1="12" y1="9" x2="12" y2="13"></line>
+                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+              </div>
+              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; color:#bd00ff;">Zero Accidentes</div>
+              <div class="text-sm mt-1" style="color:#7aa3cc;">Monitoreo de seguridad EPP</div>
+            </div>
+          </div>
+          <div class="order-1 md:order-2">
+            <span class="section-label mb-4 inline-flex" style="border-color:rgba(189,0,255,0.3); color:#bd00ff; background:rgba(189,0,255,0.08);">Módulo 2</span>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.3rem; color:#e8f4ff; margin:0.5rem 0;">
+              Prevención de Accidentes y Salud Ocupacional
+            </h3>
+            <p class="text-sm leading-relaxed mb-4" style="color:#7aa3cc;">
+              Monitorea automáticamente las condiciones de seguridad en plantas industriales o almacenes. Identifica de manera autónoma la falta de elementos de protección personal (EPP), caídas de operarios o bloqueos de salidas de emergencia.
+            </p>
+            <ul class="space-y-2">
+              {[
+                'Detección automática de uso de casco, chaleco y arnés',
+                'Alertas en tiempo real por caídas o tropiezos de personal',
+                'Identificación de bloqueos en zonas de evacuación e hidrantes',
+                'Reportes automáticos de incidentes para auditorías internas',
+              ].map(f => (
+                <li class="flex items-start gap-2 text-sm" style="color:#a8c4e0;">
+                  <span style="color:#bd00ff; flex-shrink:0;">▸</span>{f}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <!-- Módulo 3: Métricas de Producción y Flujos -->
+        <div class="glass-card reveal p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center" style="border-color: rgba(189,0,255,0.2);">
+          <div>
+            <span class="section-label mb-4 inline-flex" style="border-color:rgba(189,0,255,0.3); color:#bd00ff; background:rgba(189,0,255,0.08);">Módulo 3</span>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.3rem; color:#e8f4ff; margin:0.5rem 0;">
+              Analítica de Producción & Flujos de Proceso
+            </h3>
+            <p class="text-sm leading-relaxed mb-4" style="color:#7aa3cc;">
+              Extrae valor operativo de las cámaras. Mide el flujo de productos en líneas de producción, calcula tiempos muertos, detecta cuellos de botella y genera reportes ejecutivos automatizados con datos reales de tu operación.
+            </p>
+            <ul class="space-y-2">
+              {[
+                'Conteo automatizado de unidades en bandas transportadoras',
+                'Detección de paradas no programadas en líneas de ensamblaje',
+                'Medición de tiempos de ciclo y congestión en zonas clave',
+                'Dashboard integrado con métricas de eficiencia (OEE)',
+              ].map(f => (
+                <li class="flex items-start gap-2 text-sm" style="color:#a8c4e0;">
+                  <span style="color:#bd00ff; flex-shrink:0;">▸</span>{f}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="flex justify-center">
+            <div class="glass-card p-6 text-center flex flex-col items-center" style="max-width:220px; border-color: rgba(189,0,255,0.3);">
+              <div class="p-3 rounded-xl border border-[#bd00ff]/20 bg-[#bd00ff]/5 mb-3 flex items-center justify-center" style="filter: drop-shadow(0 0 5px rgba(189,0,255,0.45));">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#bd00ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="20" x2="18" y2="10"></line>
+                  <line x1="12" y1="20" x2="12" y2="4"></line>
+                  <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+              </div>
+              <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; color:#bd00ff;">Métricas Reales</div>
+              <div class="text-sm mt-1" style="color:#7aa3cc;">Optimización de procesos</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       DEMOSTRACIÓN DE RESULTADOS REALES CON IA BENTHIC
+  ═══════════════════════════════════════ -->
+  <section class="relative py-20 px-6 overflow-hidden">
+    <div class="section-bg section-bg-abyss" style="opacity:0.3;"></div>
+    <div class="section-overlay" style="background:rgba(0,7,45,0.9);"></div>
+    <div class="max-w-5xl mx-auto relative" style="z-index:2;">
+      
+      <div class="text-center mb-16 reveal">
+        <span class="section-label mb-4 inline-flex" style="border-color:rgba(189,0,255,0.3); color:#bd00ff; background:rgba(189,0,255,0.08);">Evidencia & Casos Reales</span>
+        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(1.8rem,4vw,2.6rem); color:#e8f4ff; margin:0.5rem 0 0.75rem;">
+          Resultados Reales en Producción
+        </h2>
+        <p style="color:#7aa3cc;" class="max-w-2xl mx-auto">
+          Descubre cómo nuestros modelos entrenados eliminan falsas alarmas y clasifican objetos en tiempo real con precisión milimétrica.
+        </p>
+      </div>
+
+      <!-- Comparativa COCO vs Benthic Dataset -->
+      <div class="glass-card reveal p-8 mb-12" style="border-color: rgba(189,0,255,0.25);">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-5">
+            <span class="text-xs uppercase font-bold tracking-widest text-[#bd00ff]">Precisión de Modelo</span>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.4rem; color:#e8f4ff;" class="my-2">
+              Modelos genéricos vs. Modelos Entrenados Benthic
+            </h3>
+            <p class="text-sm leading-relaxed mb-4" style="color:#7aa3cc;">
+              Los modelos públicos estándar (como COCO) están entrenados con fotos de internet, generando falsas alarmas al confundir objetos cotidianos.
+            </p>
+            <p class="text-sm leading-relaxed" style="color:#a8c4e0;">
+              Nuestros modelos Benthic se nutren de <strong>escenas reales de cámaras de seguridad</strong> para asegurar máxima precisión y cero falsos positivos.
+            </p>
+          </div>
+          <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- COCO Dataset -->
+            <div class="relative rounded-xl overflow-hidden border border-red-500/30 bg-black/60 p-2 flex flex-col items-center group">
+              <span class="text-[0.68rem] font-bold uppercase tracking-wider text-red-400 mb-1.5 flex items-center gap-1">
+                ✕ Modelo Genérico COCO <span class="text-[0.6rem] text-white/50">(🔍 Clic para ampliar)</span>
+              </span>
+              <img src="/images/coco.webp" alt="Detección COCO Genérico - Modelo Público" class="zoomable-image w-full h-auto max-h-56 object-contain rounded-lg transition-transform duration-300 group-hover:scale-102" />
+            </div>
+            <!-- Benthic Dataset -->
+            <div class="relative rounded-xl overflow-hidden border border-emerald-500/30 bg-black/60 p-2 flex flex-col items-center shadow-[0_0_20px_rgba(16,185,129,0.15)] group">
+              <span class="text-[0.68rem] font-bold uppercase tracking-wider text-emerald-400 mb-1.5 flex items-center gap-1">
+                ✓ Modelo Benthic IA <span class="text-[0.6rem] text-white/50">(🔍 Clic para ampliar)</span>
+              </span>
+              <img src="/images/plus_dataset.webp" alt="Detección con Benthic IA - Escena Real" class="zoomable-image w-full h-auto max-h-56 object-contain rounded-lg transition-transform duration-300 group-hover:scale-102" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid de Características y Capturas de Pantalla Reales Sin Recortar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Tarjeta 1: Fine Tuning -->
+        <div class="glass-card reveal p-6 flex flex-col justify-between" style="border-color: rgba(189,0,255,0.2);">
+          <div>
+            <div class="relative rounded-xl overflow-hidden border border-[#bd00ff]/20 mb-5 bg-black/50 p-2 flex items-center justify-center group">
+              <img src="/images/fine_tune.webp" alt="Ajuste Fino de IA con Imágenes Propias - Benthic Ops" class="zoomable-image w-full h-auto max-h-64 object-contain rounded-lg transition-transform duration-300 group-hover:scale-102" />
+              <span class="absolute bottom-3 right-3 bg-black/80 backdrop-blur-md text-[0.65rem] text-cyan-300 border border-cyan-500/30 px-2 py-1 rounded-md pointer-events-none">🔍 Clic para ampliar</span>
+            </div>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.2rem; color:#e8f4ff;" class="mb-2">
+              Ajuste fino con tus propias imágenes
+            </h3>
+            <p class="text-sm leading-relaxed" style="color:#7aa3cc;">
+              Reporta falsos positivos desde la app para re-entrenar la IA. El sistema aprende los ángulos exactos de tus instalaciones para un rendimiento impecable.
+            </p>
+          </div>
+        </div>
+
+        <!-- Tarjeta 2: Objetos Etiquetados -->
+        <div class="glass-card reveal p-6 flex flex-col justify-between" style="border-color: rgba(189,0,255,0.2); transition-delay: 100ms;">
+          <div>
+            <div class="relative rounded-xl overflow-hidden border border-[#bd00ff]/20 mb-5 bg-black/50 p-2 flex items-center justify-center group">
+              <img src="/images/available_objects_labeled.webp" alt="Detección de Objetos Especiales y Fauna - Benthic Ops" class="zoomable-image w-full h-auto max-h-64 object-contain rounded-lg transition-transform duration-300 group-hover:scale-102" />
+              <span class="absolute bottom-3 right-3 bg-black/80 backdrop-blur-md text-[0.65rem] text-cyan-300 border border-cyan-500/30 px-2 py-1 rounded-md pointer-events-none">🔍 Clic para ampliar</span>
+            </div>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.2rem; color:#e8f4ff;" class="mb-2">
+              Detección de objetos especiales
+            </h3>
+            <p class="text-sm leading-relaxed" style="color:#7aa3cc;">
+              Identifica maquinaria, herramientas de trabajo, contenedores o fauna local para activar protocolos automáticos según la zona geográfica.
+            </p>
+          </div>
+        </div>
+
+        <!-- Tarjeta 3: Seguimiento de Paquetes -->
+        <div class="glass-card reveal p-6 flex flex-col justify-between" style="border-color: rgba(189,0,255,0.2);">
+          <div>
+            <div class="relative rounded-xl overflow-hidden border border-[#bd00ff]/20 mb-5 bg-black/50 p-2 flex items-center justify-center group">
+              <img src="/images/delivery_labeled.webp" alt="Monitoreo de Paquetería y Logotipos de Mensajería - Benthic Ops" class="zoomable-image w-full h-auto max-h-64 object-contain rounded-lg transition-transform duration-300 group-hover:scale-102" />
+              <span class="absolute bottom-3 right-3 bg-black/80 backdrop-blur-md text-[0.65rem] text-cyan-300 border border-cyan-500/30 px-2 py-1 rounded-md pointer-events-none">🔍 Clic para ampliar</span>
+            </div>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.2rem; color:#e8f4ff;" class="mb-2">
+              Seguimiento de Entregas & Logotipos
+            </h3>
+            <p class="text-sm leading-relaxed" style="color:#7aa3cc;">
+              Reconoce la llegada de paquetes a la entrada e identifica empresas de mensajería globales (FedEx, UPS, DHL, Amazon) de manera autónoma.
+            </p>
+          </div>
+        </div>
+
+        <!-- Tarjeta 4: Rostros y Patentes -->
+        <div class="glass-card reveal p-6 flex flex-col justify-between" style="border-color: rgba(189,0,255,0.2); transition-delay: 100ms;">
+          <div>
+            <div class="relative rounded-xl overflow-hidden border border-[#bd00ff]/20 mb-5 bg-black/50 p-2 flex items-center justify-center group">
+              <img src="/images/face_license_plate_labeled.webp" alt="Reconocimiento Integrado de Rostros y Patentes - Benthic Ops" class="zoomable-image w-full h-auto max-h-64 object-contain rounded-lg transition-transform duration-300 group-hover:scale-102" />
+              <span class="absolute bottom-3 right-3 bg-black/80 backdrop-blur-md text-[0.65rem] text-cyan-300 border border-cyan-500/30 px-2 py-1 rounded-md pointer-events-none">🔍 Clic para ampliar</span>
+            </div>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.2rem; color:#e8f4ff;" class="mb-2">
+              Rostros & Patentes Integrados
+            </h3>
+            <p class="text-sm leading-relaxed" style="color:#7aa3cc;">
+              Localiza matrículas de vehículos y caras en el mismo pipeline principal de IA, optimizando el consumo de hardware sin ralentizar el sistema.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Métricas de impacto -->
+  <section class="relative py-16 px-6 overflow-hidden">
+    <div class="section-bg section-bg-abyss" style="opacity:0.25;"></div>
+    <div class="section-overlay" style="background:rgba(0,7,45,0.85);"></div>
+    <div class="max-w-4xl mx-auto relative" style="z-index:2;">
+      <div class="glass-card reveal p-10" style="border-color: rgba(189,0,255,0.2);">
+        <h3 class="text-center mb-10" style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.4rem; color:#e8f4ff;">
+          El impacto de la visión inteligente
+        </h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          
+          <!-- 1. Tiempo de alerta: LOWEST IS BETTER (Bajando) -->
+          <div class="flex flex-col items-center">
+            <span class="inline-flex items-center gap-1 text-[0.65rem] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full mb-2 bg-cyan-900/30 text-cyan-300 border border-cyan-500/30">
+              <span class="text-cyan-400">↓</span> Lowest is Better
+            </span>
+            <div 
+              class="animate-counter" 
+              data-direction="down" 
+              data-start="60" 
+              data-target="0" 
+              data-suffix=" seg"
+              style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:2rem; color:#bd00ff;"
+            >
+              60 seg
+            </div>
+            <div class="text-xs mt-1" style="color:#7aa3cc;">Tiempo de alerta ante siniestros</div>
+          </div>
+
+          <!-- 2. Vigilancia: 24/7 continuo -->
+          <div class="flex flex-col items-center justify-between">
+            <span class="inline-flex items-center gap-1 text-[0.65rem] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full mb-2 bg-purple-900/30 text-purple-300 border border-purple-500/30">
+              <span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse"></span> Continuo
+            </span>
+            <div style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:2rem; color:#bd00ff;">
+              24/7
+            </div>
+            <div class="text-xs mt-1" style="color:#7aa3cc;">Vigilancia y análisis continuo</div>
+          </div>
+
+          <!-- 3. Precisión: HIGHER IS BETTER (Subiendo) -->
+          <div class="flex flex-col items-center">
+            <span class="inline-flex items-center gap-1 text-[0.65rem] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full mb-2 bg-emerald-900/30 text-emerald-300 border border-emerald-500/30">
+              <span class="text-emerald-400">↑</span> Higher is Better
+            </span>
+            <div 
+              class="animate-counter" 
+              data-direction="up" 
+              data-start="0" 
+              data-target="97" 
+              data-prefix="+" 
+              data-suffix="%"
+              style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:2rem; color:#bd00ff;"
+            >
+              +0%
+            </div>
+            <div class="text-xs mt-1" style="color:#7aa3cc;">Precisión en detección</div>
+          </div>
+
+          <!-- 4. Costo inicial: LOWEST IS BETTER (Bajando) -->
+          <div class="flex flex-col items-center">
+            <span class="inline-flex items-center gap-1 text-[0.65rem] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full mb-2 bg-cyan-900/30 text-cyan-300 border border-cyan-500/30">
+              <span class="text-cyan-400">↓</span> Lowest is Better
+            </span>
+            <div 
+              class="animate-counter" 
+              data-direction="down" 
+              data-start="100" 
+              data-target="0" 
+              data-suffix="%"
+              style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:2rem; color:#bd00ff;"
+            >
+              100%
+            </div>
+            <div class="text-xs mt-1" style="color:#7aa3cc;">Costo inicial de auditoría</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modelo Comercial y Flujo de Adopción -->
+  <section class="relative py-20 px-6 overflow-hidden">
+    <div class="section-bg section-bg-bio" style="opacity:0.2;"></div>
+    <div class="section-overlay" style="background:rgba(0,5,25,0.9);"></div>
+    <div class="max-w-5xl mx-auto relative" style="z-index:2;">
+      <div class="text-center mb-14 reveal">
+        <span class="section-label mb-4 inline-flex" style="border-color:rgba(189,0,255,0.3); color:#bd00ff; background:rgba(189,0,255,0.08);">Modelo de Implementación</span>
+        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(1.8rem,4vw,2.5rem); color:#e8f4ff; margin:0.5rem 0 0.75rem;">
+          Implementación transparente y sin fricción
+        </h2>
+        <p style="color:#7aa3cc;" class="max-w-2xl mx-auto">
+          Primero evaluamos la factibilidad de tu hardware actual. Si tus cámaras responden a los requerimientos técnicos, no gastas un solo peso adicional en cámaras.
+        </p>
+      </div>
+
+      <!-- Pasos del flujo comercial -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <div class="glass-card reveal p-6 relative flex flex-col justify-between" style="border-color: rgba(189,0,255,0.25);">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-[#bd00ff]/10 border border-[#bd00ff]/30 flex items-center justify-center font-bold text-[#bd00ff] mb-4">1</div>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.15rem; color:#e8f4ff;" class="mb-2">Reunión de Factibilidad</h3>
+            <p class="text-sm leading-relaxed" style="color:#7aa3cc;">
+              Audición gratuita de tu infraestructura actual. Verificamos la calidad de video, FPS y estabilidad de red para asegurar compatibilidad.
+            </p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-[#bd00ff]/10 text-xs font-semibold text-[#bd00ff]">Diagnóstico $0 costo</div>
+        </div>
+
+        <div class="glass-card reveal p-6 relative flex flex-col justify-between" style="border-color: rgba(189,0,255,0.25); transition-delay: 100ms;">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-[#bd00ff]/10 border border-[#bd00ff]/30 flex items-center justify-center font-bold text-[#bd00ff] mb-4">2</div>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.15rem; color:#e8f4ff;" class="mb-2">Integración de Software</h3>
+            <p class="text-sm leading-relaxed" style="color:#7aa3cc;">
+              Desplegamos el motor de IA Benthic. Si tus cámaras son compatibles, <strong>no hay cobro por instalación de cámaras</strong>. Si se requieren cambios, ofrecemos cámaras homologadas opcionales.
+            </p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-[#bd00ff]/10 text-xs font-semibold style='color:#00ffb7;'">Sin compras forzadas</div>
+        </div>
+
+        <div class="glass-card reveal p-6 relative flex flex-col justify-between" style="border-color: rgba(189,0,255,0.25); transition-delay: 200ms;">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-[#bd00ff]/10 border border-[#bd00ff]/30 flex items-center justify-center font-bold text-[#bd00ff] mb-4">3</div>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.15rem; color:#e8f4ff;" class="mb-2">Suscripción & Soporte</h3>
+            <p class="text-sm leading-relaxed" style="color:#7aa3cc;">
+              Acceso continuo a alertas en tiempo real (WhatsApp/App), portal de auditoría de evidencias en la nube, soporte 24/7 y fine-tuning constante de tus modelos de IA.
+            </p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-[#bd00ff]/10 text-xs font-semibold text-[#bd00ff]">Servicio Mensual Todo Incluido</div>
+        </div>
+      </div>
+
+      <!-- Cuadro de Privacidad y Almacenamiento -->
+      <div class="glass-card reveal p-8" style="border-color: rgba(189,0,255,0.3); background: linear-gradient(135deg, rgba(189,0,255,0.05) 0%, rgba(0,7,45,0.6) 100%);">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-8">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold mb-3 border border-[#bd00ff]/30 bg-[#bd00ff]/10 text-[#bd00ff]">
+              🔒 Privacidad & Eficiencia Garantizadas
+            </div>
+            <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.4rem; color:#e8f4ff;" class="mb-3">
+              Tus grabaciones continuas 24/7 no salen de tu empresa
+            </h3>
+            <p class="text-sm leading-relaxed" style="color:#a8c4e0;">
+              Por política estricta de confidencialidad y optimización de ancho de banda, el video completo 24/7 se almacena localmente en tus servidores o NVRs. A la nube de Benthic únicamente viajan las <strong>alertas y capturas de evidencia (snapshots JPG)</strong> en el momento exacto de una detección.
+            </p>
+          </div>
+          <div class="lg:col-span-4 flex justify-center">
+            <a href="#contacto" class="btn-primary w-full text-center py-3.5" style="background: linear-gradient(135deg, #bd00ff 0%, #700099 100%); color: #ffffff; border: none; font-weight: 600;">
+              Solicitar Evaluación Gratis →
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <ContactForm page="benthic-vision" />
+</Layout>

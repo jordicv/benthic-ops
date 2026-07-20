@@ -56,7 +56,7 @@ import CybersecurityRadar from '../components/CybersecurityRadar.astro';
           <!-- Stats -->
           <div class="grid grid-cols-3 gap-3 md:gap-8 pt-8 max-w-[560px] load-fade-in delay-400" style="border-top: 1px solid rgba(0,212,255,0.15);">
             <div class="stat-card flex-1">
-              <div class="stat-val">4</div>
+              <div class="stat-val animate-counter" data-direction="up" data-start="0" data-target="4">0</div>
               <div class="stat-label">Áreas de servicio</div>
             </div>
             <div class="stat-card flex-1">
@@ -64,7 +64,7 @@ import CybersecurityRadar from '../components/CybersecurityRadar.astro';
               <div class="stat-label">Monitoreo</div>
             </div>
             <div class="stat-card flex-1">
-              <div class="stat-val">&lt;48h</div>
+              <div class="stat-val animate-counter" data-direction="down" data-start="120" data-target="48" data-prefix="<" data-suffix="h">&lt;120h</div>
               <div class="stat-label">Respuesta</div>
             </div>
           </div>
@@ -166,8 +166,8 @@ import CybersecurityRadar from '../components/CybersecurityRadar.astro';
           </svg>
         </ServiceCard>
         <ServiceCard
-          href="/cctv"
-          title="Smart CCTV & Video Analytics"
+          href="/benthic-vision"
+          title="Benthic Vision"
           subtitle="Monitoreo inteligente y datos"
           description="Vamos más allá de la grabación pasiva. Implementamos sistemas de cámaras inteligentes que detectan anomalías, robos, accidentes y métricas de producción en tiempo real."
           features={['Detección de robos e intrusiones','Control de producción y tiempos','Prevención activa de accidentes','Alertas y notificaciones inmediatas']}

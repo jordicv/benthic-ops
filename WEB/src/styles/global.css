@@ -17,7 +17,8 @@
 
   --color-analytics:  #00d4ff;
   --color-software:   #00ffb7;
-  --color-cctv:       #bd00ff;
+  --color-benthic-vision: #bd00ff;
+  --color-cctv:           #bd00ff;
   --color-consulting: #ff5e00;
 
   --font-sans:    "Inter", system-ui, sans-serif;
@@ -44,12 +45,11 @@ body {
 .ocean-bg {
   background: linear-gradient(
     to bottom,
-    #123499 0%,
-    #0a2472 20%,
-    #051650 50%,
-    #00072d 80%,
-    #000515 100%
+    #051650 0%,
+    #00072d 50%,
+    #051650 100%
   );
+  background-attachment: fixed;
 }
 
 /* ── Section backgrounds with photo ── */
