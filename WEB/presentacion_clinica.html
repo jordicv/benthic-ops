@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Propuesta de Sistema Clínico Personalizado</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .slide {
+      display: none;
+      animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .slide.active {
+      display: flex;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media print {
+      body { background: white !important; color: black !important; }
+      .no-print { display: none !important; }
+      .slide {
+        display: flex !important;
+        page-break-after: always;
+        min-height: 100vh;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-white">
+
+  <!-- Barra superior de navegación y progreso -->
+  <header class="no-print border-b border-slate-800/80 bg-slate-900/60 backdrop-blur px-6 py-3 flex items-center justify-between sticky top-0 z-50">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-teal-500 to-cyan-400 flex items-center justify-center font-bold text-slate-950 text-sm shadow-lg shadow-teal-500/20">
+        +
+      </div>
+      <div>
+        <h1 class="text-sm font-semibold text-white tracking-wide">Clínica Privada Multidisciplinaria</h1>
+        <p class="text-xs text-slate-400">Propuesta de Plataforma Clínica Propia</p>
+      </div>
+    </div>
+
+    <!-- Indicador de Diapositiva y Botones -->
+    <div class="flex items-center gap-3">
+      <span id="slideIndicator" class="text-xs font-mono font-medium text-teal-400 bg-teal-950/60 border border-teal-800/50 px-3 py-1 rounded-full">
+        01 / 09
+      </span>
+      <div class="flex items-center gap-1.5">
+        <button onclick="prevSlide()" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 transition text-xs font-medium flex items-center gap-1" title="Anterior (Flecha izquierda)">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          <span class="hidden sm:inline">Anterior</span>
+        </button>
+        <button onclick="nextSlide()" class="p-2 rounded-lg bg-teal-600 hover:bg-teal-500 text-white transition text-xs font-medium flex items-center gap-1 shadow-md shadow-teal-600/30" title="Siguiente (Flecha derecha / Espacio)">
+          <span class="hidden sm:inline">Siguiente</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
+        <button onclick="toggleFullscreen()" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition text-xs" title="Pantalla Completa (Tecla F)">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Barra de progreso -->
+  <div class="no-print w-full bg-slate-800 h-1">
+    <div id="progressBar" class="bg-gradient-to-r from-teal-500 to-cyan-400 h-1 transition-all duration-300" style="width: 11%;"></div>
+  </div>
+
+  <!-- Contenedor Principal de Slides -->
+  <main class="flex-1 flex items-center justify-center p-4 sm:p-8 md:p-12 max-w-7xl mx-auto w-full">
+
+    <!-- SLIDE 1: PORTADA -->
+    <section class="slide active flex-col items-center text-center justify-center py-10 w-full">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-teal-950/80 border border-teal-800/60 text-teal-300 text-xs font-medium mb-6">
+        <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+        Inversión Estratégica en Tecnología Médica
+      </div>
+      <h2 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight max-w-4xl leading-tight">
+        Su Propia Plataforma Clínica Digital: <br>
+        <span class="bg-gradient-to-r from-teal-400 via-cyan-300 to-blue-400 bg-clip-text text-transparent">
+          Soberanía, Seguridad y Cero Arriendos
+        </span>
+      </h2>
+      <p class="mt-6 text-slate-300 text-base sm:text-xl max-w-2xl font-light leading-relaxed">
+        Sistema médico integral y personalizado para su equipo de 15+ profesionales. Fichas para kinesiología, psicología y medicina sin pagar licencias mensuales perpetuas.
+      </p>
+
+      <div class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl w-full text-left">
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div class="text-teal-400 font-bold text-lg">100% Propio</div>
+          <div class="text-xs text-slate-400 mt-1">Sin cobros por agregar más médicos o secretarias</div>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div class="text-teal-400 font-bold text-lg">Multidisciplina</div>
+          <div class="text-xs text-slate-400 mt-1">Fichas adaptadas a cada especialidad</div>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div class="text-teal-400 font-bold text-lg">Retorno &lt; 1 Año</div>
+          <div class="text-xs text-slate-400 mt-1">La inversión se recupera en el mes 8</div>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div class="text-teal-400 font-bold text-lg">Ley 20.584</div>
+          <div class="text-xs text-slate-400 mt-1">Ciberseguridad y trazabilidad legal de datos</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 2: EL PROBLEMA DEL MERCADO -->
+    <section class="slide flex-col justify-center py-6 w-full max-w-5xl">
+      <div class="text-xs uppercase tracking-widest text-teal-400 font-semibold mb-2">Diagnóstico de Mercado</div>
+      <h2 class="text-2xl sm:text-4xl font-bold text-white mb-4">
+        El Dilema del Software Clínico Tradicional en Chile
+      </h2>
+      <p class="text-slate-300 text-sm sm:text-base mb-8 max-w-3xl">
+        Las plataformas tradicionales (Medilink, Reservo, etc.) operan bajo un modelo de arriendo perpetuo por agenda que penaliza el crecimiento de su clínica.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-red-950/20 border border-red-900/40 rounded-2xl p-6 relative overflow-hidden">
+          <div class="w-10 h-10 rounded-xl bg-red-900/40 flex items-center justify-center text-red-400 font-bold mb-4">
+            $
+          </div>
+          <h3 class="text-white font-semibold text-lg mb-2">Cobro por Usuario Creciente</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Pagar ~$45.000 por cada profesional significa que un equipo de 15 personas gasta <strong>más de $8.000.000 al año</strong> sólo en licencias que nunca serán suyas.
+          </p>
+        </div>
+
+        <div class="bg-amber-950/20 border border-amber-900/40 rounded-2xl p-6 relative overflow-hidden">
+          <div class="w-10 h-10 rounded-xl bg-amber-900/40 flex items-center justify-center text-amber-400 font-bold mb-4">
+            !
+          </div>
+          <h3 class="text-white font-semibold text-lg mb-2">Fichas Rígidas y Genéricas</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Un kinesiólogo o un psicólogo terminan obligados a llenar la misma plantilla de medicina general, perdiendo tiempo y calidad en el registro clínico.
+          </p>
+        </div>
+
+        <div class="bg-blue-950/20 border border-blue-900/40 rounded-2xl p-6 relative overflow-hidden">
+          <div class="w-10 h-10 rounded-xl bg-blue-900/40 flex items-center justify-center text-blue-400 font-bold mb-4">
+            🔒
+          </div>
+          <h3 class="text-white font-semibold text-lg mb-2">Datos Cautivos</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Su activo más valioso —la información y fichas de miles de pacientes— queda almacenada en servidores de terceros con exportaciones limitadas.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3: LA SOLUCIÓN PROPIETARIA -->
+    <section class="slide flex-col justify-center py-6 w-full max-w-5xl">
+      <div class="text-xs uppercase tracking-widest text-teal-400 font-semibold mb-2">Nuestra Propuesta</div>
+      <h2 class="text-2xl sm:text-4xl font-bold text-white mb-4">
+        Un Sistema Clínico Diseñado a la Medida de su Clínica
+      </h2>
+      <p class="text-slate-300 text-sm sm:text-base mb-8 max-w-3xl">
+        Implementamos una plataforma basada en un estándar médico internacional de código abierto, fortificada, alojada en su propio servidor y parametrizada para la realidad de la salud en Chile.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex gap-4">
+          <div class="w-12 h-12 rounded-xl bg-teal-950 border border-teal-800 flex items-center justify-center text-teal-400 shrink-0 text-xl font-bold">
+            ✓
+          </div>
+          <div>
+            <h3 class="text-white font-semibold text-lg">Inversión Única, Usuarios Ilimitados</h3>
+            <p class="text-slate-400 text-sm mt-1">
+              Si mañana su equipo pasa de 15 a 30 profesionales o contrata 3 secretarias más, el costo en licencias sigue siendo <strong>exactamente $0</strong>.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex gap-4">
+          <div class="w-12 h-12 rounded-xl bg-cyan-950 border border-cyan-800 flex items-center justify-center text-cyan-400 shrink-0 text-xl font-bold">
+            ⚡
+          </div>
+          <div>
+            <h3 class="text-white font-semibold text-lg">Adaptado al Contexto Chileno</h3>
+            <p class="text-slate-400 text-sm mt-1">
+              Validación de RUT con dígito verificador, previsión (Fonasa A/B/C/D, Isapres), recetas médicas y códigos diagnósticos CIE-10 integrados.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex gap-4">
+          <div class="w-12 h-12 rounded-xl bg-blue-950 border border-blue-800 flex items-center justify-center text-blue-400 shrink-0 text-xl font-bold">
+            🏢
+          </div>
+          <div>
+            <h3 class="text-white font-semibold text-lg">Soberanía Total de Datos</h3>
+            <p class="text-slate-400 text-sm mt-1">
+              La base de datos y los archivos clínicos residen en su propio servidor cloud. Usted tiene las llaves maestras de la información.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex gap-4">
+          <div class="w-12 h-12 rounded-xl bg-emerald-950 border border-emerald-800 flex items-center justify-center text-emerald-400 shrink-0 text-xl font-bold">
+            🤝
+          </div>
+          <div>
+            <h3 class="text-white font-semibold text-lg">Acompañamiento y Soporte Humano</h3>
+            <p class="text-slate-400 text-sm mt-1">
+              No hablará con un bot o un ticket que demora días. Tendrá soporte directo y rápido durante todo el despliegue y puesta en marcha.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4: MULTIDISCIPLINA -->
+    <section class="slide flex-col justify-center py-6 w-full max-w-5xl">
+      <div class="text-xs uppercase tracking-widest text-teal-400 font-semibold mb-2">Especialidades Integradas</div>
+      <h2 class="text-2xl sm:text-4xl font-bold text-white mb-4">
+        Fichas Clínicas Específicas para Cada Profesional
+      </h2>
+      <p class="text-slate-300 text-sm sm:text-base mb-8 max-w-3xl">
+        Cada disciplina cuenta con su propio flujo de trabajo, manteniendo un expediente unificado del paciente con los más altos estándares de confidencialidad.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Tarjeta Medicina -->
+        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6">
+          <div class="inline-block px-3 py-1 rounded-full bg-blue-950 text-blue-400 text-xs font-semibold mb-4">
+            Medicina General y Especialidades
+          </div>
+          <ul class="space-y-3 text-sm text-slate-300">
+            <li class="flex items-start gap-2">
+              <span class="text-teal-400">✓</span>
+              <span>Anamnesis completa y examen físico estructurado.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-teal-400">✓</span>
+              <span>Emisión de recetas médicas e indicaciones imprimibles en PDF.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-teal-400">✓</span>
+              <span>Catálogo de patologías con codificación internacional CIE-10.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Tarjeta Kinesiología -->
+        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6">
+          <div class="inline-block px-3 py-1 rounded-full bg-teal-950 text-teal-400 text-xs font-semibold mb-4">
+            Kinesiología y Rehabilitación
+          </div>
+          <ul class="space-y-3 text-sm text-slate-300">
+            <li class="flex items-start gap-2">
+              <span class="text-teal-400">✓</span>
+              <span>Evaluación motora, postural y rangos de movimiento (ROM).</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-teal-400">✓</span>
+              <span>Escala analógica del dolor (EVA) con registro por sesión.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-teal-400">✓</span>
+              <span>Control de planes de rehabilitación (Sesión 1 a N).</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Tarjeta Psicología -->
+        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6">
+          <div class="inline-block px-3 py-1 rounded-full bg-purple-950 text-purple-400 text-xs font-semibold mb-4">
+            Psicología y Salud Mental
+          </div>
+          <ul class="space-y-3 text-sm text-slate-300">
+            <li class="flex items-start gap-2">
+              <span class="text-teal-400">✓</span>
+              <span>Historia biopsicosocial y motivos de consulta.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-teal-400">✓</span>
+              <span><strong>Notas confidenciales protegidas:</strong> solo el terapeuta tratante puede ver el contenido íntimo.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-teal-400">✓</span>
+              <span>Registro de pruebas y objetivos terapéuticos.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5: RECEPCIÓN, CAJA Y AGENDA -->
+    <section class="slide flex-col justify-center py-6 w-full max-w-5xl">
+      <div class="text-xs uppercase tracking-widest text-teal-400 font-semibold mb-2">Operación Diaria</div>
+      <h2 class="text-2xl sm:text-4xl font-bold text-white mb-4">
+        Recepción Ágil, Agenda Multi-Box y Control de Caja
+      </h2>
+      <p class="text-slate-300 text-sm sm:text-base mb-8 max-w-3xl">
+        Diseñado para que las secretarias trabajen sin fricción y los profesionales sepan exactamente cuándo entra su próximo paciente.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
+          <div class="text-teal-400 text-2xl mb-3">📅</div>
+          <h3 class="text-white font-semibold text-lg mb-2">Agenda Visual de 15 Boxes</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Visualice el día completo de toda la clínica o filtre por profesional, especialidad o sala de atención. Agendamiento rápido con datos precargados del paciente.
+          </p>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
+          <div class="text-cyan-400 text-2xl mb-3">⏱️</div>
+          <h3 class="text-white font-semibold text-lg mb-2">Flujo de Sala de Espera</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Estados en tiempo real: <em>Agendado &rarr; Llegó a Recepción &rarr; En Atención &rarr; Atendido</em>. El profesional ve en su pantalla cuándo su paciente está en sala de espera.
+          </p>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
+          <div class="text-emerald-400 text-2xl mb-3">💳</div>
+          <h3 class="text-white font-semibold text-lg mb-2">Control de Aranceles y Pagos</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Arancel por prestación preconfigurado. Registro del medio de pago (Transbank/POS, efectivo, transferencia) con cuadratura de caja diaria para administración.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6: CIBERSEGURIDAD Y LEY CHILENA -->
+    <section class="slide flex-col justify-center py-6 w-full max-w-5xl">
+      <div class="text-xs uppercase tracking-widest text-teal-400 font-semibold mb-2">Tranquilidad Legal y Técnica</div>
+      <h2 class="text-2xl sm:text-4xl font-bold text-white mb-4">
+        Ciberseguridad y Cumplimiento de la Ley 20.584
+      </h2>
+      <p class="text-slate-300 text-sm sm:text-base mb-8 max-w-3xl">
+        Los datos de salud son considerados "datos sensibles" por la ley chilena. Nuestra arquitectura protege la clínica contra pérdidas de información y accesos no autorizados.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="p-2 rounded-lg bg-teal-950 text-teal-400 font-bold">📜</span>
+            <h3 class="text-white font-semibold text-base">Trazabilidad Total (Auditoría Legal)</h3>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            El sistema registra minuciosamente quién ingresó, a qué hora y qué ficha fue consultada o editada, garantizando el estricto apego a los Derechos y Deberes de los Pacientes.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="p-2 rounded-lg bg-cyan-950 text-cyan-400 font-bold">🛡️</span>
+            <h3 class="text-white font-semibold text-base">Cifrado Bancario y Filtro Anti-Ataques</h3>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Toda conexión viaja encriptada con certificados SSL/TLS modernos y protección Cloudflare contra caídas maliciosas o accesos sospechosos en internet.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="p-2 rounded-lg bg-emerald-950 text-emerald-400 font-bold">💾</span>
+            <h3 class="text-white font-semibold text-base">Respaldos Automáticos Diarios</h3>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Copias de seguridad diarias automatizadas y almacenadas fuera del servidor principal (almacenamiento cloud redundante). Cero riesgo de perder historiales.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="p-2 rounded-lg bg-purple-950 text-purple-400 font-bold">👥</span>
+            <h3 class="text-white font-semibold text-base">Segmentación Estricta de Permisos</h3>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            La secretaria nunca podrá ver diagnósticos médicos confidenciales; los profesionales sólo acceden a lo que necesitan para su práctica clínica.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7: ANÁLISIS FINANCIERO Y ROI -->
+    <section class="slide flex-col justify-center py-6 w-full max-w-5xl">
+      <div class="text-xs uppercase tracking-widest text-teal-400 font-semibold mb-2">Rentabilidad e Impacto Económico</div>
+      <h2 class="text-2xl sm:text-4xl font-bold text-white mb-2">
+        La Comparativa Financiera: Su Inversión se Paga Sola
+      </h2>
+      <p class="text-slate-300 text-sm mb-4 max-w-3xl">
+        Compare el modelo tradicional de arriendo por usuario (Medilink/Reservo) frente a una plataforma propia:
+      </p>
+
+      <!-- Calculadora Interactiva en Vivo -->
+      <div class="no-print bg-slate-900/90 border border-teal-500/30 rounded-2xl p-5 mb-5 shadow-lg shadow-teal-950/40">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+          <div>
+            <label for="profSlider" class="text-xs font-semibold text-teal-300 uppercase tracking-wider block">
+              Simulador en Vivo: Cantidad de Profesionales en la Clínica
+            </label>
+            <span class="text-xs text-slate-400">Mueva la barra para ver el impacto según el crecimiento de su equipo</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span id="profCountLabel" class="text-2xl font-black text-white px-3 py-1 bg-teal-950/80 border border-teal-700/60 rounded-xl">15</span>
+            <span class="text-xs text-slate-400 font-medium">profesionales</span>
+          </div>
+        </div>
+
+        <input type="range" id="profSlider" min="5" max="40" value="15" step="1" 
+          class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-teal-400 mb-4"
+          oninput="updateRoiCalc(this.value)">
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
+          <div class="p-3 rounded-xl bg-slate-950/70 border border-slate-800">
+            <div class="text-xs text-slate-400">Gasto Mensual en SaaS Tradicional</div>
+            <div id="calcMonthlySaaS" class="text-base sm:text-lg font-bold text-red-400 mt-1">$675.000 CLP / mes</div>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-950/70 border border-slate-800">
+            <div class="text-xs text-slate-400">Gasto en 5 Años con SaaS</div>
+            <div id="calc5YearSaaS" class="text-base sm:text-lg font-bold text-red-400 mt-1">$40.500.000 CLP</div>
+          </div>
+          <div class="p-3 rounded-xl bg-emerald-950/50 border border-emerald-700/60">
+            <div class="text-xs text-emerald-300 font-medium">Su Ahorro Neto en 5 Años</div>
+            <div id="calcSavings5Year" class="text-lg sm:text-xl font-black text-emerald-400 mt-1">+$33.700.000 CLP</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabla Comparativa Base (15 profesionales) -->
+      <div class="overflow-x-auto rounded-xl border border-slate-800 bg-slate-900/60 mb-4">
+        <table class="w-full text-left text-xs sm:text-sm">
+          <thead>
+            <tr class="border-b border-slate-800 bg-slate-950/60 text-slate-400">
+              <th class="py-3 px-4 sm:px-6 font-semibold">Periodo</th>
+              <th class="py-3 px-4 sm:px-6 font-semibold">Software Tradicional (SaaS)</th>
+              <th class="py-3 px-4 sm:px-6 font-semibold text-teal-400">Plataforma Propia Clínica</th>
+              <th class="py-3 px-4 sm:px-6 font-semibold text-emerald-400">Ahorro Neto Estimado</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800/60 text-slate-300">
+            <tr>
+              <td class="py-3 px-4 sm:px-6 font-medium text-white">Año 1</td>
+              <td class="py-3 px-4 sm:px-6 text-red-400">$7.800.000 CLP</td>
+              <td class="py-3 px-4 sm:px-6 font-semibold text-teal-300">$5.120.000 CLP <span class="text-xs text-slate-400 font-normal">(Desarrollo + Servidor)</span></td>
+              <td class="py-3 px-4 sm:px-6 font-bold text-emerald-400">+$2.680.000 CLP</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 sm:px-6 font-medium text-white">Año 3</td>
+              <td class="py-3 px-4 sm:px-6 text-red-400">$23.400.000 CLP</td>
+              <td class="py-3 px-4 sm:px-6 font-semibold text-teal-300">$5.960.000 CLP</td>
+              <td class="py-3 px-4 sm:px-6 font-bold text-emerald-400">+$17.440.000 CLP</td>
+            </tr>
+            <tr class="bg-teal-950/20 font-semibold">
+              <td class="py-3 px-4 sm:px-6 text-white">Año 5</td>
+              <td class="py-3 px-4 sm:px-6 text-red-400">$39.000.000 CLP</td>
+              <td class="py-3 px-4 sm:px-6 text-teal-300">$6.800.000 CLP</td>
+              <td class="py-3 px-4 sm:px-6 font-bold text-emerald-400 text-base">+$32.200.000 CLP</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="p-3.5 rounded-xl bg-teal-950/60 border border-teal-800/60 flex items-center gap-3">
+        <div class="text-2xl">🎯</div>
+        <div class="text-xs sm:text-sm text-slate-300">
+          <strong class="text-white">Punto de Equilibrio (ROI): Mes 8.</strong> 
+          En menos de un año la inversión inicial está 100% recuperada. A partir del noveno mes, la clínica ahorra más de medio millón de pesos mensuales para siempre.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 8: CRONOGRAMA POR ETAPAS -->
+    <section class="slide flex-col justify-center py-6 w-full max-w-5xl">
+      <div class="text-xs uppercase tracking-widest text-teal-400 font-semibold mb-2">Metodología de Trabajo</div>
+      <h2 class="text-2xl sm:text-4xl font-bold text-white mb-4">
+        Cronograma y Despliegue Seguro por Fases
+      </h2>
+      <p class="text-slate-300 text-sm sm:text-base mb-8 max-w-3xl">
+        Un proceso estructurado para que la clínica pueda iniciar sus atenciones rápidamente sin vacíos operativos:
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-slate-900/80 border border-slate-800 p-5 rounded-xl relative">
+          <div class="text-xs font-mono text-teal-400 font-bold mb-2">FASE 1 • MES 1-2</div>
+          <h3 class="text-white font-semibold text-base mb-2">Arquitectura & Fichas</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Montaje de servidor seguro en la nube. Configuración de RUT, previsiones y diseño de formularios para Kinesiología, Psicología y Medicina.
+          </p>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 p-5 rounded-xl relative">
+          <div class="text-xs font-mono text-cyan-400 font-bold mb-2">FASE 2 • MES 3</div>
+          <h3 class="text-white font-semibold text-base mb-2">Flujos & Recepción</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Configuración de los 15 usuarios, calendario de boxes, módulo de aranceles y pruebas del flujo de secretaría y pacientes.
+          </p>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 p-5 rounded-xl relative">
+          <div class="text-xs font-mono text-blue-400 font-bold mb-2">FASE 3 • MES 4</div>
+          <h3 class="text-white font-semibold text-base mb-2">Capacitación y Marcha Blanca</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Entrenamiento guiado al personal médico y administrativo. Período de pruebas reales y ajustes de usabilidad.
+          </p>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 p-5 rounded-xl relative">
+          <div class="text-xs font-mono text-emerald-400 font-bold mb-2">FASE 4 • MES 5-7</div>
+          <h3 class="text-white font-semibold text-base mb-2">Producción & Soporte</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Salida oficial al 100%, monitoreo constante de rendimiento, respaldos automáticos y soporte prioritario directo.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 9: PROPUESTA ECONÓMICA Y CIERRE -->
+    <section class="slide flex-col items-center text-center justify-center py-6 w-full max-w-4xl">
+      <div class="text-xs uppercase tracking-widest text-teal-400 font-semibold mb-2">Condiciones Comerciales</div>
+      <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">
+        Inversión del Proyecto
+      </h2>
+      <div class="my-6">
+        <div class="text-5xl sm:text-6xl font-black text-white tracking-tight">
+          $4.700.000 <span class="text-xl font-normal text-slate-400">CLP</span>
+        </div>
+        <div class="text-sm text-teal-400 font-medium mt-2">
+          Proyecto Llave en Mano • Sin límite de profesionales ni pacientes
+        </div>
+      </div>
+
+      <!-- Hitos de Pago -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full text-left my-6">
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div class="text-teal-400 font-bold text-sm">35% Inicio</div>
+          <div class="text-white font-medium text-base mt-1">$1.645.000 CLP</div>
+          <div class="text-xs text-slate-400 mt-1">Levantamiento, servidores y arquitectura de fichas.</div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div class="text-cyan-400 font-bold text-sm">35% Entrega Funcional</div>
+          <div class="text-white font-medium text-base mt-1">$1.645.000 CLP</div>
+          <div class="text-xs text-slate-400 mt-1">Fichas listas, agendas operativas y marcha blanca.</div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div class="text-emerald-400 font-bold text-sm">30% Salida a Producción</div>
+          <div class="text-white font-medium text-base mt-1">$1.410.000 CLP</div>
+          <div class="text-xs text-slate-400 mt-1">Capacitación completada y clínica operando 100%.</div>
+        </div>
+      </div>
+
+      <p class="text-slate-400 text-xs sm:text-sm max-w-xl mb-6">
+        * Costo de infraestructura cloud (servidor de alto rendimiento + respaldos diarios cifrados): aproximadamente ~$35.000 CLP/mes, directo a proveedor.
+      </p>
+
+      <div class="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-semibold text-sm transition shadow-lg shadow-teal-600/30 cursor-pointer" onclick="alert('¡Lista para coordinar la reunión con la doctora!')">
+        <span>Coordinar Inicio del Proyecto</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Pie de página con atajos de teclado -->
+  <footer class="no-print border-t border-slate-800/80 bg-slate-900/40 px-6 py-3 flex items-center justify-between text-xs text-slate-400">
+    <div>
+      Use las flechas <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 font-mono text-slate-300">←</kbd> y <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 font-mono text-slate-300">→</kbd> o la barra espaciadora para navegar.
+    </div>
+    <div>
+      <button onclick="window.print()" class="hover:text-teal-400 transition flex items-center gap-1">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+        <span>Imprimir / Guardar en PDF</span>
+      </button>
+    </div>
+  </footer>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    const indicator = document.getElementById('slideIndicator');
+    const progressBar = document.getElementById('progressBar');
+
+    function updateSlide() {
+      slides.forEach((slide, index) => {
+        slide.classList.toggle('active', index === currentSlide);
+      });
+      const slideNum = (currentSlide + 1).toString().padStart(2, '0');
+      const totalNum = totalSlides.toString().padStart(2, '0');
+      indicator.textContent = `${slideNum} / ${totalNum}`;
+      progressBar.style.width = `${((currentSlide + 1) / totalSlides) * 100}%`;
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides - 1) {
+        currentSlide++;
+        updateSlide();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateSlide();
+      }
+    }
+
+    // Calculadora dinámica de ROI en tiempo real
+    function updateRoiCalc(val) {
+      const profCount = parseInt(val, 10);
+      document.getElementById('profCountLabel').textContent = profCount;
+      
+      const monthlyCostPerProf = 45000; // Arancel promedio SaaS en Chile
+      const monthlySaaS = profCount * monthlyCostPerProf;
+      const fiveYearSaaS = monthlySaaS * 60;
+      
+      // Plataforma propia: $4.700.000 desarrollo + $35.000 servidor x 60 meses
+      const fiveYearOwn = 4700000 + (35000 * 60);
+      const savings = fiveYearSaaS - fiveYearOwn;
+
+      document.getElementById('calcMonthlySaaS').textContent = `$${monthlySaaS.toLocaleString('es-CL')} CLP / mes`;
+      document.getElementById('calc5YearSaaS').textContent = `$${fiveYearSaaS.toLocaleString('es-CL')} CLP`;
+      document.getElementById('calcSavings5Year').textContent = `+$${savings.toLocaleString('es-CL')} CLP`;
+    }
+
+    // Modo Pantalla Completa
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen().catch(() => {});
+        }
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        prevSlide();
+      } else if (e.key === 'Home') {
+        currentSlide = 0;
+        updateSlide();
+      } else if (e.key === 'End') {
+        currentSlide = totalSlides - 1;
+        updateSlide();
+      } else if (e.key.toLowerCase() === 'f') {
+        toggleFullscreen();
+      }
+    });
+  </script>
+</body>
+</html>

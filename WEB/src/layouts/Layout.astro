@@ -23,6 +23,103 @@ const {
   description = 'Benthic OPS — Inteligencia Operativa y Arquitectura Tecnológica a la Medida. IA, Software a medida y Ciberseguridad para empresas en Chile y Alemania.',
   currentPage = '/'
 } = Astro.props;
+
+const siteUrl = 'https://benthicops.cl';
+const canonicalURL = new URL(currentPage, siteUrl).href;
+const ogImageURL = new URL('/bg-hero.jpg', siteUrl).href;
+
+const baseSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
+      "name": "Benthic OPS",
+      "url": siteUrl,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${siteUrl}/orca-color.png`,
+        "caption": "Benthic OPS Logo"
+      },
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+56999328420",
+          "contactType": "customer service",
+          "areaServed": ["CL", "DE"],
+          "availableLanguage": ["Spanish", "German", "English"]
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      "url": siteUrl,
+      "name": "Benthic OPS",
+      "description": "Inteligencia Operativa y Arquitectura Tecnológica a la Medida.",
+      "publisher": {
+        "@id": `${siteUrl}/#organization`
+      }
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": `${siteUrl}/#service`,
+      "name": "Benthic OPS SpA",
+      "url": siteUrl,
+      "logo": `${siteUrl}/orca-color.png`,
+      "image": ogImageURL,
+      "description": description,
+      "telephone": "+56999328420",
+      "email": "contacto@benthicops.cl",
+      "address": [
+        {
+          "@type": "PostalAddress",
+          "addressLocality": "Concepción",
+          "addressCountry": "CL"
+        },
+        {
+          "@type": "PostalAddress",
+          "addressLocality": "Leipzig",
+          "addressCountry": "DE"
+        }
+      ]
+    }
+  ]
+};
+
+if (currentPage === '/analytics') {
+  baseSchema["@graph"].push({
+    "@type": "Service",
+    "@id": `${siteUrl}/analytics/#service`,
+    "name": "Analytics & Predictive AI",
+    "provider": { "@id": `${siteUrl}/#organization` },
+    "description": "Automatización de datos, radar de licitaciones 24/7 e integración con SII. El cerebro predictivo y financiero de tu empresa."
+  } as any);
+} else if (currentPage === '/software') {
+  baseSchema["@graph"].push({
+    "@type": "Service",
+    "@id": `${siteUrl}/software/#service`,
+    "name": "Custom Software & Systems",
+    "provider": { "@id": `${siteUrl}/#organization` },
+    "description": "Desarrollo de software a medida, Micro-SaaS, infraestructuras web de alta conversión e integración en la nube."
+  } as any);
+} else if (currentPage === '/benthic-vision') {
+  baseSchema["@graph"].push({
+    "@type": "Service",
+    "@id": `${siteUrl}/benthic-vision/#service`,
+    "name": "Benthic Vision",
+    "provider": { "@id": `${siteUrl}/#organization` },
+    "description": "Benthic Vision: Software avanzado para cámaras de seguridad, monitoreo proactivo y analítica de video con Inteligencia Artificial en tiempo real."
+  } as any);
+} else if (currentPage === '/consulting') {
+  baseSchema["@graph"].push({
+    "@type": "Service",
+    "@id": `${siteUrl}/consulting/#service`,
+    "name": "Consulting & Cyber Security",
+    "provider": { "@id": `${siteUrl}/#organization` },
+    "description": "Consultoría operativa express, auditoría de vulnerabilidades y ciberseguridad para empresas en Chile y Alemania."
+  } as any);
+}
 ---
 
 <!doctype html>
@@ -32,12 +129,27 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
+    
+    <!-- OpenGraph tags -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:site_name" content="Benthic OPS" />
+    <meta property="og:locale" content="es_CL" />
+
+    <!-- Twitter tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <title>{title}</title>
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(baseSchema)} />
   </head>
   <body class="ocean-bg min-h-screen relative">
 
@@ -142,14 +254,14 @@ const {
         <!-- Mobile hamburger -->
         <button
           id="menu-toggle"
-          class="md:hidden flex flex-col gap-1.5 p-2"
           class="md:hidden p-2 rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-colors bg-transparent border-0 cursor-pointer"
           aria-label="Toggle Navigation Menu"
+          aria-expanded="false"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
+            <line id="bar1" x1="3" y1="6" x2="21" y2="6" class="transition-all duration-300 origin-center"></line>
+            <line id="bar2" x1="3" y1="12" x2="21" y2="12" class="transition-all duration-300 origin-center"></line>
+            <line id="bar3" x1="3" y1="18" x2="21" y2="18" class="transition-all duration-300 origin-center"></line>
           </svg>
         </button>
       </nav>
@@ -209,7 +321,7 @@ const {
           <!-- Brand -->
           <div>
             <div class="flex items-center gap-3 mb-4">
-              <img src="/orca-white.png" alt="" width="36" height="36" class="object-contain opacity-80" />
+              <img src="/orca-white.png" alt="Logotipo de Benthic OPS" width="36" height="36" class="object-contain opacity-80" />
               <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1rem; color: #e8f4ff; letter-spacing: 0.06em;">
                 BENTHIC OPS
               </span>

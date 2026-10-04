@@ -647,11 +647,11 @@
         circleVuln.classList.add('glitch-red');
         ransomResult.innerHTML = '<span class="text-red-400 font-bold">⚠️ RANSOMWARE ACTIVO:</span> Servidor encriptado. Pérdida estimada: $15M+. Cierre de operación.';
         ransomResult.classList.remove('opacity-0');
-        ransomResult.classList.add('opacity-1');
+        ransomResult.classList.add('opacity-100');
       } else {
         circleVuln.classList.remove('glitch-red');
         ransomResult.innerHTML = 'Activa la casilla para ver el protocolo de respuesta.';
-        ransomResult.classList.remove('opacity-1');
+        ransomResult.classList.remove('opacity-100');
         ransomResult.classList.add('opacity-0');
       }
     });
@@ -783,8 +783,7 @@
         docOut2.classList.add('border-green-500/30', 'bg-green-950/15', 'text-green-400');
         
         pipelineStatusText.textContent = 'Conciliación IA Activada: Precisión del 99.8% (0 Errores)';
-        pipelineStatusText.classList.remove('text-[rgba(255,255,255,0.5)]');
-        pipelineStatusText.classList.add('text-green-400');
+        pipelineStatusText.style.color = '#4ade80';
         
         btnTogglePipeline.textContent = 'Volver a Procesamiento Manual';
         btnTogglePipeline.classList.remove('border-cyan-500/45');
@@ -799,8 +798,7 @@
         docOut2.classList.add('border-red-500/30', 'bg-red-950/15', 'text-red-400');
         
         pipelineStatusText.textContent = 'Procesamiento Manual (Con Errores Detectados)';
-        pipelineStatusText.classList.remove('text-green-400');
-        pipelineStatusText.classList.add('text-[rgba(255,255,255,0.5)]');
+        pipelineStatusText.style.color = '#7aa3cc';
         
         btnTogglePipeline.textContent = 'Activar Conciliación Inteligente IA';
         btnTogglePipeline.classList.remove('border-amber-500/40', 'text-amber-400');

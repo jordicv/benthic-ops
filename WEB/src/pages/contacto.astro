@@ -128,7 +128,6 @@ import CountrySelect from '../components/CountrySelect.astro';
             class="glass-card reveal p-8 space-y-5"
             id="contact-form-main"
             novalidate
-            onsubmit="handleMainSubmit(event)"
           >
             <div>
               <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.2rem; color:#e8f4ff; margin:0 0 0.25rem;">
@@ -300,9 +299,10 @@ import CountrySelect from '../components/CountrySelect.astro';
 </Layout>
 
 <script>
-  function handleMainSubmit(e: Event) {
+  const mainForm = document.getElementById('contact-form-main') as HTMLFormElement;
+  mainForm?.addEventListener('submit', (e: Event) => {
     e.preventDefault();
-    const btn = (e.target as HTMLFormElement).querySelector('button[type="submit"]') as HTMLButtonElement;
+    const btn = mainForm.querySelector('button[type="submit"]') as HTMLButtonElement;
     const successEl = document.getElementById('form-success-main');
 
     btn.disabled = true;
@@ -311,11 +311,9 @@ import CountrySelect from '../components/CountrySelect.astro';
     setTimeout(() => {
       successEl?.classList.remove('hidden');
       successEl?.classList.add('flex');
-      (e.target as HTMLFormElement).reset();
+      mainForm.reset();
       btn.textContent = '¡Enviado! ✓';
       btn.style.background = 'rgba(0,212,255,0.15)';
     }, 1200);
-  }
-
-  (window as any).handleMainSubmit = handleMainSubmit;
+  });
 </script>
