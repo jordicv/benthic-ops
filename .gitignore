@@ -26,3 +26,5 @@ pnpm-debug.log*
 # sub-projects / separate repositories
 benthic-mp/
 
+# root lockfile (managed in sub-workspaces)
+/package-lock.json
