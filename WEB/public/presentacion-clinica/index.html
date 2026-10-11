@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Propuesta de Sistema Clínico Privado a Medida - Benthic OPS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .font-mono-code {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .slide {
+      display: none;
+      animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .slide.active {
+      display: flex;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media print {
+      body { background: white !important; color: black !important; }
+      .no-print { display: none !important; }
+      .slide {
+        display: flex !important;
+        page-break-after: always;
+        min-height: 100vh;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-teal-500 selection:text-white">
+
+  <!-- BARRA SUPERIOR DE NAVEGACIÓN Y CONTROL -->
+  <header class="no-print border-b border-slate-800/80 bg-slate-900/70 backdrop-blur px-4 sm:px-6 py-3 flex items-center justify-between sticky top-0 z-50">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-teal-500 to-cyan-400 flex items-center justify-center font-black text-slate-950 text-sm shadow-md shadow-teal-500/20">
+        +
+      </div>
+      <div>
+        <h1 class="text-xs sm:text-sm font-semibold text-white tracking-wide">Plataforma Clínica Integral y Privada</h1>
+        <p class="text-[11px] text-slate-400 hidden sm:block">Propuesta Técnica, Arquitectura & Presupuesto Desglosado</p>
+      </div>
+    </div>
+
+    <!-- Indicador de Diapositiva y Botones -->
+    <div class="flex items-center gap-2 sm:gap-4">
+      <span id="slideIndicator" class="text-xs font-mono font-medium text-teal-400 bg-teal-950/70 border border-teal-800/60 px-3 py-1 rounded-full">
+        01 / 10
+      </span>
+      <div class="flex items-center gap-1.5">
+        <button onclick="prevSlide()" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 transition text-xs font-medium flex items-center gap-1" title="Anterior (←)">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          <span class="hidden md:inline">Anterior</span>
+        </button>
+        <button onclick="nextSlide()" class="p-2 rounded-lg bg-teal-600 hover:bg-teal-500 text-white transition text-xs font-medium flex items-center gap-1 shadow-md shadow-teal-600/30" title="Siguiente (→ o Espacio)">
+          <span class="hidden md:inline">Siguiente</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
+        <button onclick="toggleFullscreen()" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition text-xs" title="Pantalla Completa (Tecla F)">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Barra de progreso superior -->
+  <div class="no-print w-full bg-slate-800/60 h-1">
+    <div id="progressBar" class="bg-gradient-to-r from-teal-500 to-cyan-400 h-1 transition-all duration-300" style="width: 10%;"></div>
+  </div>
+
+  <!-- CONTENEDOR PRINCIPAL -->
+  <main class="flex-1 flex items-center justify-center p-4 sm:p-6 md:p-10 max-w-7xl mx-auto w-full">
+
+    <!-- SLIDE 1: PORTADA -->
+    <section class="slide active flex-col items-center text-center justify-center py-6 w-full">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-teal-950/80 border border-teal-800/60 text-teal-300 text-xs font-medium mb-6">
+        <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+        Ingeniería Clínica & Ciberseguridad a la Medida
+      </div>
+      <h2 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight max-w-4xl leading-tight">
+        Plataforma Clínica Privada: <br>
+        <span class="bg-gradient-to-r from-teal-400 via-cyan-300 to-blue-400 bg-clip-text text-transparent">
+          Velocidad, Blindaje Digital y Cero Arriendos
+        </span>
+      </h2>
+      <p class="mt-5 text-slate-300 text-sm sm:text-lg max-w-3xl font-light leading-relaxed">
+        Solución integral de gestión y expedientes médicos para un equipo de <strong>15+ profesionales multidisciplinarios</strong>. Servidor en nube privada, seguridad perimetral (WiFi/VPN) y confirmaciones por WhatsApp.
+      </p>
+
+      <div class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 max-w-4xl w-full text-left">
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div class="text-teal-400 font-bold text-base sm:text-lg">Velocidad Instantánea</div>
+          <div class="text-xs text-slate-400 mt-1">Servidor dedicado KVM4 sin saturación ni esperas.</div>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div class="text-teal-400 font-bold text-base sm:text-lg">Red Privada + VPN</div>
+          <div class="text-xs text-slate-400 mt-1">Acceso restringido al WiFi del lugar y túnel cifrado.</div>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div class="text-teal-400 font-bold text-base sm:text-lg">Módulo Jessica + WA</div>
+          <div class="text-xs text-slate-400 mt-1">Registro ágil con notas y recordatorios automáticos.</div>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div class="text-teal-400 font-bold text-base sm:text-lg">Transparencia Total</div>
+          <div class="text-xs text-slate-400 mt-1">200 hrs hombre desglosadas por hito a $4.700.000.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 2: EL PROBLEMA DEL MERCADO -->
+    <section class="slide flex-col justify-center py-6 w-full max-w-5xl">
+      <div class="text-xs uppercase tracking-widest text-teal-400 font-semibold mb-2">Diagnóstico de Mercado</div>
+      <h2 class="text-2xl sm:text-4xl font-bold text-white mb-3">
+        El Modelo de Software Tradicional en Chile Trabaja en su Contra
+      </h2>
+      <p class="text-slate-300 text-xs sm:text-sm mb-6 max-w-3xl">
+        Las plataformas comerciales (Medilink, Reservo, etc.) penalizan el crecimiento de las clínicas privadas y presentan limitaciones graves:
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="bg-red-950/20 border border-red-900/40 rounded-2xl p-5">
+          <div class="w-10 h-10 rounded-xl bg-red-900/40 flex items-center justify-center text-red-400 font-bold mb-3">
+            $
+          </div>
+          <h3 class="text-white font-semibold text-base mb-2">Arriendo Perpetuo y Creciente</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Cobro de <strong>$35.000 a $50.000 mensuales por cada profesional</strong>. Para 15 usuarios representa más de $8.000.000 anuales. Si crece a 25 médicos, su gasto supera los $35M en 3 años sin ser dueña de nada.
+          </p>
+        </div>
+
+        <div class="bg-amber-950/20 border border-amber-900/40 rounded-2xl p-5">
+          <div class="w-10 h-10 rounded-xl bg-amber-900/40 flex items-center justify-center text-amber-400 font-bold mb-3">
+            ⏳
+          </div>
+          <h3 class="text-white font-semibold text-base mb-2">Lentitud en Horas Punta</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Al operar en servidores masivos compartidos con miles de otras clínicas, el sistema sufre caídas o lentitud extrema entre las 10:00 y las 16:00 horas, afectando la atención de los pacientes.
+          </p>
+        </div>
+
+        <div class="bg-blue-950/20 border border-blue-900/40 rounded-2xl p-5">
+          <div class="w-10 h-10 rounded-xl bg-blue-900/40 flex items-center justify-center text-blue-400 font-bold mb-3">
+            🔒
+          </div>
+          <h3 class="text-white font-semibold text-base mb-2">Soporte Lento y Fichas Rígidas</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Mesa de ayuda impersonal con tickets que tardan días. Además, obligan a un kinesiólogo o psicólogo a usar las mismas plantillas genéricas de medicina general.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3: CAPACIDAD DE RESPUESTA & ARQUITECTURA -->
+    <section class="slide flex-col justify-center py-6 w-full max-w-5xl">
+      <div class="text-xs uppercase tracking-widest text-teal-400 font-semibold mb-2">Rendimiento & Soporte</div>
+      <h2 class="text-2xl sm:text-4xl font-bold text-white mb-3">
+        Capacidad de Respuesta Rápida y Arquitectura Escalable
+      </h2>
+      <p class="text-slate-300 text-xs sm:text-sm mb-6 max-w-3xl">
+        Diseñamos el sistema para responder en milisegundos y con un modelo de soporte humano directo:
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 flex gap-4">
+          <div class="w-10 h-10 rounded-xl bg-teal-950 border border-teal-800 flex items-center justify-center text-teal-400 shrink-0 font-bold">
+            ⚡
+          </div>
+          <div>
+            <h3 class="text-white font-semibold text-base">Servidor Nube Dedicado (Plan KVM 4)</h3>
+            <p class="text-slate-400 text-xs mt-1 leading-relaxed">
+              La plataforma corre en un servidor privado virtual de alto rendimiento (Hostinger KVM 4: 4 vCPU, 16 GB RAM, disco NVMe ultrarrápido). <strong>Cero recursos compartidos</strong>, garantizando que el sistema jamás se pegue o se ponga lento.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 flex gap-4">
+          <div class="w-10 h-10 rounded-xl bg-cyan-950 border border-cyan-800 flex items-center justify-center text-cyan-400 shrink-0 font-bold">
+            📈
+          </div>
+          <div>
+            <h3 class="text-white font-semibold text-base">Arquitectura Docker Escalable</h3>
+            <p class="text-slate-400 text-xs mt-1 leading-relaxed">
+              Base de datos y servicios encapsulados en contenedores independientes. Puede escalar de 15 a 50 o 100 profesionales sin rediseñar la plataforma ni perder rendimiento.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 flex gap-4">
+          <div class="w-10 h-10 rounded-xl bg-blue-950 border border-blue-800 flex items-center justify-center text-blue-400 shrink-0 font-bold">
+            📞
+          </div>
+          <div>
+            <h3 class="text-white font-semibold text-base">Soporte Técnico Directo y Ágil</h3>
+            <p class="text-slate-400 text-xs mt-1 leading-relaxed">
+              Canal de comunicación directo (WhatsApp y soporte dedicado). Si surge una duda o ajuste, interactúa con el equipo de ingeniería responsable del sistema, sin bots ni esperas de 48 horas.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 flex gap-4">
+          <div class="w-10 h-10 rounded-xl bg-emerald-950 border border-emerald-800 flex items-center justify-center text-emerald-400 shrink-0 font-bold">
+            💰
+          </div>
+          <div>
+            <h3 class="text-white font-semibold text-base">Costo de Nube Marginal y Transparente</h3>
+            <p class="text-slate-400 text-xs mt-1 leading-relaxed">
+              El servidor se arrienda directamente con el proveedor (~$25.000 a $35.000 CLP/mes). La clínica es dueña de su cuenta y no paga comisiones ocultas de intermediación.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4: CIBERSEGURIDAD DIGITAL (PERÍMETRO LOCAL + VPN) -->
+    <section class="slide flex-col justify-center py-6 w-full max-w-5xl">
+      <div class="text-xs uppercase tracking-widest text-teal-400 font-semibold mb-2">Blindaje de Grado Médico</div>
+      <h2 class="text-2xl sm:text-4xl font-bold text-white mb-3">
+        Seguridad Digital: Modelo Perimetral Local + VPN Segura
+      </h2>
+      <p class="text-slate-300 text-xs sm:text-sm mb-6 max-w-3xl">
+        Los datos de salud son altamente sensibles según la <strong>Ley 20.584</strong> y <strong>Ley 19.628</strong>. No dejamos el sistema abierto a internet público como los SaaS genéricos:
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="p-5 rounded-2xl bg-slate-900/90 border border-teal-500/30 relative">
+          <div class="w-10 h-10 rounded-xl bg-teal-950 flex items-center justify-center text-teal-400 font-bold mb-3">
+            📶
+          </div>
+          <h3 class="text-white font-semibold text-base mb-2">1. Red WiFi Clínica (Local)</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            El sistema se restringe por cortafuegos para que <strong>solo los dispositivos conectados al WiFi de la clínica</strong> puedan ver la pantalla de acceso. Si un extraño está en la calle, el sistema es invisible e inaccesible para él.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-900/90 border border-cyan-500/30 relative">
+          <div class="w-10 h-10 rounded-xl bg-cyan-950 flex items-center justify-center text-cyan-400 font-bold mb-3">
+            🛡️
+          </div>
+          <h3 class="text-white font-semibold text-base mb-2">2. Túnel VPN Cifrado</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Si un médico o la doctora necesita revisar fichas desde su casa, ingresa mediante una <strong>VPN segura punto a punto</strong> (WireGuard/Tailscale) con doble factor de autenticación (2FA). Nadie sin credenciales autorizadas puede si quiera intentar ingresar.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-900/90 border border-blue-500/30 relative">
+          <div class="w-10 h-10 rounded-xl bg-blue-950 flex items-center justify-center text-blue-400 font-bold mb-3">
+            💾
+          </div>
+          <h3 class="text-white font-semibold text-base mb-2">3. Trazabilidad & Backups</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Auditoría legal inalterable: registro exacto de quién abrió, vio o modificó cada ficha médica. Respaldos automáticos diarios cifrados y almacenados fuera del servidor para continuidad total.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5: SECRETARÍA (JESSICA) Y WHATSAPP -->
+    <section class="slide flex-col justify-center py-6 w-full max-w-5xl">
+      <div class="text-xs uppercase tracking-widest text-teal-400 font-semibold mb-2">Operación Diaria & Pacientes</div>
+      <h2 class="text-2xl sm:text-4xl font-bold text-white mb-3">
+        Módulo a Medida para Recepción (Jessica) y WhatsApp
+      </h2>
+      <p class="text-slate-300 text-xs sm:text-sm mb-6 max-w-3xl">
+        Herramientas prácticas para que secretaría trabaje sin fricción y los pacientes no falten a sus citas:
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <!-- Tarjeta Jessica -->
+        <div class="p-5 rounded-2xl bg-slate-900/90 border border-slate-800">
+          <div class="inline-block px-3 py-1 rounded-full bg-teal-950 text-teal-300 text-xs font-semibold mb-3">
+            Experiencia de Secretaría: Flujo Rápido
+          </div>
+          <h3 class="text-white font-semibold text-base mb-2">Registro Ágil & Notas Dinámicas para Jessica</h3>
+          <ul class="space-y-2.5 text-xs text-slate-300">
+            <li class="flex items-start gap-2">
+              <span class="text-teal-400 font-bold">✓</span>
+              <span><strong>Búsqueda ultra rápida por RUT o Nombre:</strong> Datos precargados en 1 segundo.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-teal-400 font-bold">✓</span>
+              <span><strong>Notas y observaciones administrativas:</strong> Agregar teléfonos de contacto alternativos, notas de conducta ("prefiere horas de tarde"), avisos de exámenes pendientes o derivaciones.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-teal-400 font-bold">✓</span>
+              <span><strong>Semáforo de Sala de Espera:</strong> Jessica marca *"Llegó a recepción"* y al médico se le ilumina la pantalla en su box de atención.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-teal-400 font-bold">✓</span>
+              <span><strong>Control de caja diaria:</strong> Registro de pagos (Transbank/POS, transferencia, efectivo).</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Tarjeta WhatsApp -->
+        <div class="p-5 rounded-2xl bg-slate-900/90 border border-slate-800">
+          <div class="inline-block px-3 py-1 rounded-full bg-emerald-950 text-emerald-300 text-xs font-semibold mb-3">
+            Automatización de Asistencia
+          </div>
+          <h3 class="text-white font-semibold text-base mb-2">WhatsApp Integrado: Cero Absentismo</h3>
+          <ul class="space-y-2.5 text-xs text-slate-300">
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-400 font-bold">✓</span>
+              <span><strong>Recordatorio automático 24h antes:</strong> Envío de mensaje personalizado con el nombre del médico, fecha y dirección de la clínica.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-400 font-bold">✓</span>
+              <span><strong>Confirmación interactiva:</strong> El paciente responde confirmando o cancelando, actualizando la agenda de Jessica en tiempo real.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-400 font-bold">✓</span>
+              <span><strong>Reducción drástica de inasistencias:</strong> Reduce las horas perdidas (no-shows) hasta en un 70%, protegiendo los ingresos de los profesionales.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-400 font-bold">✓</span>
+              <span><strong>Indicaciones previas a la consulta:</strong> Envío de instrucciones automáticas (ej: "traer ropa deportiva para kinesiología").</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6: ESPECIALIDADES MULTIDISCIPLINARIAS -->
+    <section class="slide flex-col justify-center py-6 w-full max-w-5xl">
+      <div class="text-xs uppercase tracking-widest text-teal-400 font-semibold mb-2">Adaptación Clínica</div>
+      <h2 class="text-2xl sm:text-4xl font-bold text-white mb-3">
+        Fichas Clínicas Específicas para Cada Disciplina
+      </h2>
+      <p class="text-slate-300 text-xs sm:text-sm mb-6 max-w-3xl">
+        Cada profesional dispone de un formulario adaptado a su práctica, con estricta separación de confidencialidad:
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-5">
+          <div class="inline-block px-3 py-1 rounded-full bg-blue-950 text-blue-300 text-xs font-semibold mb-3">
+            Medicina General y Especialidades
+          </div>
+          <ul class="space-y-2.5 text-xs text-slate-300">
+            <li class="flex items-start gap-2">
+              <span class="text-teal-400">✓</span>
+              <span>Anamnesis completa y examen físico estructurado.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-teal-400">✓</span>
+              <span>Catálogo internacional CIE-10 (diagnósticos).</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-teal-400">✓</span>
+              <span>Emisión de recetas médicas e indicaciones en PDF con membrete de la clínica.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-5">
+          <div class="inline-block px-3 py-1 rounded-full bg-teal-950 text-teal-300 text-xs font-semibold mb-3">
+            Kinesiología y Rehabilitación
+          </div>
+          <ul class="space-y-2.5 text-xs text-slate-300">
+            <li class="flex items-start gap-2">
+              <span class="text-teal-400">✓</span>
+              <span>Evaluación motora, postural y rangos de movimiento (ROM).</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-teal-400">✓</span>
+              <span>Escala analógica del dolor (EVA) con registro por sesión.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-teal-400">✓</span>
+              <span>Control de ciclos de rehabilitación (ej: Sesión 1 a 10).</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-5">
+          <div class="inline-block px-3 py-1 rounded-full bg-purple-950 text-purple-300 text-xs font-semibold mb-3">
+            Psicología y Salud Mental
+          </div>
+          <ul class="space-y-2.5 text-xs text-slate-300">
+            <li class="flex items-start gap-2">
+              <span class="text-teal-400">✓</span>
+              <span>Historia biopsicosocial y motivos de consulta.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-teal-400">✓</span>
+              <span><strong>Notas confidenciales protegidas:</strong> Solo el terapeuta tratante puede ver el contenido íntimo de la sesión.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-teal-400">✓</span>
+              <span>Registro de pruebas psicométricas y objetivos.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7: CRONOGRAMA Y FASES DE TRABAJO -->
+    <section class="slide flex-col justify-center py-6 w-full max-w-5xl">
+      <div class="text-xs uppercase tracking-widest text-teal-400 font-semibold mb-2">Metodología & Plazos</div>
+      <h2 class="text-2xl sm:text-4xl font-bold text-white mb-3">
+        Plazos y Cronograma de Trabajo Estructurado
+      </h2>
+      <p class="text-slate-300 text-xs sm:text-sm mb-6 max-w-3xl">
+        Un plan de ejecución paso a paso con reuniones semanales y acompañamiento constante:
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div class="text-xs font-mono text-teal-400 font-bold mb-1">FASE 1 • SEMANAS 1-2</div>
+          <h4 class="text-white font-semibold text-sm mb-1">Levantamiento de Requisitos</h4>
+          <p class="text-slate-400 text-xs">Entrevistas con la doctora, Jessica y equipo para definir horas exactas, campos específicos de fichas y aranceles.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div class="text-xs font-mono text-cyan-400 font-bold mb-1">FASE 2 • MESES 1-4</div>
+          <h4 class="text-white font-semibold text-sm mb-1">Desarrollo + 1 Reunión Semanal</h4>
+          <p class="text-slate-400 text-xs">Configuración en servidor privado, ciberseguridad, VPN, fichas LBF y reuniones semanales para calibrar avances.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div class="text-xs font-mono text-blue-400 font-bold mb-1">FASE 3 • MES 4-5</div>
+          <h4 class="text-white font-semibold text-sm mb-1">Migración de Información</h4>
+          <p class="text-slate-400 text-xs">Traspaso seguro de planillas Excel o historiales de pacientes existentes al nuevo sistema sin pérdida de datos.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div class="text-xs font-mono text-emerald-400 font-bold mb-1">FASE 4 • MES 5</div>
+          <h4 class="text-white font-semibold text-sm mb-1">Capacitación al Equipo</h4>
+          <p class="text-slate-400 text-xs">Sesiones prácticas y personalizadas para Jessica (agenda, notas y caja) y médicos (fichas clínicas y recetas).</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div class="text-xs font-mono text-purple-400 font-bold mb-1">FASE 5 • MES 6</div>
+          <h4 class="text-white font-semibold text-sm mb-1">Marcha Blanca & Entrega</h4>
+          <p class="text-slate-400 text-xs">Puesta en marcha con pacientes reales, ajustes finos en vivo y entrega formal del sistema con llaves maestras.</p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div class="text-xs font-mono text-amber-400 font-bold mb-1">FASE 6 • MESES 6-8</div>
+          <h4 class="text-white font-semibold text-sm mb-1">Soporte Prioritario</h4>
+          <p class="text-slate-400 text-xs">Monitoreo continuo, respaldos automáticos y soporte directo para resolver cualquier duda operativa.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 8: DESGLOSE PRESUPUESTARIO HORAS-HOMBRE -->
+    <section class="slide flex-col justify-center py-6 w-full max-w-5xl">
+      <div class="text-xs uppercase tracking-widest text-teal-400 font-semibold mb-2">Transparencia de Costos</div>
+      <h2 class="text-2xl sm:text-4xl font-bold text-white mb-2">
+        Desglose del Presupuesto en Horas-Hombre
+      </h2>
+      <p class="text-slate-300 text-xs sm:text-sm mb-4 max-w-3xl">
+        Transparentamos la dedicación profesional: el valor de <strong>$4.700.000 CLP</strong> corresponde a <strong>200 horas de ingeniería especializada</strong> (~$23.500 CLP/hora):
+      </p>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-800 bg-slate-900/70 mb-4">
+        <table class="w-full text-left text-xs sm:text-sm">
+          <thead>
+            <tr class="border-b border-slate-800 bg-slate-950/80 text-slate-400">
+              <th class="py-2.5 px-4 font-semibold">Fase / Actividad Especializada</th>
+              <th class="py-2.5 px-4 font-semibold text-center">Horas</th>
+              <th class="py-2.5 px-4 font-semibold text-right">Inversión (CLP)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800/60 text-slate-300">
+            <tr>
+              <td class="py-2.5 px-4 font-medium text-white">1. Levantamiento detallado de requerimientos clínicos y administrativos</td>
+              <td class="py-2.5 px-4 text-center font-mono-code text-teal-300">25 hrs</td>
+              <td class="py-2.5 px-4 text-right font-mono-code">$587.500</td>
+            </tr>
+            <tr>
+              <td class="py-2.5 px-4 font-medium text-white">2. Arquitectura de servidor nube KVM, Docker y configuración base</td>
+              <td class="py-2.5 px-4 text-center font-mono-code text-teal-300">30 hrs</td>
+              <td class="py-2.5 px-4 text-right font-mono-code">$705.000</td>
+            </tr>
+            <tr>
+              <td class="py-2.5 px-4 font-medium text-white">3. Seguridad perimetral: cortafuegos red WiFi local, túnel VPN y 2FA</td>
+              <td class="py-2.5 px-4 text-center font-mono-code text-teal-300">25 hrs</td>
+              <td class="py-2.5 px-4 text-right font-mono-code">$587.500</td>
+            </tr>
+            <tr>
+              <td class="py-2.5 px-4 font-medium text-white">4. Desarrollo de fichas a medida (Medicina, Kinesiología y Psicología)</td>
+              <td class="py-2.5 px-4 text-center font-mono-code text-teal-300">40 hrs</td>
+              <td class="py-2.5 px-4 text-right font-mono-code">$940.000</td>
+            </tr>
+            <tr>
+              <td class="py-2.5 px-4 font-medium text-white">5. Módulo secretaría (Jessica: notas dinámicas/caja) + WhatsApp recordatorios</td>
+              <td class="py-2.5 px-4 text-center font-mono-code text-teal-300">30 hrs</td>
+              <td class="py-2.5 px-4 text-right font-mono-code">$705.000</td>
+            </tr>
+            <tr>
+              <td class="py-2.5 px-4 font-medium text-white">6. Migración de planillas existentes e historiales de pacientes</td>
+              <td class="py-2.5 px-4 text-center font-mono-code text-teal-300">20 hrs</td>
+              <td class="py-2.5 px-4 text-right font-mono-code">$470.000</td>
+            </tr>
+            <tr>
+              <td class="py-2.5 px-4 font-medium text-white">7. Capacitación guiada a Jessica y equipo médico + Marcha blanca y soporte</td>
+              <td class="py-2.5 px-4 text-center font-mono-code text-teal-300">30 hrs</td>
+              <td class="py-2.5 px-4 text-right font-mono-code">$705.000</td>
+            </tr>
+            <tr class="bg-teal-950/40 font-bold text-white">
+              <td class="py-3 px-4 text-teal-300">TOTAL PROYECTO CERRADO LLAVE EN MANO</td>
+              <td class="py-3 px-4 text-center font-mono-code text-teal-300 text-base">200 hrs</td>
+              <td class="py-3 px-4 text-right font-mono-code text-emerald-400 text-base">$4.700.000 CLP</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="text-[11px] text-slate-400">
+        * No incluye costos de infraestructura cloud externa (~$25.000-$35.000/mes contratados directo en Hostinger) ni consumo de API de WhatsApp de terceros.
+      </div>
+    </section>
+
+    <!-- SLIDE 9: SIMULADOR DE ROI EN VIVO -->
+    <section class="slide flex-col justify-center py-6 w-full max-w-5xl">
+      <div class="text-xs uppercase tracking-widest text-teal-400 font-semibold mb-2">Rentabilidad e Impacto Económico</div>
+      <h2 class="text-2xl sm:text-4xl font-bold text-white mb-2">
+        La Comparativa Financiera: Su Inversión se Paga Sola
+      </h2>
+      <p class="text-slate-300 text-xs sm:text-sm mb-4 max-w-3xl">
+        Simulador en vivo: mueva la barra de profesionales para calcular el ahorro frente a un SaaS tradicional (Medilink/Reservo):
+      </p>
+
+      <!-- Calculadora Interactiva en Vivo -->
+      <div class="no-print bg-slate-900/90 border border-teal-500/30 rounded-2xl p-4 sm:p-5 mb-4 shadow-lg shadow-teal-950/40">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
+          <div>
+            <label for="profSlider" class="text-xs font-semibold text-teal-300 uppercase tracking-wider block">
+              Cantidad de Profesionales en la Clínica:
+            </label>
+            <span class="text-xs text-slate-400">Deslice para proyectar el crecimiento de su equipo</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span id="profCountLabel" class="text-2xl font-black text-white px-3 py-1 bg-teal-950/80 border border-teal-700/60 rounded-xl">15</span>
+            <span class="text-xs text-slate-400 font-medium">profesionales</span>
+          </div>
+        </div>
+
+        <input type="range" id="profSlider" min="5" max="40" value="15" step="1" 
+          class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-teal-400 mb-4"
+          oninput="updateRoiCalc(this.value)">
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
+          <div class="p-3 rounded-xl bg-slate-950/70 border border-slate-800">
+            <div class="text-xs text-slate-400">Gasto Mensual en SaaS Tradicional</div>
+            <div id="calcMonthlySaaS" class="text-base sm:text-lg font-bold text-red-400 mt-1">$675.000 CLP / mes</div>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-950/70 border border-slate-800">
+            <div class="text-xs text-slate-400">Gasto en 5 Años con SaaS</div>
+            <div id="calc5YearSaaS" class="text-base sm:text-lg font-bold text-red-400 mt-1">$40.500.000 CLP</div>
+          </div>
+          <div class="p-3 rounded-xl bg-emerald-950/50 border border-emerald-700/60">
+            <div class="text-xs text-emerald-300 font-medium">Su Ahorro Neto en 5 Años</div>
+            <div id="calcSavings5Year" class="text-lg sm:text-xl font-black text-emerald-400 mt-1">+$33.700.000 CLP</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-3.5 rounded-xl bg-teal-950/60 border border-teal-800/60 flex items-center gap-3">
+        <div class="text-2xl">🎯</div>
+        <div class="text-xs sm:text-sm text-slate-300">
+          <strong class="text-white">Punto de Equilibrio: Mes 8.</strong> 
+          En menos de un año la inversión inicial está 100% recuperada. A partir del noveno mes, la clínica ahorra más de medio millón de pesos mensuales para reinvertir en la clínica.
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 10: HITOS DE PAGO Y CIERRE -->
+    <section class="slide flex-col items-center text-center justify-center py-6 w-full max-w-4xl">
+      <div class="text-xs uppercase tracking-widest text-teal-400 font-semibold mb-2">Condiciones Comerciales</div>
+      <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-3">
+        Inversión & Hitos de Entrega
+      </h2>
+      <div class="my-4">
+        <div class="text-5xl sm:text-6xl font-black text-white tracking-tight">
+          $4.700.000 <span class="text-xl font-normal text-slate-400">CLP</span>
+        </div>
+        <div class="text-sm text-teal-400 font-medium mt-1">
+          Proyecto Llave en Mano • 200 Horas Hombre • Usuarios Ilimitados
+        </div>
+      </div>
+
+      <!-- Hitos de Pago -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full text-left my-5">
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div class="text-teal-400 font-bold text-sm">35% Inicio</div>
+          <div class="text-white font-medium text-base mt-1">$1.645.000 CLP</div>
+          <div class="text-xs text-slate-400 mt-1">Toma de requisitos, servidor KVM y arquitectura VPN.</div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div class="text-cyan-400 font-bold text-sm">35% Entrega Funcional</div>
+          <div class="text-white font-medium text-base mt-1">$1.645.000 CLP</div>
+          <div class="text-xs text-slate-400 mt-1">Fichas LBF, módulo Jessica, WhatsApp y marcha blanca.</div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+          <div class="text-emerald-400 font-bold text-sm">30% Salida a Producción</div>
+          <div class="text-white font-medium text-base mt-1">$1.410.000 CLP</div>
+          <div class="text-xs text-slate-400 mt-1">Migración de datos, capacitación y soporte prioritario.</div>
+        </div>
+      </div>
+
+      <div class="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-semibold text-sm transition shadow-lg shadow-teal-600/30 cursor-pointer" onclick="nextSlide(0)">
+        <span>Iniciar Fase 1: Levantamiento de Requisitos</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="no-print border-t border-slate-800/80 bg-slate-900/40 px-4 sm:px-6 py-3 flex items-center justify-between text-xs text-slate-400">
+    <div class="hidden sm:block">
+      Navegue con las flechas <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 font-mono text-slate-300">←</kbd> y <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 font-mono text-slate-300">→</kbd> o barra espaciadora. Tecla <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 font-mono text-slate-300">F</kbd> para pantalla completa.
+    </div>
+    <div class="w-full sm:w-auto flex justify-between sm:justify-end items-center gap-4">
+      <button onclick="window.print()" class="hover:text-teal-400 transition flex items-center gap-1">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+        <span>Imprimir / PDF</span>
+      </button>
+      <span class="text-[11px] text-slate-500">Benthic OPS • Propuesta Médica</span>
+    </div>
+  </footer>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    const indicator = document.getElementById('slideIndicator');
+    const progressBar = document.getElementById('progressBar');
+
+    function updateSlide() {
+      slides.forEach((slide, index) => {
+        slide.classList.toggle('active', index === currentSlide);
+      });
+      const slideNum = (currentSlide + 1).toString().padStart(2, '0');
+      const totalNum = totalSlides.toString().padStart(2, '0');
+      indicator.textContent = `${slideNum} / ${totalNum}`;
+      progressBar.style.width = `${((currentSlide + 1) / totalSlides) * 100}%`;
+    }
+
+    function nextSlide(toIndex) {
+      if (typeof toIndex === 'number') {
+        currentSlide = toIndex;
+        updateSlide();
+        return;
+      }
+      if (currentSlide < totalSlides - 1) {
+        currentSlide++;
+        updateSlide();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateSlide();
+      }
+    }
+
+    // Calculadora dinámica de ROI en tiempo real
+    function updateRoiCalc(val) {
+      const profCount = parseInt(val, 10);
+      document.getElementById('profCountLabel').textContent = profCount;
+      
+      const monthlyCostPerProf = 45000; // Arancel promedio SaaS en Chile
+      const monthlySaaS = profCount * monthlyCostPerProf;
+      const fiveYearSaaS = monthlySaaS * 60;
+      
+      // Plataforma propia: $4.700.000 desarrollo + $30.000 servidor x 60 meses
+      const fiveYearOwn = 4700000 + (30000 * 60);
+      const savings = fiveYearSaaS - fiveYearOwn;
+
+      document.getElementById('calcMonthlySaaS').textContent = `$${monthlySaaS.toLocaleString('es-CL')} CLP / mes`;
+      document.getElementById('calc5YearSaaS').textContent = `$${fiveYearSaaS.toLocaleString('es-CL')} CLP`;
+      document.getElementById('calcSavings5Year').textContent = `+$${savings.toLocaleString('es-CL')} CLP`;
+    }
+
+    // Modo Pantalla Completa
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen().catch(() => {});
+        }
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        prevSlide();
+      } else if (e.key === 'Home') {
+        currentSlide = 0;
+        updateSlide();
+      } else if (e.key === 'End') {
+        currentSlide = totalSlides - 1;
+        updateSlide();
+      } else if (e.key.toLowerCase() === 'f') {
+        toggleFullscreen();
+      }
+    });
+  </script>
+</body>
+</html>

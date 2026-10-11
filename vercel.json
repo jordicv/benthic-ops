@@ -1,3 +1,4 @@
 {
-  "outputDirectory": "WEB/dist"
+  "outputDirectory": "WEB/dist",
+  "cleanUrls": true
 }
